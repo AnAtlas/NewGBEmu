@@ -1,0 +1,8 @@
+//
+// Created by derdro on 12/14/17.
+//
+
+#ifndef GBEMU_CARTRIDGEFACTORY_HPP
+#define GBEMU_CARTRIDGEFACTORY_HPP
+
+#endif //GBEMU_CARTRIDGEFACTORY_HPP
