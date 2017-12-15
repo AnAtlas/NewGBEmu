@@ -81,33 +81,9 @@ CMakeFiles/GBEmu.dir/Source/main.cpp.o.provides: CMakeFiles/GBEmu.dir/Source/mai
 CMakeFiles/GBEmu.dir/Source/main.cpp.o.provides.build: CMakeFiles/GBEmu.dir/Source/main.cpp.o
 
 
-CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o: CMakeFiles/GBEmu.dir/flags.make
-CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o: ../Source/Utilities/AddressRange.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.cpp
-
-CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.cpp > CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.i
-
-CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.cpp -o CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.s
-
-CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o.requires:
-
-.PHONY : CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o.requires
-
-CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o.provides: CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o.requires
-	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o.provides.build
-.PHONY : CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o.provides
-
-CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o.provides.build: CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o
-
-
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o: CMakeFiles/GBEmu.dir/flags.make
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o: ../Source/Cartridges/CartRomOnly.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartRomOnly.cpp
 
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.i: cmake_force
@@ -131,7 +107,7 @@ CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o: CMakeFiles/GBEmu.dir/flags.make
 CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o: ../Source/Cartridges/Cartridge.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Cartridges/Cartridge.cpp
 
 CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.i: cmake_force
@@ -155,7 +131,7 @@ CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o: CMakeFiles/GBEmu.dir/flags.make
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o: ../Source/Cartridges/CartMBC1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC1.cpp
 
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.i: cmake_force
@@ -177,22 +153,46 @@ CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o.provides: CMakeFiles/GBEmu
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o.provides.build: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o
 
 
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o: CMakeFiles/GBEmu.dir/flags.make
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o: ../Source/Cartridges/CartMBC3.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC3.cpp
+
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC3.cpp > CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.i
+
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC3.cpp -o CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.s
+
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.requires:
+
+.PHONY : CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.requires
+
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.provides: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.requires
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.provides.build
+.PHONY : CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.provides
+
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.provides.build: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o
+
+
 # Object files for target GBEmu
 GBEmu_OBJECTS = \
 "CMakeFiles/GBEmu.dir/Source/main.cpp.o" \
-"CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o" \
 "CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o" \
 "CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o" \
-"CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o"
+"CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o" \
+"CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o"
 
 # External object files for target GBEmu
 GBEmu_EXTERNAL_OBJECTS =
 
 GBEmu: CMakeFiles/GBEmu.dir/Source/main.cpp.o
-GBEmu: CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o
+GBEmu: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/build.make
 GBEmu: /usr/lib/x86_64-linux-gnu/libsfml-network.so
 GBEmu: /usr/lib/x86_64-linux-gnu/libsfml-audio.so
@@ -209,10 +209,10 @@ CMakeFiles/GBEmu.dir/build: GBEmu
 .PHONY : CMakeFiles/GBEmu.dir/build
 
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/main.cpp.o.requires
-CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o.requires
+CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.requires
 
 .PHONY : CMakeFiles/GBEmu.dir/requires
 

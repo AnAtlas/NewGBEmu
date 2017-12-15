@@ -8,14 +8,18 @@
 
 class AddressRange {
 private:
-  unsigned short m_lowerBound;
-  unsigned short m_upperBound;
+  word m_lowerBound;
+  word m_upperBound;
 
 public:
   AddressRange(word lowerBound, word upperBound): m_lowerBound(lowerBound), m_upperBound(upperBound){}
 
-  bool isWithin(word number){
+  bool contains(word number)const {
     return (number >= m_lowerBound && number <= m_upperBound);
+  }
+
+  word start() const {
+    return m_lowerBound;
   }
 };
 

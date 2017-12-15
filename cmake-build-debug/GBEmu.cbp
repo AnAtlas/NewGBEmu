@@ -124,13 +124,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Bios.hpp">
-			<Option target="GBEmu"/>
-		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC1.cpp">
 			<Option target="GBEmu"/>
 		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC1.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC3.cpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC3.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartRomOnly.cpp">
@@ -148,19 +151,25 @@
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartridgeFactory.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/RTCModule.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/RamModule.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Memory.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/MemoryManager.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
-		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Types.hpp">
-			<Option target="GBEmu"/>
-		</Unit>
-		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.cpp">
-			<Option target="GBEmu"/>
-		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/Bios.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/main.cpp">

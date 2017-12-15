@@ -8,7 +8,7 @@ set(GCC_COVERAGE_LINK_FLAGS "-lX11")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
 set(SOURCE_FILES Source/main.cpp Source/Cartridges/CartRomOnly.cpp Source/Cartridges/Cartridge.cpp Source/Cartridges/CartMBC1.cpp)
-set(HEADER_FILES Source/Memory.hpp Source/Utilities/Types.hpp Source/Bios.hpp Source/MemoryManager.hpp Source/Cartridges/Cartridge.hpp Source/Cartridges/CartridgeFactory.hpp Source/Utilities/AddressRange.hpp Source/Cartridges/CartRomOnly.hpp Source/Cartridges/CartMBC1.hpp Source/Utilities/AddressRange.hpp)
+set(HEADER_FILES Source/Memory.hpp Source/Utilities/Types.hpp Source/Utilities/Bios.hpp Source/MemoryManager.hpp Source/Cartridges/Cartridge.hpp Source/Cartridges/CartridgeFactory.hpp Source/Utilities/AddressRange.hpp Source/Cartridges/CartRomOnly.hpp Source/Cartridges/CartMBC1.hpp Source/Utilities/AddressRange.hpp Source/Cartridges/CartMBC3.hpp Source/Cartridges/CartMBC3.cpp Source/Cartridges/RamModule.hpp Source/Cartridges/RTCModule.hpp)
 
 
 add_executable(GBEmu ${SOURCE_FILES} ${HEADER_FILES})

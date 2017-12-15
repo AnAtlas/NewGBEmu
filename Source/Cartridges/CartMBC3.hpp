@@ -1,49 +1,48 @@
 //
-// Created by derdro on 12/14/17.
+// Created by derdro on 12/15/17.
 //
 
-#ifndef GBEMU_CARTMBC1_HPP
-#define GBEMU_CARTMBC1_HPP
+#ifndef GBEMU_CARTMBC3_HPP
+#define GBEMU_CARTMBC3_HPP
 
 #include "Cartridge.hpp"
 #include "../Utilities/AddressRange.hpp"
 #include "RamModule.hpp"
+#include "RTCModule.hpp"
 
-class CartMBC1: public Cartridge
+class CartMBC3: public Cartridge
 {
 private:
-  enum MBC1Address{
+  enum MBC3Address{
     RAM_BANK = 0xA000,
     RAM_BANK_END = 0xBFFF,
-    RAM_ENABLE = 0x0000,
-    RAM_ENABLE_END = 0x1FFF,
+    RAM_TIMER_ENABLE = 0x0000,
+    RAM_TIMER_ENABLE_END = 0x1FFF,
     ROM_BANK_NUMBER = 0x2000,
     ROM_BANK_NUMBER_END = 0x3FFF,
     RAM_BANK_NUMBER = 0x4000,
     RAM_BANK_NUMBER_END = 0x5FFF,
-    BANKING_MODE = 0x6000,
-    BANKING_MODE_END = 0x7FFF
+    LATCH_CLOCK = 0x6000,
+    LATCH_CLOCK_END = 0x7FFF
   };
-  byte m_romBankNumber;
-  byte m_ramBankNumber;
-  bool m_hasBattery;
-  RamModule m_ramModule;
 
-  BankingMode m_bankingMode;
+  RamModule m_ramModule;
+  RTCModule m_rtcModule;
+
+  byte m_ramBankOrTimerNumber;
+  bool m_hasBattery;
 
   AddressRange m_ramRange;
-  AddressRange m_ramEnableRange;
+  AddressRange m_ramTimerEnableRange;
   AddressRange m_romBankNumberRange;
   AddressRange m_ramBankNumberRange;
-  AddressRange m_bankingModeRange;
+  AddressRange m_latchClockRange;
 
-  void changeBanks();
 public:
-  explicit CartMBC1(CartType cartType, std::string romPath, RamModule::RamSize ramSize);
+  explicit CartMBC3(CartType cartType, std::string romPath, RamModule::RamSize ramSize);
 
   bool loadCartridge() override;
   byte readByte(word address) const override;
   void writeByte(word address, byte value) override;
 };
-
-#endif //GBEMU_CARTMBC1_HPP
+#endif //GBEMU_CARTMBC3_HPP

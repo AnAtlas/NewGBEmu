@@ -196,6 +196,33 @@ Source/Cartridges/CartMBC1.cpp.s:
 	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.s
 .PHONY : Source/Cartridges/CartMBC1.cpp.s
 
+Source/Cartridges/CartMBC3.o: Source/Cartridges/CartMBC3.cpp.o
+
+.PHONY : Source/Cartridges/CartMBC3.o
+
+# target to build an object file
+Source/Cartridges/CartMBC3.cpp.o:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o
+.PHONY : Source/Cartridges/CartMBC3.cpp.o
+
+Source/Cartridges/CartMBC3.i: Source/Cartridges/CartMBC3.cpp.i
+
+.PHONY : Source/Cartridges/CartMBC3.i
+
+# target to preprocess a source file
+Source/Cartridges/CartMBC3.cpp.i:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.i
+.PHONY : Source/Cartridges/CartMBC3.cpp.i
+
+Source/Cartridges/CartMBC3.s: Source/Cartridges/CartMBC3.cpp.s
+
+.PHONY : Source/Cartridges/CartMBC3.s
+
+# target to generate assembly for a file
+Source/Cartridges/CartMBC3.cpp.s:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.s
+.PHONY : Source/Cartridges/CartMBC3.cpp.s
+
 Source/Cartridges/CartRomOnly.o: Source/Cartridges/CartRomOnly.cpp.o
 
 .PHONY : Source/Cartridges/CartRomOnly.o
@@ -250,33 +277,6 @@ Source/Cartridges/Cartridge.cpp.s:
 	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.s
 .PHONY : Source/Cartridges/Cartridge.cpp.s
 
-Source/Utilities/AddressRange.o: Source/Utilities/AddressRange.cpp.o
-
-.PHONY : Source/Utilities/AddressRange.o
-
-# target to build an object file
-Source/Utilities/AddressRange.cpp.o:
-	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.o
-.PHONY : Source/Utilities/AddressRange.cpp.o
-
-Source/Utilities/AddressRange.i: Source/Utilities/AddressRange.cpp.i
-
-.PHONY : Source/Utilities/AddressRange.i
-
-# target to preprocess a source file
-Source/Utilities/AddressRange.cpp.i:
-	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.i
-.PHONY : Source/Utilities/AddressRange.cpp.i
-
-Source/Utilities/AddressRange.s: Source/Utilities/AddressRange.cpp.s
-
-.PHONY : Source/Utilities/AddressRange.s
-
-# target to generate assembly for a file
-Source/Utilities/AddressRange.cpp.s:
-	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Utilities/AddressRange.cpp.s
-.PHONY : Source/Utilities/AddressRange.cpp.s
-
 Source/main.o: Source/main.cpp.o
 
 .PHONY : Source/main.o
@@ -320,15 +320,15 @@ help:
 	@echo "... Source/Cartridges/CartMBC1.o"
 	@echo "... Source/Cartridges/CartMBC1.i"
 	@echo "... Source/Cartridges/CartMBC1.s"
+	@echo "... Source/Cartridges/CartMBC3.o"
+	@echo "... Source/Cartridges/CartMBC3.i"
+	@echo "... Source/Cartridges/CartMBC3.s"
 	@echo "... Source/Cartridges/CartRomOnly.o"
 	@echo "... Source/Cartridges/CartRomOnly.i"
 	@echo "... Source/Cartridges/CartRomOnly.s"
 	@echo "... Source/Cartridges/Cartridge.o"
 	@echo "... Source/Cartridges/Cartridge.i"
 	@echo "... Source/Cartridges/Cartridge.s"
-	@echo "... Source/Utilities/AddressRange.o"
-	@echo "... Source/Utilities/AddressRange.i"
-	@echo "... Source/Utilities/AddressRange.s"
 	@echo "... Source/main.o"
 	@echo "... Source/main.i"
 	@echo "... Source/main.s"

@@ -15,7 +15,7 @@ public:
   explicit CartRomOnly(std::string romPath);
 
   bool loadCartridge() override;
-  byte readByte(word address) override;
-  bool writeByte(word address, byte value) override;
+  byte readByte(word address) const override;
+  void writeByte(word address, byte value) override;
 };
 #endif //GBEMU_CARTROMONLY_HPP
