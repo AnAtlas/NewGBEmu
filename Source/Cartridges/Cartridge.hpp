@@ -15,18 +15,6 @@
 class Cartridge
 {
 protected:
-  enum CartAddress{
-    ROM_BANK0 = 0x0000,
-    ROM_BANK0_END = 0x3FFF,
-    ROM_BANKX = 0x4000,
-    ROM_BANKX_END = 0x7FFF,
-    RAM_BANK0 = 0xA000,
-    ROM_NAME = 0x134,
-    CART_TYPE = 0x147,
-    ROM_SIZE = 0x148,
-    RAM_SIZE = 0x149
-  };
-
   enum CartType{
     ROM_ONLY = 0,
     MBC1 = 1,
@@ -73,6 +61,19 @@ public:
   virtual bool loadCartridge() = 0;
   virtual byte readByte(word address) const = 0;
   virtual void writeByte(word address, byte value) = 0;
+
+  enum CartAddress{
+    ROM_BANK0 = 0x0000,
+    ROM_BANK0_END = 0x3FFF,
+    ROM_BANKX = 0x4000,
+    ROM_BANKX_END = 0x7FFF,
+    RAM_BANK = 0xA000,
+    RAM_BANK_END = 0xBFFF,
+    ROM_NAME = 0x134,
+    CART_TYPE = 0x147,
+    ROM_SIZE = 0x148,
+    RAM_SIZE = 0x149
+  };
 
   friend class CartridgeFactory;
 };

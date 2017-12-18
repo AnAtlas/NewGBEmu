@@ -27,14 +27,61 @@ CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o: ../Source/Cartridges/Car
 CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o: ../Source/Utilities/AddressRange.hpp
 CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o: ../Source/Utilities/Types.hpp
 
-CMakeFiles/GBEmu.dir/Source/main.cpp.o: ../Source/Cartridges/CartMBC1.hpp
-CMakeFiles/GBEmu.dir/Source/main.cpp.o: ../Source/Cartridges/CartMBC3.hpp
-CMakeFiles/GBEmu.dir/Source/main.cpp.o: ../Source/Cartridges/CartRomOnly.hpp
-CMakeFiles/GBEmu.dir/Source/main.cpp.o: ../Source/Cartridges/Cartridge.hpp
-CMakeFiles/GBEmu.dir/Source/main.cpp.o: ../Source/Cartridges/CartridgeFactory.hpp
-CMakeFiles/GBEmu.dir/Source/main.cpp.o: ../Source/Cartridges/RTCModule.hpp
-CMakeFiles/GBEmu.dir/Source/main.cpp.o: ../Source/Cartridges/RamModule.hpp
-CMakeFiles/GBEmu.dir/Source/main.cpp.o: ../Source/Utilities/AddressRange.hpp
-CMakeFiles/GBEmu.dir/Source/main.cpp.o: ../Source/Utilities/Types.hpp
-CMakeFiles/GBEmu.dir/Source/main.cpp.o: ../Source/main.cpp
+CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Cartridges/Cartridge.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Components/Cpu.cpp
+CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Components/Cpu.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Components/CpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Components/Memory.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Utilities/AddressRange.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Utilities/Types.hpp
+
+CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Cartridges/Cartridge.hpp
+CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Components/Cpu.hpp
+CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Components/CpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Components/CpuOpcodeTable.cpp
+CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Components/Memory.hpp
+CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Utilities/AddressRange.hpp
+CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Utilities/Types.hpp
+
+CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Cartridges/Cartridge.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/Memory.cpp
+CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/Memory.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Utilities/AddressRange.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Utilities/Types.hpp
+
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/CartMBC1.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/CartMBC3.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/CartRomOnly.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/Cartridge.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/CartridgeFactory.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/RTCModule.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/RamModule.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/Cpu.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/CpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/Gpu.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/GpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/Memory.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/Timer.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Gameboy.cpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Gameboy.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Utilities/AddressRange.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Utilities/Types.hpp
+
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/CartMBC1.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/CartMBC3.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/CartRomOnly.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/Cartridge.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/CartridgeFactory.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/RTCModule.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/RamModule.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/Cpu.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/CpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/Gpu.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/GpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/Memory.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/Timer.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Gameboy.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Main.cpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Utilities/AddressRange.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Utilities/Types.hpp
 

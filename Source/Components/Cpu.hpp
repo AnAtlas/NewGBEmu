@@ -4,7 +4,10 @@
 
 #ifndef NEWGBEMU_CPU_HPP
 #define NEWGBEMU_CPU_HPP
+
+#include <memory>
 #include "../Utilities/Types.hpp"
+#include "CpuMemoryInterface.hpp"
 
 class Memory;
 
@@ -70,41 +73,53 @@ private:
             word t = 0;
     };
 
-    Registers m_regs;
+    Registers m_registers;
     Clock m_clock;
-    bool halted;
-    bool stopped;
-    std::shared_ptr<Memory> m_mem;
+    bool m_halted;
+    bool m_stopped;
+    bool m_cbMode;
+    CpuMemoryInterface& m_memory;
 public:
-    Cpu(std::shared_ptr<Memory> memory);
+    Cpu(CpuMemoryInterface& memory);
     byte step();
 
 private:
+  void executeOpcode(byte opcode);
+  void executeExtOpcode(byte opcode);
+  void setFlag(Flags flag);
+  bool checkFlag(Flags flag);
+  void clearFlag(Flags flag);
+  void clearAllFlags();
 
-  word readShortFromStack();
-  //General Functions
-  byte inc(byte value);
-  byte dec(byte value);
-  byte And(byte v1, byte v2);
-  byte Xor(byte v1, byte v2);
-  byte Or(byte v1, byte v2);
-  byte rlc(byte byte);
-  byte rrc(byte byte);
-  byte rl(byte byte);
-  byte rr(byte byte);
-  byte sla(byte byte);
-  byte sra(byte byte);
-  byte srl(byte byte);
-  byte swap(byte byte);
-  void bit(byte bit, byte byte);
-  byte res(byte bit, byte byte);
-  byte set(byte bit, byte byte);
-  void compare(byte value);
-  byte addCarry(byte value);
-  byte subCarry(byte value);
-  byte addBytes(byte v1, byte v2);
-  byte subBytes(byte v1, byte v2);
-  word addShorts(word v1, word v2);
+  void byteLoad(byte& reg);
+  void byteLoad(byte& reg1, byte& reg2);
+  void byteLoad(byte& reg, word& address);
+  void byteLoadIoPort(byte& reg, byte& address);
+  void wordLoad(word& reg);
+  void writeMemoryByte(word& address, byte& reg);
+  void writeIoPortByte(byte& address, byte& reg);
+  void inc(byte& reg);
+  void inc(word& reg);
+  void dec(byte& reg);
+  void dec(word& reg);
+  void add(byte& reg);
+  void add(word& reg1, word& reg2);
+  void add(word& reg);
+  void adc(byte& reg);
+  void adc(word& reg);
+  void sub(byte& reg);
+  void sub(word& reg);
+  void sbc(byte& reg);
+  void sbc(word& reg);
+  void And(byte& reg);
+  void And(word& reg);
+  void Xor(byte& reg);
+  void Xor(word& reg);
+  void Or(byte& reg);
+  void Or(word& reg);
+  void cp(byte& reg);
+  void cp(word& reg);
+  void jr(bool check, Flags flag = Flags::Z, bool condition = false);
 
   //Instruction functions
   void nop();			//0x00

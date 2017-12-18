@@ -13,21 +13,21 @@ private:
 public:
   GpuMemoryInterface();
 
-  byte readLcdStatus();
-  byte readLcdControl();
-  byte readLineY();
-  byte readLYC();
-  byte readBackgroundPalette();
-  byte readObjectPalette0();
-  byte readObjectPalette1();
-  byte readOam(byte index);
-  byte readVram(byte index);
-  byte readScrollX();
-  byte readScrollY();
-  byte readWindowX();
-  byte readWindowY();
-  void requestInterrupt(byte bit);
-  void writeLcdStatus(byte value);
-  void writeLineY(byte value);
+  virtual byte readLcdStatus() = 0;
+  virtual byte readLcdControl() = 0;
+  virtual byte readLineY() = 0;
+  virtual byte readLYC() = 0;
+  virtual byte readBackgroundPalette() = 0;
+  virtual byte readObjectPalette0() = 0;
+  virtual byte readObjectPalette1() = 0;
+  virtual byte readOam(byte index) = 0;
+  virtual byte readVram(byte index) = 0;
+  virtual byte readScrollX() = 0;
+  virtual byte readScrollY() = 0;
+  virtual byte readWindowX() = 0;
+  virtual byte readWindowY() = 0;
+  virtual void requestInterrupt(byte bit) = 0;
+  virtual void writeLcdStatus(byte value) = 0;
+  virtual void writeLineY(byte value) = 0;
 };
 #endif //NEWGBEMU_GPUMEMORYINTERFACE_HPP

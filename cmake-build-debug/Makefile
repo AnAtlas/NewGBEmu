@@ -277,32 +277,140 @@ Source/Cartridges/Cartridge.cpp.s:
 	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.s
 .PHONY : Source/Cartridges/Cartridge.cpp.s
 
-Source/main.o: Source/main.cpp.o
+Source/Components/Cpu.o: Source/Components/Cpu.cpp.o
 
-.PHONY : Source/main.o
+.PHONY : Source/Components/Cpu.o
 
 # target to build an object file
-Source/main.cpp.o:
-	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/main.cpp.o
-.PHONY : Source/main.cpp.o
+Source/Components/Cpu.cpp.o:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o
+.PHONY : Source/Components/Cpu.cpp.o
 
-Source/main.i: Source/main.cpp.i
+Source/Components/Cpu.i: Source/Components/Cpu.cpp.i
 
-.PHONY : Source/main.i
+.PHONY : Source/Components/Cpu.i
 
 # target to preprocess a source file
-Source/main.cpp.i:
-	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/main.cpp.i
-.PHONY : Source/main.cpp.i
+Source/Components/Cpu.cpp.i:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.i
+.PHONY : Source/Components/Cpu.cpp.i
 
-Source/main.s: Source/main.cpp.s
+Source/Components/Cpu.s: Source/Components/Cpu.cpp.s
 
-.PHONY : Source/main.s
+.PHONY : Source/Components/Cpu.s
 
 # target to generate assembly for a file
-Source/main.cpp.s:
-	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/main.cpp.s
-.PHONY : Source/main.cpp.s
+Source/Components/Cpu.cpp.s:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.s
+.PHONY : Source/Components/Cpu.cpp.s
+
+Source/Components/CpuOpcodeTable.o: Source/Components/CpuOpcodeTable.cpp.o
+
+.PHONY : Source/Components/CpuOpcodeTable.o
+
+# target to build an object file
+Source/Components/CpuOpcodeTable.cpp.o:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o
+.PHONY : Source/Components/CpuOpcodeTable.cpp.o
+
+Source/Components/CpuOpcodeTable.i: Source/Components/CpuOpcodeTable.cpp.i
+
+.PHONY : Source/Components/CpuOpcodeTable.i
+
+# target to preprocess a source file
+Source/Components/CpuOpcodeTable.cpp.i:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.i
+.PHONY : Source/Components/CpuOpcodeTable.cpp.i
+
+Source/Components/CpuOpcodeTable.s: Source/Components/CpuOpcodeTable.cpp.s
+
+.PHONY : Source/Components/CpuOpcodeTable.s
+
+# target to generate assembly for a file
+Source/Components/CpuOpcodeTable.cpp.s:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.s
+.PHONY : Source/Components/CpuOpcodeTable.cpp.s
+
+Source/Components/Memory.o: Source/Components/Memory.cpp.o
+
+.PHONY : Source/Components/Memory.o
+
+# target to build an object file
+Source/Components/Memory.cpp.o:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o
+.PHONY : Source/Components/Memory.cpp.o
+
+Source/Components/Memory.i: Source/Components/Memory.cpp.i
+
+.PHONY : Source/Components/Memory.i
+
+# target to preprocess a source file
+Source/Components/Memory.cpp.i:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.i
+.PHONY : Source/Components/Memory.cpp.i
+
+Source/Components/Memory.s: Source/Components/Memory.cpp.s
+
+.PHONY : Source/Components/Memory.s
+
+# target to generate assembly for a file
+Source/Components/Memory.cpp.s:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.s
+.PHONY : Source/Components/Memory.cpp.s
+
+Source/Gameboy.o: Source/Gameboy.cpp.o
+
+.PHONY : Source/Gameboy.o
+
+# target to build an object file
+Source/Gameboy.cpp.o:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o
+.PHONY : Source/Gameboy.cpp.o
+
+Source/Gameboy.i: Source/Gameboy.cpp.i
+
+.PHONY : Source/Gameboy.i
+
+# target to preprocess a source file
+Source/Gameboy.cpp.i:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.i
+.PHONY : Source/Gameboy.cpp.i
+
+Source/Gameboy.s: Source/Gameboy.cpp.s
+
+.PHONY : Source/Gameboy.s
+
+# target to generate assembly for a file
+Source/Gameboy.cpp.s:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.s
+.PHONY : Source/Gameboy.cpp.s
+
+Source/Main.o: Source/Main.cpp.o
+
+.PHONY : Source/Main.o
+
+# target to build an object file
+Source/Main.cpp.o:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Main.cpp.o
+.PHONY : Source/Main.cpp.o
+
+Source/Main.i: Source/Main.cpp.i
+
+.PHONY : Source/Main.i
+
+# target to preprocess a source file
+Source/Main.cpp.i:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Main.cpp.i
+.PHONY : Source/Main.cpp.i
+
+Source/Main.s: Source/Main.cpp.s
+
+.PHONY : Source/Main.s
+
+# target to generate assembly for a file
+Source/Main.cpp.s:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Main.cpp.s
+.PHONY : Source/Main.cpp.s
 
 # Help Target
 help:
@@ -329,9 +437,21 @@ help:
 	@echo "... Source/Cartridges/Cartridge.o"
 	@echo "... Source/Cartridges/Cartridge.i"
 	@echo "... Source/Cartridges/Cartridge.s"
-	@echo "... Source/main.o"
-	@echo "... Source/main.i"
-	@echo "... Source/main.s"
+	@echo "... Source/Components/Cpu.o"
+	@echo "... Source/Components/Cpu.i"
+	@echo "... Source/Components/Cpu.s"
+	@echo "... Source/Components/CpuOpcodeTable.o"
+	@echo "... Source/Components/CpuOpcodeTable.i"
+	@echo "... Source/Components/CpuOpcodeTable.s"
+	@echo "... Source/Components/Memory.o"
+	@echo "... Source/Components/Memory.i"
+	@echo "... Source/Components/Memory.s"
+	@echo "... Source/Gameboy.o"
+	@echo "... Source/Gameboy.i"
+	@echo "... Source/Gameboy.s"
+	@echo "... Source/Main.o"
+	@echo "... Source/Main.i"
+	@echo "... Source/Main.s"
 .PHONY : help
 
 

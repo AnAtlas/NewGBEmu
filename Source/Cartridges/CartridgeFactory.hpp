@@ -16,7 +16,6 @@ class CartridgeFactory
 private:
 
 public:
-  CartridgeFactory(){};
   std::shared_ptr<Cartridge> generateCartridge(std::string romPath){
     std::shared_ptr<Cartridge> cartPtr = nullptr;
     byte romHeaderBuffer[0x150]{0};

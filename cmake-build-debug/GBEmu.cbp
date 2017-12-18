@@ -157,10 +157,40 @@
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/RamModule.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
-		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Memory.hpp">
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.cpp">
 			<Option target="GBEmu"/>
 		</Unit>
-		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/MemoryManager.hpp">
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/CpuMemoryInterface.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/CpuOpcodeTable.cpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Memory.cpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Memory.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Timer.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Gameboy.cpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Gameboy.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Main.cpp">
 			<Option target="GBEmu"/>
 		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.hpp">
@@ -170,9 +200,6 @@
 			<Option target="GBEmu"/>
 		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp">
-			<Option target="GBEmu"/>
-		</Unit>
-		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/main.cpp">
 			<Option target="GBEmu"/>
 		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/CMakeLists.txt">
