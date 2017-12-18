@@ -4,7 +4,7 @@
 
 #ifndef GBEMU_MEMORY_HPP
 #define GBEMU_MEMORY_HPP
-#include "Utilities/Types.hpp"
+#include "../Utilities/Types.hpp"
 
 class Memory {
 private:
@@ -15,5 +15,7 @@ private:
 
 public:
   Memory(bool runBios);
+  byte readByte(word address);
+  void writeByte(word address, byte value);
 };
 #endif //GBEMU_MEMORY_HPP
