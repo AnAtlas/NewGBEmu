@@ -31,19 +31,24 @@ CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Cartridges/Cartridge
 CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Components/Cpu.cpp
 CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Components/Cpu.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Components/CpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Components/GpuMemoryInterface.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Components/Memory.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Utilities/AddressRange.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Utilities/Types.hpp
 
-CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Cartridges/Cartridge.hpp
 CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Components/Cpu.hpp
 CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Components/CpuMemoryInterface.hpp
 CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Components/CpuOpcodeTable.cpp
-CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Components/Memory.hpp
-CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Utilities/AddressRange.hpp
 CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Utilities/Types.hpp
 
+CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Components/Gpu.cpp
+CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Components/Gpu.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Components/GpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Utilities/Types.hpp
+
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Cartridges/Cartridge.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/CpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/GpuMemoryInterface.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/Memory.cpp
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/Memory.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Utilities/AddressRange.hpp

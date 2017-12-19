@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o"
   "CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o"
   "CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o"
+  "CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o"
   "GBEmu.pdb"
   "GBEmu"
 )

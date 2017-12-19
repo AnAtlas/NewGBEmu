@@ -169,6 +169,9 @@
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/CpuOpcodeTable.cpp">
 			<Option target="GBEmu"/>
 		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.cpp">
+			<Option target="GBEmu"/>
+		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp">
 			<Option target="GBEmu"/>
 		</Unit>

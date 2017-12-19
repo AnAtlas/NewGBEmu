@@ -331,6 +331,33 @@ Source/Components/CpuOpcodeTable.cpp.s:
 	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.s
 .PHONY : Source/Components/CpuOpcodeTable.cpp.s
 
+Source/Components/Gpu.o: Source/Components/Gpu.cpp.o
+
+.PHONY : Source/Components/Gpu.o
+
+# target to build an object file
+Source/Components/Gpu.cpp.o:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o
+.PHONY : Source/Components/Gpu.cpp.o
+
+Source/Components/Gpu.i: Source/Components/Gpu.cpp.i
+
+.PHONY : Source/Components/Gpu.i
+
+# target to preprocess a source file
+Source/Components/Gpu.cpp.i:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.i
+.PHONY : Source/Components/Gpu.cpp.i
+
+Source/Components/Gpu.s: Source/Components/Gpu.cpp.s
+
+.PHONY : Source/Components/Gpu.s
+
+# target to generate assembly for a file
+Source/Components/Gpu.cpp.s:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.s
+.PHONY : Source/Components/Gpu.cpp.s
+
 Source/Components/Memory.o: Source/Components/Memory.cpp.o
 
 .PHONY : Source/Components/Memory.o
@@ -443,6 +470,9 @@ help:
 	@echo "... Source/Components/CpuOpcodeTable.o"
 	@echo "... Source/Components/CpuOpcodeTable.i"
 	@echo "... Source/Components/CpuOpcodeTable.s"
+	@echo "... Source/Components/Gpu.o"
+	@echo "... Source/Components/Gpu.i"
+	@echo "... Source/Components/Gpu.s"
 	@echo "... Source/Components/Memory.o"
 	@echo "... Source/Components/Memory.i"
 	@echo "... Source/Components/Memory.s"

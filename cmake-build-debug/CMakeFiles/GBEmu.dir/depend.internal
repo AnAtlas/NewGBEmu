@@ -32,19 +32,24 @@ CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o
  /home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.cpp
  /home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.hpp
  /home/derdro/CLionProjects/GBEmu/Source/Components/CpuMemoryInterface.hpp
+ /home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
  /home/derdro/CLionProjects/GBEmu/Source/Components/Memory.hpp
  /home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.hpp
  /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
 CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o
- /home/derdro/CLionProjects/GBEmu/Source/Cartridges/Cartridge.hpp
  /home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.hpp
  /home/derdro/CLionProjects/GBEmu/Source/Components/CpuMemoryInterface.hpp
  /home/derdro/CLionProjects/GBEmu/Source/Components/CpuOpcodeTable.cpp
- /home/derdro/CLionProjects/GBEmu/Source/Components/Memory.hpp
- /home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.hpp
+ /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o
+ /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.cpp
+ /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp
+ /home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
  /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o
  /home/derdro/CLionProjects/GBEmu/Source/Cartridges/Cartridge.hpp
+ /home/derdro/CLionProjects/GBEmu/Source/Components/CpuMemoryInterface.hpp
+ /home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
  /home/derdro/CLionProjects/GBEmu/Source/Components/Memory.cpp
  /home/derdro/CLionProjects/GBEmu/Source/Components/Memory.hpp
  /home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.hpp

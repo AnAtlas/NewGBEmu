@@ -79,8 +79,14 @@ CartRomOnly.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.cpp
+iostream
+-
+assert.h
+-
 Cpu.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.hpp
+Memory.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Components/Memory.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.hpp
 memory
@@ -91,8 +97,6 @@ CpuMemoryInterface.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/CpuMemoryInterface.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/CpuMemoryInterface.hpp
-Memory.hpp
-/home/derdro/CLionProjects/GBEmu/Source/Components/Memory.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/CpuOpcodeTable.cpp
 assert.h
@@ -100,13 +104,19 @@ assert.h
 Cpu.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.hpp
 
+/home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.cpp
+Gpu.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp
+
+/home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp
+SFML/Graphics/RenderWindow.hpp
+-
 GpuMemoryInterface.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
-Memory.hpp
-/home/derdro/CLionProjects/GBEmu/Source/Components/Memory.hpp
+../Utilities/Types.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Memory.cpp
 Memory.hpp
@@ -119,6 +129,10 @@ Memory.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Cartridges/Cartridge.hpp
 ../Utilities/AddressRange.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.hpp
+CpuMemoryInterface.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Components/CpuMemoryInterface.hpp
+GpuMemoryInterface.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Timer.hpp
 

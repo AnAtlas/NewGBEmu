@@ -7,23 +7,33 @@
 #include "../Utilities/Types.hpp"
 #include "../Cartridges/Cartridge.hpp"
 #include "../Utilities/AddressRange.hpp"
+#include "CpuMemoryInterface.hpp"
+#include "GpuMemoryInterface.hpp"
 
-class Memory {
+enum IntFlags{
+  V_BLANK = 1,
+  LCD_STAT = 1 << 1,
+  TIMER = 1 << 2,
+  SERIAL = 1 << 3,
+  JOYPAD = 1 << 4
+};
+
+class Memory : public CpuMemoryInterface, GpuMemoryInterface {
 private:
   union{
     struct {
-      byte cart1[0x4000];
-      byte cart2[0x4000];
-      byte vRam[0x2000]; //0x8000
-      byte sRam[0x2000]; //0xA000
-      byte wram[0x2000];
-      byte echo[0x1E00];
-      byte oam[0xA0];	//0xFE00
-      byte blank[0x60];
-      byte ioPorts[0x4C]; //0xFF00
-      byte blank2[0x34];
-      byte hRam[0x80];
-      byte ieRegister[0x01];
+      byte m_cart1[0x4000];
+      byte m_cart2[0x4000];
+      byte m_vRam[0x2000]; //0x8000
+      byte m_sRam[0x2000]; //0xA000
+      byte m_wram[0x2000];
+      byte m_echo[0x1E00];
+      byte m_oam[0xA0];	//0xFE00
+      byte m_blank[0x60];
+      byte m_ioPorts[0x4C]; //0xFF00
+      byte m_blank2[0x34];
+      byte m_hRam[0x80];
+      byte m_ieRegister[0x01];
     };
     byte m_memory[0xFFFF];
   };
@@ -37,7 +47,7 @@ private:
   byte m_inputRow2;
 
   void copy(word destination, word source, word length);
-  bool addressOnCartridge(word address);
+  bool addressOnCartridge(word address) const;
 
   enum Address {
     IntVBlank = 0x40,
@@ -79,8 +89,32 @@ private:
 
 public:
   explicit Memory(bool runBios);
-  byte readByte(word address);
+  byte readByte(word address) const;
   void writeByte(word address, byte value);
+  void writeShort(word address, word value);
+  word readShort(word address) const;
   void linkCartridge(std::shared_ptr<Cartridge> cartridge);
+  void requestInterrupt(byte bit);
+
+  //Cpu Functions
+  byte getIntFlags() const;
+  byte getIntsEnabled() const;
+  void resetIntFlag(byte bitIndex);
+  //Gpu functions
+  byte readLcdStatus() const;
+  byte readLcdControl() const;
+  byte readLineY() const;
+  byte readLYC() const;
+  byte readBackgroundPalette() const;
+  byte readObjectPalette0() const;
+  byte readObjectPalette1() const;
+  byte readOam(const byte index) const;
+  byte readVram(const byte index) const;
+  byte readScrollX() const;
+  byte readScrollY() const;
+  byte readWindowX() const;
+  byte readWindowY() const;
+  void writeLcdStatus(byte value);
+  void writeLineY(byte value);
 };
 #endif //GBEMU_MEMORY_HPP

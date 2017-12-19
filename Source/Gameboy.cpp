@@ -6,7 +6,7 @@
 #include "Components/CpuMemoryInterface.hpp"
 
 Gameboy::Gameboy(sf::RenderWindow &window, bool runBios)
- : m_memory(false), m_cpu((CpuMemoryInterface&)m_memory), m_gpu((GpuMemoryInterface&)m_memory),
+ : m_memory(false), m_cpu((CpuMemoryInterface&)m_memory), m_gpu(window,(GpuMemoryInterface&)m_memory),
    m_window(window), m_cartridge(), m_cartFact()
 {
 
