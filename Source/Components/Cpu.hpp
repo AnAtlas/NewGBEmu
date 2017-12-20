@@ -76,8 +76,7 @@ private:
         word pc;
     };
     struct Clock{
-      byte m = 0;
-      byte t = 0;
+      byte ticks = 0;
     };
 
     Registers m_registers;

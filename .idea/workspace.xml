@@ -12,39 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5890c2d0-623e-478c-9389-40a6a6751e2c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Source/Components/Timer.cpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Source/Components/TimerMemoryInterface.hpp" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
       <change beforePath="$PROJECT_DIR$/Source/Components/Cpu.cpp" afterPath="$PROJECT_DIR$/Source/Components/Cpu.cpp" />
       <change beforePath="$PROJECT_DIR$/Source/Components/Cpu.hpp" afterPath="$PROJECT_DIR$/Source/Components/Cpu.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Components/Gpu.cpp" afterPath="$PROJECT_DIR$/Source/Components/Gpu.cpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Components/Gpu.hpp" afterPath="$PROJECT_DIR$/Source/Components/Gpu.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Components/GpuMemoryInterface.hpp" afterPath="$PROJECT_DIR$/Source/Components/GpuMemoryInterface.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Components/Memory.cpp" afterPath="$PROJECT_DIR$/Source/Components/Memory.cpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Components/Memory.hpp" afterPath="$PROJECT_DIR$/Source/Components/Memory.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Components/Timer.hpp" afterPath="$PROJECT_DIR$/Source/Components/Timer.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Gameboy.cpp" afterPath="$PROJECT_DIR$/Source/Gameboy.cpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Gameboy.hpp" afterPath="$PROJECT_DIR$/Source/Gameboy.hpp" />
       <change beforePath="$PROJECT_DIR$/Source/Main.cpp" afterPath="$PROJECT_DIR$/Source/Main.cpp" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/CXX.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/CXX.includecache" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/DependInfo.cmake" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/Source/Main.cpp.o" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/build.make" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/cmake_clean.cmake" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/depend.internal" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/depend.make" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/link.txt" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/progress.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GBEmu.dir/progress.make" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GBEmu" afterPath="$PROJECT_DIR$/cmake-build-debug/GBEmu" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/GBEmu.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/GBEmu.cbp" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,8 +30,8 @@
       <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -72,8 +42,8 @@
       <file leaf-file-name="Cpu.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="100" column="24" lean-forward="false" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
+            <state relative-caret-position="-90">
+              <caret line="78" column="16" lean-forward="false" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -92,8 +62,8 @@
       <file leaf-file-name="Cpu.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="235" column="35" lean-forward="false" selection-start-line="235" selection-start-column="35" selection-end-line="235" selection-end-column="35" />
+            <state relative-caret-position="170">
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -103,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/Source/Components/CpuOpcodeTable.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="13" />
+              <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -146,7 +116,11 @@
       <find>::add</find>
       <find>::call</find>
       <find>reti</find>
+      <find>m_clock.t</find>
       <find>m_registers.pc</find>
+      <find>m_registers.sp</find>
+      <find>popWordFromStack</find>
+      <find>jmp</find>
     </findStrings>
     <replaceStrings>
       <replace>MBC3</replace>
@@ -156,6 +130,7 @@
       <replace>popWordFromStack</replace>
       <replace>ld</replace>
       <replace>set</replace>
+      <replace>m_clock.ticks</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -203,8 +178,8 @@
         <option value="$PROJECT_DIR$/Source/Components/Gpu.cpp" />
         <option value="$PROJECT_DIR$/Source/Components/Memory.cpp" />
         <option value="$PROJECT_DIR$/Source/Gameboy.cpp" />
-        <option value="$PROJECT_DIR$/Source/Main.cpp" />
         <option value="$PROJECT_DIR$/Source/Components/Cpu.hpp" />
+        <option value="$PROJECT_DIR$/Source/Main.cpp" />
         <option value="$PROJECT_DIR$/Source/Components/Cpu.cpp" />
       </list>
     </option>
@@ -337,12 +312,12 @@
       <workItem from="1513569101124" duration="26085000" />
       <workItem from="1513661033725" duration="24306000" />
       <workItem from="1513729033887" duration="11554000" />
-      <workItem from="1513779389051" duration="17873000" />
+      <workItem from="1513779389051" duration="21702000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125923000" />
+    <option name="totallyTimeSpent" value="129752000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="960" height="1080" extended-state="4" />
@@ -378,19 +353,27 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/Components/Cpu.cpp</url>
-          <line>28</line>
-          <option name="timeStamp" value="112" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="114" />
+      <option name="time" value="121" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>this-&gt;m_memory.readShort(0xFFFC)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this-&gt;m_memory.readShort(0xFFFE)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this-&gt;m_memory.readShort(0xFFFA)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>this-&gt;m_rom[0x104]</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -687,14 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Cartridges/CartRomOnly.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Components/Gpu.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -747,18 +722,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/CpuOpcodeTable.cpp">
+    <entry file="file://$PROJECT_DIR$/Source/Cartridges/CartRomOnly.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="13" />
+        <state relative-caret-position="324">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
@@ -767,16 +742,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="100" column="24" lean-forward="false" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
+        <state relative-caret-position="-90">
+          <caret line="78" column="16" lean-forward="false" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/CpuOpcodeTable.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="235" column="35" lean-forward="false" selection-start-line="235" selection-start-column="35" selection-end-line="235" selection-end-column="35" />
+        <state relative-caret-position="170">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -8,7 +8,7 @@ int main() {
   sf::RenderWindow window(sf::VideoMode(160, 144), "NewGBEmu!");
   window.setActive(false);
 
-  Gameboy gameboy(window, false);
+  Gameboy gameboy(window, true);
 
   gameboy.insertRom("TestRom/03-op sp,hl.gb");
 
