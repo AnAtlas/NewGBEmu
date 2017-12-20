@@ -385,6 +385,33 @@ Source/Components/Memory.cpp.s:
 	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.s
 .PHONY : Source/Components/Memory.cpp.s
 
+Source/Components/Timer.o: Source/Components/Timer.cpp.o
+
+.PHONY : Source/Components/Timer.o
+
+# target to build an object file
+Source/Components/Timer.cpp.o:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o
+.PHONY : Source/Components/Timer.cpp.o
+
+Source/Components/Timer.i: Source/Components/Timer.cpp.i
+
+.PHONY : Source/Components/Timer.i
+
+# target to preprocess a source file
+Source/Components/Timer.cpp.i:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.i
+.PHONY : Source/Components/Timer.cpp.i
+
+Source/Components/Timer.s: Source/Components/Timer.cpp.s
+
+.PHONY : Source/Components/Timer.s
+
+# target to generate assembly for a file
+Source/Components/Timer.cpp.s:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.s
+.PHONY : Source/Components/Timer.cpp.s
+
 Source/Gameboy.o: Source/Gameboy.cpp.o
 
 .PHONY : Source/Gameboy.o
@@ -476,6 +503,9 @@ help:
 	@echo "... Source/Components/Memory.o"
 	@echo "... Source/Components/Memory.i"
 	@echo "... Source/Components/Memory.s"
+	@echo "... Source/Components/Timer.o"
+	@echo "... Source/Components/Timer.i"
+	@echo "... Source/Components/Timer.s"
 	@echo "... Source/Gameboy.o"
 	@echo "... Source/Gameboy.i"
 	@echo "... Source/Gameboy.s"

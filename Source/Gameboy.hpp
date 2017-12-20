@@ -20,12 +20,11 @@ private:
   Memory m_memory;
   Cpu m_cpu;
   Gpu m_gpu;
+  Timer m_timer;
   CartridgeFactory m_cartFact;
   std::shared_ptr<Cartridge> m_cartridge;
 
-  //Timer m_timer;
-
-  bool running;
+  bool m_running;
   sf::RenderWindow& m_window;
 public:
   Gameboy(sf::RenderWindow& window, bool runBios);

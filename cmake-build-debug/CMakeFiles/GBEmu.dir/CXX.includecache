@@ -83,6 +83,8 @@ iostream
 -
 assert.h
 -
+iomanip
+-
 Cpu.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.hpp
 Memory.hpp
@@ -105,11 +107,17 @@ Cpu.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.cpp
+cstring
+-
 Gpu.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp
 SFML/Graphics/RenderWindow.hpp
+-
+SFML/Graphics/Texture.hpp
+-
+SFML/Graphics/Sprite.hpp
 -
 GpuMemoryInterface.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
@@ -119,8 +127,12 @@ GpuMemoryInterface.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Memory.cpp
+cstring
+-
 Memory.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/Memory.hpp
+../Utilities/Bios.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/Bios.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Memory.hpp
 ../Utilities/Types.hpp
@@ -133,8 +145,22 @@ CpuMemoryInterface.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/CpuMemoryInterface.hpp
 GpuMemoryInterface.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
+TimerMemoryInterface.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Components/TimerMemoryInterface.hpp
+
+/home/derdro/CLionProjects/GBEmu/Source/Components/Timer.cpp
+Timer.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Components/Timer.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Timer.hpp
+../Utilities/Types.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
+TimerMemoryInterface.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Components/TimerMemoryInterface.hpp
+
+/home/derdro/CLionProjects/GBEmu/Source/Components/TimerMemoryInterface.hpp
+../Utilities/Types.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Gameboy.cpp
 Gameboy.hpp
@@ -167,8 +193,16 @@ Gameboy.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Gameboy.hpp
 SFML/Graphics.hpp
 -
+thread
+-
+X11/Xlib.h
+-
 
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.hpp
+Types.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
+
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/Bios.hpp
 Types.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
 

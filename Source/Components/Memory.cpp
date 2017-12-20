@@ -1,13 +1,15 @@
 //
 // Created by derdro on 12/17/17.
 //
+#include <cstring>
 #include "Memory.hpp"
+#include "../Utilities/Bios.hpp"
 
 Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios),
   m_romRange(Cartridge::CartAddress::ROM_BANK0, Cartridge::CartAddress::ROM_BANK0_END),
     m_ramRange(Cartridge::CartAddress::RAM_BANK, Cartridge::CartAddress::RAM_BANK_END)
 {
-
+  memcpy(m_memory, bios, sizeof(bios));
 }
 
 void Memory::linkCartridge(std::shared_ptr<Cartridge>cartridge) {
@@ -21,6 +23,8 @@ void Memory::writeByte(word address, byte value) {
     value = 0;
   else if (address == Address::DivReg)
     value = 0;
+  else if (address == Address::ExitBios)
+    m_inBios = false;
   else if (address == Address::P1){
     value &= 0x30;
     value |= 0xC0;
@@ -31,7 +35,7 @@ void Memory::writeByte(word address, byte value) {
 }
 
 byte Memory::readByte(word address) const {
-  if (addressOnCartridge(address) && ((m_inBios && address >= 0x1000) || !m_inBios))
+  if (addressOnCartridge(address) && ((m_inBios && address >= 0x100) || !m_inBios))
     return m_cartridge->readByte(address);
 
   if (address == Address::P1){
@@ -52,7 +56,7 @@ byte Memory::readByte(word address) const {
 
 void Memory::writeShort(word address, word value) {
   writeByte(address, (byte)(value & 0x00FF));
-  writeByte(address + (word)1, (byte)(value & 0xFF00) >> 8);
+  writeByte(address + (word)1, (byte)((value & 0xFF00) >> 8));
 }
 
 word Memory::readShort(word address) const {
@@ -112,12 +116,12 @@ byte Memory::readObjectPalette1() const{
   return m_memory[Address::ObjectPalette1];
 }
 
-byte Memory::readOam(const byte index) const{
-  return m_oam[index];
+byte Memory::readOam(word address) const{
+  return m_memory[address];
 }
 
-byte Memory::readVram(const byte index) const{
-  return m_vRam[index];
+byte Memory::readVram(word address) const{
+  return m_memory[address];
 }
 
 byte Memory::readScrollX() const{
@@ -139,6 +143,29 @@ byte Memory::readWindowY() const{
 void Memory::writeLcdStatus(byte value){
   m_memory[Address::LcdStatus] = value;
 }
+
 void Memory::writeLineY(byte value){
   m_memory[Address::LineY] = value;
 }
+
+//Timer functions
+void Memory::incDivRegister() {
+  m_memory[Address::DivReg] = m_memory[Address::DivReg] + (byte)1;
+}
+
+void Memory::writeTimerCounter(byte value) {
+  m_memory[Address::TimerCounter] = value;
+}
+
+byte Memory::readTimerCounter() {
+  return m_memory[Address::TimerCounter];
+}
+
+byte Memory::readTimerModulo() {
+  return m_memory[Address::TimerModulo];
+}
+
+byte Memory::readTimerControl() {
+  return m_memory[Address::TimerControl];
+}
+

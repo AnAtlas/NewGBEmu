@@ -19,8 +19,8 @@ public:
   virtual byte readBackgroundPalette() const = 0;
   virtual byte readObjectPalette0() const = 0;
   virtual byte readObjectPalette1() const = 0;
-  virtual byte readOam(byte index) const = 0;
-  virtual byte readVram(byte index) const = 0;
+  virtual byte readOam(word address) const = 0;
+  virtual byte readVram(word address) const = 0;
   virtual byte readScrollX() const = 0;
   virtual byte readScrollY() const = 0;
   virtual byte readWindowX() const = 0;

@@ -184,7 +184,13 @@
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Memory.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Timer.cpp">
+			<Option target="GBEmu"/>
+		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Timer.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/TimerMemoryInterface.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Gameboy.cpp">

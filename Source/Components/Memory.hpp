@@ -9,16 +9,18 @@
 #include "../Utilities/AddressRange.hpp"
 #include "CpuMemoryInterface.hpp"
 #include "GpuMemoryInterface.hpp"
+#include "TimerMemoryInterface.hpp"
 
 enum IntFlags{
-  V_BLANK = 1,
+  VBLANK = 1,
   LCD_STAT = 1 << 1,
   TIMER = 1 << 2,
   SERIAL = 1 << 3,
   JOYPAD = 1 << 4
 };
 
-class Memory : public CpuMemoryInterface, GpuMemoryInterface {
+class Memory : public CpuMemoryInterface, GpuMemoryInterface, TimerMemoryInterface
+{
 private:
   union{
     struct {
@@ -108,13 +110,19 @@ public:
   byte readBackgroundPalette() const;
   byte readObjectPalette0() const;
   byte readObjectPalette1() const;
-  byte readOam(const byte index) const;
-  byte readVram(const byte index) const;
+  byte readOam(word address) const;
+  byte readVram(word address) const;
   byte readScrollX() const;
   byte readScrollY() const;
   byte readWindowX() const;
   byte readWindowY() const;
   void writeLcdStatus(byte value);
   void writeLineY(byte value);
+  //Timer functions
+  void incDivRegister();
+  void writeTimerCounter(byte value);
+  byte readTimerCounter();
+  byte readTimerModulo();
+  byte readTimerControl();
 };
 #endif //GBEMU_MEMORY_HPP

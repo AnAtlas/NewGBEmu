@@ -89,11 +89,17 @@ private:
     bool m_pendingMasterInterruptEnable;
     bool m_masterInterruptEnabled;
     CpuMemoryInterface& m_memory;
+
+  //Debug
+    int opsRan;
 public:
-    Cpu(CpuMemoryInterface& memory);
+    Cpu(CpuMemoryInterface& memory, bool runBios);
     byte step();
     void runOpcode(byte opCode);
 private:
+  byte readByteFromPC();
+  word readWordFromPC();
+  void initializeRegisters();
   void executeOpcode(byte opcode);
   void executeExtOpcode(byte opcode);
   void checkInterrupts();

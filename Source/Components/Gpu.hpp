@@ -7,27 +7,48 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 #include "GpuMemoryInterface.hpp"
 
 const byte SCREEN_WIDTH = 160;
 const byte SCREEN_HEIGHT = 144;
 
-enum GPUMode {
-  HBlank = 0x00,
-  VBlank = 0x01,
-  OAM = 0x02,
-  VRAM = 0x03
+enum GPUMode{
+    H_BLANK = 0x00,
+    V_BLANK = 0x01,
+    OAM = 0x02,
+    VRAM = 0x03
 };
 
 enum Color {
-  White,
-  LightGray,
-  DarkGray,
-  Black
+  WHITE,
+  LIGHT_GRAY,
+  DARK_GRAY,
+  BLACK
+};
+
+struct GPUTimings{
+  enum{
+    ACCESS_OAM = 0x50,
+    ACCESS_VRAM = 0xAC,
+    H_BLANK = 0xCC,
+    V_BLANK = 0x1C8
+  };
 };
 
 struct RGB {
-  unsigned char r, g, b, a;
+  byte r, g, b, a;
+};
+
+enum LCDControlFlags {
+  DISPLAY_ENABLE                     = (1 << 7), //(0=Off, 1=On)
+  WINDOW_TILE_MAP_SELECT             = (1 << 6), //(0=9800-9BFF, 1=9C00-9FFF)
+  WINDOW_DISPLAY_ENABLE              = (1 << 5), //(0=Off, 1=On)
+  BACKGROUND_WINDOW_TILE_DATA_SELECT = (1 << 4), //(0=8800-97FF, 1=8000-8FFF)
+  BACKGROUND_TILE_MAP_SELECT         = (1 << 3), //(0=9800-9BFF, 1=9C00-9FFF)
+  SPRITE_SIZE                        = (1 << 2), //Sprite Size (0=8x8, 1=8x16)
+  SPRITE_DISPLAY_ENABLE              = (1 << 1), //(0=Off, 1=On)
+  BACKGROUND_DISPLAY                 = (1 << 0) //(0=Off, 1=On)
 };
 
 class Gpu
@@ -35,9 +56,19 @@ class Gpu
 private:
   sf::RenderWindow& m_window;
   sf::Texture m_texture;
+  sf::Sprite m_sprite;
   GpuMemoryInterface& m_memory;
+  GPUMode m_gpuMode;
+  word m_gpuClock;
+
   RGB m_frameBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
+
+  void setLcdMode(GPUMode mode);
+  void renderScanLine();
+  void renderBackground();
+  Color getBackgroundPaletteShade(Color color);
 public:
   Gpu(sf::RenderWindow& window, GpuMemoryInterface& memory);
+  void step(byte ticks);
 };
 #endif //NEWGBEMU_GPU_HPP

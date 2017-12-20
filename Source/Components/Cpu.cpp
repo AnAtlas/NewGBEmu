@@ -3,27 +3,43 @@
 //
 #include <iostream>
 #include <assert.h>
+#include <iomanip>
 #include "Cpu.hpp"
 #include "Memory.hpp"
 
-Cpu::Cpu(CpuMemoryInterface& memory)
+#define DEBUG 1
+
+int opsRan = 0;
+
+Cpu::Cpu(CpuMemoryInterface& memory, bool runBios)
   : m_memory(memory), m_pendingMasterInterruptDisable(false),
     m_pendingMasterInterruptEnable(false)
 {
+  if (!runBios)
+    initializeRegisters();
 
+  opsRan = 0;
 }
 
 byte Cpu::step() {
   m_clock.m = 0;
   m_clock.t = 0;
   if (!m_halted){
-    byte nextOp = m_memory.readByte(m_registers.pc);
+    if (m_registers.pc == 0xff00)
+      opsRan = 0;
+    byte nextOp = readByteFromPC();
 
+#ifdef DEBUG
+    std::cout << std::hex <<std::setfill('0') <<std::setw(4) << (int)m_registers.pc;
+#endif
     if (m_cbMode)
       executeExtOpcode(nextOp);
     else
       executeOpcode(nextOp);
-    m_registers.pc += m_clock.m;
+#ifdef DEBUG
+    std::cout << std::hex <<std::setfill('0') <<  "  OP:" << std::setw(4) << (int)nextOp << "  AF:" << std::setw(4) << (int)m_registers.af << "  BC:" << std::setw(4) << (int)m_registers.bc << "  DE:" << std::setw(4) << (int)m_registers.de << "  HL:" << std::setw(4) << (int)m_registers.hl;
+    std::cout << "    Z:" << checkFlag(Flags::Z) << " S:" << checkFlag(Flags::S) << " C:" << checkFlag(Flags::C) << " H:" << checkFlag(Flags::C) << std::endl;
+#endif
   }
   else
     m_clock.t = 4;
@@ -46,6 +62,7 @@ byte Cpu::step() {
 
   checkInterrupts();
 
+  opsRan++;
   return m_clock.t;
 }
 
@@ -54,6 +71,25 @@ void Cpu::runOpcode(byte opCode) {
     executeExtOpcode(opCode);
   else
     executeOpcode(opCode);
+}
+
+byte Cpu::readByteFromPC() {
+  m_registers.pc++;
+  return m_memory.readByte(m_registers.pc-(word)1);
+}
+
+word Cpu::readWordFromPC() {
+  m_registers.pc+=2;
+  return m_memory.readShort(m_registers.pc-(word)2);
+}
+
+void Cpu::initializeRegisters() {
+  m_registers.af = 0x01B0;
+  m_registers.bc = 0x0013;
+  m_registers.de = 0x00D8;
+  m_registers.hl = 0x014D;
+  m_registers.pc = 0x0100;
+  m_registers.sp = 0xFFFE;
 }
 
 void Cpu::checkInterrupts() {
@@ -163,8 +199,7 @@ void Cpu::ei() {
 }
 //Load next byte into register Flags(-,-,-,-)
 void Cpu::byteLoad(byte& reg) {
-  reg = m_memory.readByte((word)(m_registers.pc+1));
-  m_clock.m = 2;
+  reg = readByteFromPC();
   m_clock.t = 8;
 }
 
@@ -191,7 +226,7 @@ void Cpu::byteLoadIoPort(byte& reg, byte& address) {
 
 //Load next word into register Flags(-,-,-,-)
 void Cpu::wordLoad(word& reg){
-  reg = m_memory.readShort((word)(m_registers.pc+1));
+  reg = readWordFromPC();
   m_clock.m = 3;
   m_clock.t = 12;
 }
@@ -199,7 +234,6 @@ void Cpu::wordLoad(word& reg){
 //Write byte into memory Flags(-,-,-,-)
 void Cpu::writeMemoryByte(word& address, byte& reg) {
   m_memory.writeByte(address, reg);
-  m_clock.m = 1;
   m_clock.t = 8;
 }
 
@@ -207,7 +241,6 @@ void Cpu::writeMemoryByte(word& address, byte& reg) {
 void Cpu::writeIoPortByte(byte& address, byte& reg) {
   word add = (word)0xFF00 + address;
   m_memory.writeByte(add, reg);
-  m_clock.m = 1;
   m_clock.t = 8;
 }
 
@@ -217,14 +250,12 @@ void Cpu::inc(byte& reg){
   reg++;
   clearFlag(Flags::S);
   reg ? clearFlag(Flags::Z) : setFlag(Flags::Z);
-  m_clock.m = 1;
   m_clock.t = 4;
 }
 
 //Increment register Flags(-,-,-,-)
 void Cpu::inc(word& reg){
   reg++;
-  m_clock.m = 1;
   m_clock.t = 8;
 }
 
@@ -234,22 +265,19 @@ void Cpu::dec(byte& reg){
   reg--;
   (reg) ? clearFlag(Flags::Z) : setFlag(Flags::Z);
   setFlag(Flags::S);
-  m_clock.m = 1;
   m_clock.t = 4;
 }
 
 //Decrement register Flags(-,-,-,-)
 void Cpu::dec(word& reg) {
   reg--;
-  m_clock.m = 1;
   m_clock.t = 8;
 }
 
 //Add next byte into register a Flags(Z,0,H,C)
 void Cpu::add() {
-  byte value = m_memory.readByte(m_registers.pc + (word)1);
+  byte value = readByteFromPC();
   add(value);
-  m_clock.m = 2;
   m_clock.t = 8;
 }
 
@@ -258,7 +286,7 @@ void Cpu::add(byte& reg) {
   clearFlag(Flags::S);
   ((m_registers.a & 0xF) + (reg & 0xF)) & 0x10 ? setFlag(Flags::H) : clearFlag(Flags::H);
   (m_registers.a + reg) & 0x100 ? setFlag(Flags::C) : clearFlag(Flags::C);
-  (m_registers.a + reg) ? clearFlag(Flags::Z) : setFlag(Flags::Z);
+  (byte)(m_registers.a + reg) ? clearFlag(Flags::Z) : setFlag(Flags::Z);
   m_registers.a += reg;
   m_clock.m = 1;
   m_clock.t = 4;
@@ -457,22 +485,14 @@ void Cpu::cp(word& reg) {
 
 //Jump relative to PC if conditions are met
 void Cpu::jr(bool check, Flags flag, bool condition) {
-  byte jump = m_memory.readByte(m_registers.pc+(word)1);
-
-  if (!check){
-    m_registers.pc += jump;
-    m_clock.m = 0;
-    m_clock.t = 12;
-  }
-  if (check){
-    if ((checkFlag(flag) && condition) || (!checkFlag(flag) && !condition)) {
-      m_registers.pc += m_memory.readByte(m_registers.pc + (word) 1);
-      m_clock.m = 0;
-      m_clock.t = 12;
-    }
-  }
   m_clock.m = 2;
   m_clock.t = 8;
+  char jump = m_memory.readByte(m_registers.pc+(word)1);
+
+    if ((!check) || (checkFlag(flag) == condition)) {
+      m_registers.pc += jump;
+      m_clock.t = 12;
+    }
 }
 
 //Pop word off stack and put into register Flags(-,-,-,-) or Flags(Z,N,H,C)
@@ -621,11 +641,10 @@ void Cpu::ccf() {
 
 //Return if conditions are met Flags(-,-,-,-)
 void Cpu::ret(bool check, Flags flag, bool condition) {
-  m_clock.m = 1;
+  m_clock.m = 0;
   m_clock.t = 8;
   if ((!check) || (checkFlag(flag) == condition)){
     m_registers.pc = popWordFromStack();
-    m_clock.m = 0;
     m_clock.t = 20;
   }
 }
@@ -634,6 +653,8 @@ void Cpu::ret(bool check, Flags flag, bool condition) {
 void Cpu::reti() {
   m_registers.pc = popWordFromStack();
   m_pendingMasterInterruptEnable = true;
+  m_clock.m = 0;
+  m_clock.t = 16;
 }
 
 //Jump if conditions are met Flags(-,-,-,-)
@@ -653,7 +674,7 @@ void Cpu::call(bool check, Flags flag, bool condition) {
   m_clock.t = 12;
   if ((!check) || (checkFlag(flag) == condition)){
     word address = m_memory.readShort(m_registers.pc+(word)1);
-    pushWordToStack(m_registers.pc);
+    pushWordToStack(m_registers.pc + m_clock.m);
     m_registers.pc = address;
     m_clock.m = 0;
     m_clock.t = 24;
@@ -662,7 +683,7 @@ void Cpu::call(bool check, Flags flag, bool condition) {
 
 //Restart, push pc onto stack and jump to address 0xXX Flags(-,-,-,-)
 void Cpu::rst(byte offset) {
-  pushWordToStack(m_registers.pc);
+  pushWordToStack(m_registers.pc + (byte)1);
   m_registers.pc = offset;
   m_clock.m = 0;
   m_clock.t = 16;
