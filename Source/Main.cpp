@@ -5,12 +5,12 @@
 
 int main() {
   XInitThreads();
-  sf::RenderWindow window(sf::VideoMode(160, 144), "NewGBEmu!");
+  sf::RenderWindow window(sf::VideoMode(320, 288), "NewGBEmu!");
   window.setActive(false);
 
   Gameboy gameboy(window, true);
 
-  gameboy.insertRom("TestRom/03-op sp,hl.gb");
+  gameboy.insertRom("../TestRom/cpu_instrs.gb1");
 
   std::thread gb(&Gameboy::play, &gameboy);
 
@@ -19,6 +19,9 @@ int main() {
     while (window.pollEvent(event)){
       if (event.type == sf::Event::Closed)
         window.close();
+      else if (event.type == sf::Event::Resized){
+        window.setSize(sf::Vector2u(event.size.width, event.size.height));
+      }
     }
   }
 

@@ -2,13 +2,12 @@ cmake_minimum_required(VERSION 3.9)
 project(GBEmu)
 
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_BUILD_TYPE Debug)
 
 set(GCC_COVERAGE_LINK_FLAGS "-lX11")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
 set(SOURCE_FILES Source/Main.cpp Source/Cartridges/CartRomOnly.cpp Source/Cartridges/Cartridge.cpp Source/Cartridges/CartMBC1.cpp)
-set(HEADER_FILES Source/Components/Memory.hpp Source/Utilities/Types.hpp Source/Utilities/Bios.hpp Source/Cartridges/Cartridge.hpp Source/Cartridges/CartridgeFactory.hpp Source/Utilities/AddressRange.hpp Source/Cartridges/CartRomOnly.hpp Source/Cartridges/CartMBC1.hpp Source/Utilities/AddressRange.hpp Source/Cartridges/CartMBC3.hpp Source/Cartridges/CartMBC3.cpp Source/Cartridges/RamModule.hpp Source/Cartridges/RTCModule.hpp Source/Components/Cpu.hpp Source/Components/Gpu.hpp Source/Components/Timer.hpp Source/Gameboy.hpp Source/Components/GpuMemoryInterface.hpp Source/Components/CpuMemoryInterface.hpp Source/Gameboy.cpp Source/Components/Memory.cpp Source/Components/Cpu.cpp Source/Components/CpuOpcodeTable.cpp Source/Components/Gpu.cpp Source/Components/Timer.cpp Source/Components/TimerMemoryInterface.hpp)
+set(HEADER_FILES Source/Components/Memory.hpp Source/Utilities/Types.hpp Source/Utilities/Bios.hpp Source/Cartridges/Cartridge.hpp Source/Cartridges/CartridgeFactory.hpp Source/Utilities/AddressRange.hpp Source/Cartridges/CartRomOnly.hpp Source/Cartridges/CartMBC1.hpp Source/Utilities/AddressRange.hpp Source/Cartridges/CartMBC3.hpp Source/Cartridges/CartMBC3.cpp Source/Cartridges/RamModule.hpp Source/Cartridges/RTCModule.hpp Source/Components/Cpu.hpp Source/Components/Gpu.hpp Source/Components/Timer.hpp Source/Gameboy.hpp Source/Components/GpuMemoryInterface.hpp Source/Components/CpuMemoryInterface.hpp Source/Gameboy.cpp Source/Components/Memory.cpp Source/Components/Cpu.cpp Source/Components/CpuOpcodeTable.cpp Source/Components/Gpu.cpp Source/Components/Timer.cpp Source/Components/TimerMemoryInterface.hpp Source/DebuggingTools/Debugger.hpp Source/DebuggingTools/Instructions.hpp)
 
 
 add_executable(GBEmu ${SOURCE_FILES} ${HEADER_FILES})
