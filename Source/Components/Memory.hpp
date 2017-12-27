@@ -43,12 +43,13 @@ private:
 
   AddressRange m_romRange;
   AddressRange m_ramRange;
+  AddressRange m_wRamRange;
+  AddressRange m_echoRange;
 
   bool m_inBios;
   byte m_inputRow1;
   byte m_inputRow2;
 
-  void copy(word destination, word source, word length);
   bool addressOnCartridge(word address) const;
 
   enum Address {
@@ -91,38 +92,38 @@ private:
 
 public:
   explicit Memory(bool runBios);
-  byte readByte(word address) const;
-  void writeByte(word address, byte value);
-  void writeShort(word address, word value);
-  word readShort(word address) const;
+  byte readByte(word address) const override;
+  void writeByte(word address, byte value) override;
+  void writeShort(word address, word value) override;
+  word readShort(word address) const override;
   void linkCartridge(std::shared_ptr<Cartridge> cartridge);
-  void requestInterrupt(byte bit);
+  void requestInterrupt(byte bit) override;
 
   //Cpu Functions
-  byte getIntFlags() const;
-  byte getIntsEnabled() const;
-  void resetIntFlag(byte bitIndex);
+  byte getIntFlags() const override;
+  byte getIntsEnabled() const override;
+  void resetIntFlag(byte bitIndex) override;
   //Gpu functions
-  byte readLcdStatus() const;
-  byte readLcdControl() const;
-  byte readLineY() const;
-  byte readLYC() const;
-  byte readBackgroundPalette() const;
-  byte readObjectPalette0() const;
-  byte readObjectPalette1() const;
-  byte readOam(word address) const;
-  byte readVram(word address) const;
-  byte readScrollX() const;
-  byte readScrollY() const;
-  byte readWindowX() const;
-  byte readWindowY() const;
-  void writeLcdStatus(byte value);
-  void writeLineY(byte value);
+  byte readLcdStatus() const override;
+  byte readLcdControl() const override;
+  byte readLineY() const override;
+  byte readLYC() const override;
+  byte readBackgroundPalette() const override;
+  byte readObjectPalette0() const override;
+  byte readObjectPalette1() const override;
+  byte readOam(word address) const override;
+  byte readVram(word address) const override;
+  byte readScrollX() const override;
+  byte readScrollY() const override;
+  byte readWindowX() const override;
+  byte readWindowY() const override;
+  void writeLcdStatus(byte value) override;
+  void writeLineY(byte value) override;
   //Timer functions
-  void incDivRegister();
-  void writeTimerCounter(byte value);
-  byte readTimerCounter();
-  byte readTimerModulo();
-  byte readTimerControl();
+  void incDivRegister() override;
+  void writeTimerCounter(byte value) override;
+  byte readTimerCounter() override;
+  byte readTimerModulo() override;
+  byte readTimerControl() override;
 };
 #endif //GBEMU_MEMORY_HPP

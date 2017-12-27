@@ -6,6 +6,7 @@
 #define NEWGBEMU_CPU_HPP
 
 #include <memory>
+#include <fstream>
 #include "../Utilities/Types.hpp"
 #include "CpuMemoryInterface.hpp"
 
@@ -89,12 +90,12 @@ private:
     bool m_masterInterruptEnabled;
     CpuMemoryInterface& m_memory;
 
-  //Debug
-    int opsRan;
 public:
     Cpu(CpuMemoryInterface& memory, bool runBios);
+    ~Cpu();
     byte step();
-    void runOpcode(byte opCode);
+    byte runOpcode(byte opCode);
+
 private:
   byte readByteFromPC();
   word readWordFromPC();
@@ -158,6 +159,7 @@ private:
   void cp(word& reg);
   void jr(bool check, Flags flag = Flags::Z, bool condition = false);
   void pop(word& reg);
+  void pop_af();
   void push(word& reg);
   void rlca();
   void rla();

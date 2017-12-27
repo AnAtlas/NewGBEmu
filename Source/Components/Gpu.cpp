@@ -22,6 +22,7 @@ Gpu::Gpu(sf::RenderWindow& window, GpuMemoryInterface& memory)
   m_texture.setSmooth(false);
   m_texture.update((const sf::Uint8*)m_frameBuffer, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
   m_sprite.setTexture(m_texture);
+  m_sprite.setScale(2.0,2.0);
 }
 
 
@@ -30,6 +31,7 @@ void Gpu::step(byte ticks){
   byte lcdStatus = m_memory.readLcdStatus();
   byte lineY = m_memory.readLineY();
 
+  m_frameDone = false;
   if (!(lcdControlReg & LCDControlFlags::DISPLAY_ENABLE)){
     m_memory.writeLineY(0);
     setLcdMode(GPUMode::V_BLANK);
@@ -71,6 +73,7 @@ void Gpu::step(byte ticks){
           setLcdMode(GPUMode::OAM);
           reqInt = lcdStatus & ((byte)1 << 5);
           m_memory.writeLineY(0);
+          m_frameDone = true;
         }
       }
       break;
@@ -153,7 +156,7 @@ void Gpu::renderBackground() {
   }
 
   //Which background memory?
-  if (usingWindow == false){
+  if (!usingWindow){
     if (lcdControl & LCDControlFlags::BACKGROUND_TILE_MAP_SELECT)
       backgroundMemory = 0x9C00;
     else
@@ -206,7 +209,7 @@ void Gpu::renderBackground() {
     colorNum <<= 1;
     colorNum |= ((data1 & (1 << colorBit)) >> colorBit);
 
-    Color color = (Color)(colorNum);
+    auto color = (Color)(colorNum);
 
     m_frameBuffer[lineY * SCREEN_WIDTH + pixel] = palette[getBackgroundPaletteShade(color)];
   }
@@ -224,4 +227,8 @@ Color Gpu::getBackgroundPaletteShade(Color color) {
     return (Color)(((bgPaletteData) & 0xC0) >> 6);
 
   return Color::WHITE;
+}
+
+bool Gpu::frameDone() {
+  return m_frameDone;
 }

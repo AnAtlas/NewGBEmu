@@ -2,43 +2,54 @@
 // Created by derdro on 12/18/17.
 //
 #include <iostream>
-#include <assert.h>
+#include <cassert>
 #include <iomanip>
 #include "Cpu.hpp"
-#include "Memory.hpp"
 
-#define DEBUG 1
+//#define DEBUG 1
 
+//Debug
 int opsRan = 0;
+std::ofstream logFile;
 
 Cpu::Cpu(CpuMemoryInterface& memory, bool runBios)
   : m_memory(memory), m_pendingMasterInterruptDisable(false),
     m_pendingMasterInterruptEnable(false)
 {
-  if (!runBios)
-    initializeRegisters();
-
-  opsRan = 0;
+  initializeRegisters();
+  if (runBios)
+    m_registers.pc = 0;
+  logFile.open("MYLOGFILE", std::ios::out);
 }
 
+Cpu::~Cpu(){
+  logFile.close();
+}
+
+byte nextOp = 0;
 byte Cpu::step() {
   m_clock.ticks = 0;
-  if (!m_halted){
-    if (m_registers.pc == 0xa1)
-      opsRan = 0;
-#ifdef DEBUG
-    std::cout << std::hex <<std::setfill('0') <<std::setw(4) << (int)m_registers.pc;
-#endif
-    byte nextOp = readByteFromPC();
 
+  if (!m_halted){
+#ifdef DEBUG
+    //std::cout << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc;
+    std::cout << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc;
+    //logFile << std::hex << (int) m_registers.pc;
+ #endif
+    nextOp = readByteFromPC();
+#ifdef DEBUG
+    std::cout << std::hex <<std::setfill('0') <<  " OP = " << std::setw(4) << (int)nextOp << " AF = " << std::setw(4) << (int)m_registers.af << " BC = " << std::setw(4) << (int)m_registers.bc << " DE = " << std::setw(4) << (int)m_registers.de << " HL = " << std::setw(4) << (int)m_registers.hl;
+    //logFile << std::hex <<  " OP = " << (int)nextOp << " AF = " << (int)m_registers.af << " BC = " << (int)m_registers.bc << " DE = " << (int)m_registers.de << " HL = " << (int)m_registers.hl;
+
+    //logFile << "    Z:" << checkFlag(Flags::Z) << " S:" << checkFlag(Flags::S) << " C:" << checkFlag(Flags::C) << " H:" << checkFlag(Flags::H) << std::endl;
+    std::cout << std::endl;
+#endif
     if (m_cbMode)
       executeExtOpcode(nextOp);
     else
       executeOpcode(nextOp);
-#ifdef DEBUG
-    std::cout << std::hex <<std::setfill('0') <<  "  OP:" << std::setw(4) << (int)nextOp << "  AF:" << std::setw(4) << (int)m_registers.af << "  BC:" << std::setw(4) << (int)m_registers.bc << "  DE:" << std::setw(4) << (int)m_registers.de << "  HL:" << std::setw(4) << (int)m_registers.hl << "  SP:" << std::setw(4) << (int)m_registers.sp;
-    std::cout << "    Z:" << checkFlag(Flags::Z) << " S:" << checkFlag(Flags::S) << " C:" << checkFlag(Flags::C) << " H:" << checkFlag(Flags::C) << std::endl;
-#endif
+    if (m_clock.ticks == 0xFF)
+      m_clock.ticks = 4;
   }
   else
     m_clock.ticks = 4;
@@ -60,16 +71,46 @@ byte Cpu::step() {
   }
 
   checkInterrupts();
-
   opsRan++;
   return m_clock.ticks;
 }
 
-void Cpu::runOpcode(byte opCode) {
-  if (m_cbMode)
-    executeExtOpcode(opCode);
+byte Cpu::runOpcode(byte opCode) {
+  m_clock.ticks = 0;
+  if (!m_halted){
+    byte nextOp = opCode;
+#ifdef DEBUG
+      logFile << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc - 1;
+#endif
+    if (m_cbMode)
+      executeExtOpcode(nextOp);
+    else
+      executeOpcode(nextOp);
+#ifdef DEBUG
+      logFile << std::hex <<std::setfill('0') <<  "  OP:" << std::setw(4) << (int)nextOp << "  AF:" << std::setw(4) << (int)m_registers.af << "  BC:" << std::setw(4) << (int)m_registers.bc << "  DE:" << std::setw(4) << (int)m_registers.de << "  HL:" << std::setw(4) << (int)m_registers.hl << std::endl;
+      //logFile << "    Z:" << checkFlag(Flags::Z) << " S:" << checkFlag(Flags::S) << " C:" << checkFlag(Flags::C) << " H:" << checkFlag(Flags::H) << std::endl;
+#endif
+  }
   else
-    executeOpcode(opCode);
+    m_clock.ticks = 4;
+
+  //Disabling interrupts happens after the next opcode is finished
+  if (m_pendingMasterInterruptDisable){
+    if (m_memory.readByte(m_registers.pc - (byte)1) != 0xF3){
+      m_pendingMasterInterruptDisable = false;
+      m_masterInterruptEnabled = false;
+    }
+  }
+
+  //Enabling interrupts happens after the next opcode is finished
+  if (m_pendingMasterInterruptEnable){
+    if (m_memory.readByte(m_registers.pc -(byte)1) != 0xFB){
+      m_pendingMasterInterruptEnable = false;
+      m_masterInterruptEnabled = true;
+    }
+  }
+  checkInterrupts();
+  return m_clock.ticks;
 }
 
 byte Cpu::readByteFromPC() {
@@ -172,6 +213,7 @@ void Cpu::stop() {
 //Halt the cpu
 void Cpu::halt() {
   m_halted = true;
+  m_clock.ticks = 4;
 }
 
 //Disable interrupts after the next opcode
@@ -236,7 +278,7 @@ void Cpu::writeIoPortByte(byte& address, byte& reg) {
 
 //Increment register Flags(Z,0,H,-)
 void Cpu::inc(byte& reg){
-  (reg&  0xF)==0xF ? setFlag(Flags::C) : clearFlag(Flags::C);
+  ((reg & 0xF) == 0xF) ? setFlag(Flags::H) : clearFlag(Flags::H);
   reg++;
   clearFlag(Flags::S);
   reg ? clearFlag(Flags::Z) : setFlag(Flags::Z);
@@ -251,7 +293,7 @@ void Cpu::inc(word& reg){
 
 //Decrement register Flags(Z,1,H,-)
 void Cpu::dec(byte& reg){
-  (reg&  0xF) == 0 ? setFlag(Flags::H) : clearFlag(Flags::H);
+  ((reg & 0xF) == 0) ? setFlag(Flags::H) : clearFlag(Flags::H);
   reg--;
   (reg) ? clearFlag(Flags::Z) : setFlag(Flags::Z);
   setFlag(Flags::S);
@@ -283,7 +325,7 @@ void Cpu::add(byte& reg) {
 
 //Add byte at register with register.a Flags(Z,0,H,C)
 void Cpu::add(word& reg){
-  byte val = m_memory.readByte(m_registers.hl);
+  byte val = m_memory.readByte(reg);
   add(val);
   m_clock.ticks = 8;
 }
@@ -291,8 +333,8 @@ void Cpu::add(word& reg){
 //Add word registers Flags(-,0,H,C)
 void Cpu::add(word& reg1, word& reg2) {
   clearFlag(Flags::S);
-  ((reg1&  0xFFF) + (reg2&  0xFFF))&  0x1000 ? setFlag(Flags::H) : clearFlag(Flags::H);
-  (reg1 + reg2)&  0x10000 ? setFlag(Flags::C) : clearFlag(Flags::C);
+  ((reg1 & 0xFFF) + (reg2 & 0xFFF)) & 0x1000 ? setFlag(Flags::H) : clearFlag(Flags::H);
+  (reg1 + reg2) &  0x10000 ? setFlag(Flags::C) : clearFlag(Flags::C);
   reg1 += reg2;
   m_clock.ticks = 8;
 }
@@ -472,7 +514,12 @@ void Cpu::pop(word& reg) {
   reg = popWordFromStack();
   m_clock.ticks = 12;
 }
-
+//Pop word into AF register, can only write to the top 4 bits of F Flags(Z,N,H,C)
+void Cpu::pop_af() {
+  word val = popWordFromStack() & (word)0xFFF0;
+  m_registers.af = val;
+  m_clock.ticks = 12;
+}
 //Push register unto stack Flags(-,-,-,-)
 void Cpu::push(word& reg) {
   pushWordToStack(reg);
@@ -502,14 +549,14 @@ void Cpu::rla() {
   m_clock.ticks = 4;
 }
 
-//Rotate register a right old bit 7 to carry flag. Flags(0,0,0,C)
+//Rotate register a right old bit 0 to carry flag. Flags(0,0,0,C)
 void Cpu::rrca(){
+  byte carry = m_registers.a & (byte)1;
   clearAllFlags();
-  byte carry = (m_registers.a & (byte)0b1);
   m_registers.a >>= 1;
   if (carry) {
     setFlag(Flags::C);
-    m_registers.a |= 0b10000000;
+    m_registers.a |= 0x80;
   }
   m_clock.ticks = 4;
 }
@@ -518,7 +565,7 @@ void Cpu::rrca(){
 void Cpu::rra(){
   bool carry = checkFlag(Flags::C);
   clearAllFlags();
-  if (m_registers.a & (byte)0b1)
+  if (m_registers.a & 0x01)
     setFlag(Flags::C);
   m_registers.a >>= 1;
   if (carry)
@@ -534,23 +581,24 @@ void Cpu::ld_nnp_sp() {
 
 //Decimal Adjust register a Flags(Z,-,0,C)
 void Cpu::daa() {
-  word s = m_registers.a;
+  int s = m_registers.a;
   if (checkFlag(Flags::S)){
     if (checkFlag(Flags::H))
-      s = (s - (word)0x06) & (word)0xFF;
+      s = (s - 0x06) & 0xFF;
     if (checkFlag(Flags::C))
-      s -= (word)0x60;
+      s -= 0x60;
   }
   else{
-    if (checkFlag(Flags::H) || ((s & (word)0x0F) > 9))
-      s += (word)0x06;
-    if (checkFlag(Flags::C) || s > (word)0x9F)
-      s += (word)0x60;
+    if (checkFlag(Flags::H) || (s & 0x0F) > 9)
+      s += 0x06;
+    if (checkFlag(Flags::C) || s > 0x9F)
+      s += 0x60;
   }
   m_registers.a = (byte)s;
   clearFlag(Flags::H);
   (m_registers.a) ? clearFlag(Flags::Z) : setFlag(Flags::Z);
-  s >= 0x100 ? setFlag(Flags::C) : clearFlag(Flags::C);
+  if (s >= 0x100)
+    setFlag(Flags::C);
   m_clock.ticks = 4;
 }
 
@@ -589,6 +637,7 @@ void Cpu::scf() {
   setFlag(Flags::C);
   clearFlag(Flags::S);
   clearFlag(Flags::H);
+  m_clock.ticks = 4;
 }
 
 //Complement Carry Flag Flags(-,0,0,C)
@@ -596,6 +645,7 @@ void Cpu::ccf() {
   clearFlag(Flags::S);
   clearFlag(Flags::H);
   checkFlag(Flags::C) ? clearFlag(Flags::C) : setFlag(Flags::C);
+  m_clock.ticks = 4;
 }
 
 //Return if conditions are met Flags(-,-,-,-)
@@ -617,8 +667,9 @@ void Cpu::reti() {
 //Jump if conditions are met Flags(-,-,-,-)
 void Cpu::jmp(bool check, Flags flag, bool condition) {
   m_clock.ticks = 12;
+  word address = readWordFromPC();
   if ((!check) || (checkFlag(flag) == condition)){
-    m_registers.pc = readWordFromPC();
+    m_registers.pc = address;
     m_clock.ticks = 16;
   }
 }
@@ -626,8 +677,8 @@ void Cpu::jmp(bool check, Flags flag, bool condition) {
 //Call if conditions are met Flags(-,-,-,-)
 void Cpu::call(bool check, Flags flag, bool condition) {
   m_clock.ticks = 12;
+  word address = readWordFromPC();
   if ((!check) || (checkFlag(flag) == condition)){
-    word address = readWordFromPC();
     pushWordToStack(m_registers.pc);
     m_registers.pc = address;
     m_clock.ticks = 24;

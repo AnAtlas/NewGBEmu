@@ -255,11 +255,11 @@ void Cpu::executeOpcode(byte opcode){
     case 0x30: jr(true, Flags::C, false);break;
     case 0x38: jr(true, Flags::C, true);break;
 
-      //Pop word of stack into register
+      //Pop word off stack into register
     case 0xC1: pop(m_registers.bc);break;
     case 0xD1: pop(m_registers.de);break;
     case 0xE1: pop(m_registers.hl);break;
-    case 0xF1: pop(m_registers.af);break;
+    case 0xF1: pop_af();break;
 
       //Push register unto stack
     case 0xC5: push(m_registers.bc);break;

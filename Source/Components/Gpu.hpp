@@ -60,7 +60,7 @@ private:
   GpuMemoryInterface& m_memory;
   GPUMode m_gpuMode;
   word m_gpuClock;
-
+  bool m_frameDone;
   RGB m_frameBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
 
   void setLcdMode(GPUMode mode);
@@ -70,5 +70,6 @@ private:
 public:
   Gpu(sf::RenderWindow& window, GpuMemoryInterface& memory);
   void step(byte ticks);
+  bool frameDone();
 };
 #endif //NEWGBEMU_GPU_HPP

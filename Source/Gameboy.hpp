@@ -25,7 +25,10 @@ private:
   std::shared_ptr<Cartridge> m_cartridge;
 
   bool m_running;
+  bool m_paused;
   sf::RenderWindow& m_window;
+  sf::Clock m_frameTimer;
+
 public:
   Gameboy(sf::RenderWindow& window, bool runBios);
 
