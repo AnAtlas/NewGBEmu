@@ -23,7 +23,8 @@ public:
   virtual byte readScrollY() const = 0;
   virtual byte readWindowX() const = 0;
   virtual byte readWindowY() const = 0;
-  virtual void requestInterrupt(byte bit) = 0;
+  virtual void requestVBlankInterrupt() = 0;
+  virtual void requestLcdStatInterrupt() = 0;
   virtual void writeLcdStatus(byte value) = 0;
   virtual void writeLineY(byte value) = 0;
 };

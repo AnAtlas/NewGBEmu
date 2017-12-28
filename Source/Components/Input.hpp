@@ -24,6 +24,7 @@ private:
   sf::Keyboard::Key* m_rowP15 [4]{&m_keyDown, &m_keyUp, &m_keyLeft, &m_keyRight};
 
   void resetBit(byte& val, byte bit);
+  void checkForInterrupt(byte currentP1, byte bit);
 public:
   Input(InputMemoryInterface& memory);
   void checkInputs();

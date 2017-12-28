@@ -113,6 +113,8 @@ public:
   byte readWindowY() const override;
   void writeLcdStatus(byte value) override;
   void writeLineY(byte value) override;
+  void requestVBlankInterrupt() override;
+  void requestLcdStatInterrupt() override;
   //Timer functions
   void incDivRegister(byte ticks) override;
   byte incTimerCounter() override;
@@ -120,8 +122,10 @@ public:
   byte readTimerCounter() override;
   byte readTimerModulo() override;
   byte readTimerControl() override;
+  void requestTimerInterrupt() override;
   //Input functions
   byte readP1() override;
   void writeP1Inputs(byte value) override;
+  void requestInputInterrupt() override;
 };
 #endif //GBEMU_MEMORY_HPP

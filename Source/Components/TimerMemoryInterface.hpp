@@ -17,6 +17,6 @@ public:
   virtual byte readTimerCounter() = 0;
   virtual byte readTimerModulo() = 0;
   virtual byte readTimerControl() = 0;
-  virtual void requestInterrupt(byte bit) = 0;
+  virtual void requestTimerInterrupt() = 0;
 };
 #endif //GBEMU_TIMERMEMORYINTERFACE_HPP

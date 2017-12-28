@@ -20,21 +20,27 @@ Input::Input(InputMemoryInterface& memory): m_memory(memory)
 
 void Input::checkInputs() {
   byte output = 0x0F;
-  if ((~m_memory.readP1() & (byte)0b00010000)){
+  byte currentP1 = m_memory.readP1();
+  if (~currentP1 & (byte)0b00010000){
     for (int i = 0; i < 4; i++){
       if (sf::Keyboard::isKeyPressed(*m_rowP14[i]))
+        checkForInterrupt(currentP1, (byte)i);
         resetBit(output, (byte)i);
     }
   }
-  if (~m_memory.readP1() & (byte)0b00100000){
+  if (~currentP1 & (byte)0b00100000){
     for (int i = 0; i < 4; i++){
       if (sf::Keyboard::isKeyPressed(*m_rowP15[i]))
+        checkForInterrupt(currentP1, (byte)i);
         resetBit(output, (byte)i);
     }
   }
   m_memory.writeP1Inputs(output);
-  std::bitset<8> tmp(output);
-  std::cout << tmp << std::endl;
+}
+
+void Input::checkForInterrupt(byte currentP1, byte bit){
+  if (!(~currentP1 & (byte)1 << (3 - bit)))
+    m_memory.requestInputInterrupt();
 }
 
 void Input::resetBit(byte& val, byte bit) {

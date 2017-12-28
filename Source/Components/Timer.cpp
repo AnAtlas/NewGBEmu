@@ -40,7 +40,7 @@ void Timer::step(byte ticks) {
       if (!tima){
         m_timaOverflowed = true;
         //Interrupt won't be seen until after the next instruction, so it's alright to have this here
-        m_memory.requestInterrupt(2);
+        m_memory.requestTimerInterrupt();
       }
     }
   }
