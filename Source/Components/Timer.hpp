@@ -12,7 +12,7 @@ private:
   TimerMemoryInterface& m_memory;
   word m_divTicks;
   word m_timerTicks;
-
+  bool m_timaOverflowed;
 public:
   Timer(TimerMemoryInterface& memory);
   void step(byte ticks);

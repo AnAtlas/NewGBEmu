@@ -9,6 +9,7 @@
 #include "Cartridge.hpp"
 #include "CartMBC1.hpp"
 #include "CartMBC3.hpp"
+#include "CartMBC5.hpp"
 #include "CartRomOnly.hpp"
 
 class CartridgeFactory
@@ -24,12 +25,15 @@ public:
       romFile.read((char*)romHeaderBuffer, 0x150);
       Cartridge::CartType cartType = (Cartridge::CartType)romHeaderBuffer[Cartridge::CartAddress::CART_TYPE];
       RamModule::RamSize ramSize = (RamModule::RamSize)romHeaderBuffer[Cartridge::CartAddress::RAM_SIZE];
+      Cartridge::RomSize romSize = (Cartridge::RomSize)romHeaderBuffer[Cartridge::CartAddress::ROM_SIZE];
       if (cartType == Cartridge::CartType::ROM_ONLY)
         cartPtr = std::make_shared<CartRomOnly>(romPath);
       else if (cartType >= Cartridge::CartType::MBC1 && cartType <= Cartridge::CartType::MBC1_RAM_BATTERY)
         cartPtr = std::make_shared<CartMBC1>(cartType, romPath, ramSize);
       else if (cartType >= Cartridge::CartType::MBC3_TIMER_BATTERY && cartType <= Cartridge::CartType::MBC3_RAM_BATTERY)
         cartPtr = std::make_shared<CartMBC3>(cartType, romPath, ramSize);
+      else if (cartType >= Cartridge::CartType::MBC5 && cartType <= Cartridge::CartType::MBC5_RUMBLE_RAM_BATTERY)
+        cartPtr = std::make_shared<CartMBC5>(cartType, romPath, ramSize);
       romFile.close();
     }
     return cartPtr;

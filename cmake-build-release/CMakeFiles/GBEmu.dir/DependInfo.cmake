@@ -6,11 +6,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC1.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o"
   "/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC3.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o"
+  "/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC5.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o"
   "/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartRomOnly.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o"
   "/home/derdro/CLionProjects/GBEmu/Source/Cartridges/Cartridge.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o"
   "/home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o"
   "/home/derdro/CLionProjects/GBEmu/Source/Components/CpuOpcodeTable.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o"
   "/home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o"
+  "/home/derdro/CLionProjects/GBEmu/Source/Components/Input.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o"
   "/home/derdro/CLionProjects/GBEmu/Source/Components/Memory.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o"
   "/home/derdro/CLionProjects/GBEmu/Source/Components/Timer.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o"
   "/home/derdro/CLionProjects/GBEmu/Source/Gameboy.cpp" "/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o"

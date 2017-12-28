@@ -9,8 +9,6 @@
 
 class GpuMemoryInterface
 {
-private:
-
 public:
   virtual byte readLcdStatus() const = 0;
   virtual byte readLcdControl() const = 0;

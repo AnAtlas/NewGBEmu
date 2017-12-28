@@ -35,15 +35,15 @@ void CartMBC1::writeByte(word address, byte value) {
     changeBanks();
   }
   else if (m_ramBankNumberRange.contains(address)){
-    m_ramBankNumber = (byte)(value & 0b111);
+    m_ramBankNumber = (byte)(value & 0b11);
 
     changeBanks();
   }
   else if (m_bankingModeRange.contains(address)){
     if (value)
-      m_bankingMode = BankingMode::ROM_BANKING_MODE;
-    else
       m_bankingMode = BankingMode::RAM_BANKING_MODE;
+    else
+      m_bankingMode = BankingMode::ROM_BANKING_MODE;
     changeBanks();
   }
   else if (m_ramRange.contains(address)){
@@ -56,7 +56,7 @@ byte CartMBC1::readByte(word address) const {
     return m_rom[address];
   }
   else if (m_ramRange.contains(address)){
-    m_ramModule.readByte(address);
+    return m_ramModule.readByte(address);
   }
 
   return 0xFF;
@@ -65,7 +65,7 @@ byte CartMBC1::readByte(word address) const {
 void CartMBC1::changeBanks() {
   if (m_bankingMode == BankingMode::ROM_BANKING_MODE){
     m_ramModule.setRamBank(0);
-    loadRomBankX(m_romBankNumber | (m_ramBankNumber < 5));
+    loadRomBankX(m_romBankNumber | (m_ramBankNumber << 5));
   }
   else{
     m_ramModule.setRamBank(m_ramBankNumber);

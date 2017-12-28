@@ -223,6 +223,33 @@ Source/Cartridges/CartMBC3.cpp.s:
 	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.s
 .PHONY : Source/Cartridges/CartMBC3.cpp.s
 
+Source/Cartridges/CartMBC5.o: Source/Cartridges/CartMBC5.cpp.o
+
+.PHONY : Source/Cartridges/CartMBC5.o
+
+# target to build an object file
+Source/Cartridges/CartMBC5.cpp.o:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o
+.PHONY : Source/Cartridges/CartMBC5.cpp.o
+
+Source/Cartridges/CartMBC5.i: Source/Cartridges/CartMBC5.cpp.i
+
+.PHONY : Source/Cartridges/CartMBC5.i
+
+# target to preprocess a source file
+Source/Cartridges/CartMBC5.cpp.i:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.i
+.PHONY : Source/Cartridges/CartMBC5.cpp.i
+
+Source/Cartridges/CartMBC5.s: Source/Cartridges/CartMBC5.cpp.s
+
+.PHONY : Source/Cartridges/CartMBC5.s
+
+# target to generate assembly for a file
+Source/Cartridges/CartMBC5.cpp.s:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.s
+.PHONY : Source/Cartridges/CartMBC5.cpp.s
+
 Source/Cartridges/CartRomOnly.o: Source/Cartridges/CartRomOnly.cpp.o
 
 .PHONY : Source/Cartridges/CartRomOnly.o
@@ -358,6 +385,33 @@ Source/Components/Gpu.cpp.s:
 	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.s
 .PHONY : Source/Components/Gpu.cpp.s
 
+Source/Components/Input.o: Source/Components/Input.cpp.o
+
+.PHONY : Source/Components/Input.o
+
+# target to build an object file
+Source/Components/Input.cpp.o:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o
+.PHONY : Source/Components/Input.cpp.o
+
+Source/Components/Input.i: Source/Components/Input.cpp.i
+
+.PHONY : Source/Components/Input.i
+
+# target to preprocess a source file
+Source/Components/Input.cpp.i:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.i
+.PHONY : Source/Components/Input.cpp.i
+
+Source/Components/Input.s: Source/Components/Input.cpp.s
+
+.PHONY : Source/Components/Input.s
+
+# target to generate assembly for a file
+Source/Components/Input.cpp.s:
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.s
+.PHONY : Source/Components/Input.cpp.s
+
 Source/Components/Memory.o: Source/Components/Memory.cpp.o
 
 .PHONY : Source/Components/Memory.o
@@ -485,6 +539,9 @@ help:
 	@echo "... Source/Cartridges/CartMBC3.o"
 	@echo "... Source/Cartridges/CartMBC3.i"
 	@echo "... Source/Cartridges/CartMBC3.s"
+	@echo "... Source/Cartridges/CartMBC5.o"
+	@echo "... Source/Cartridges/CartMBC5.i"
+	@echo "... Source/Cartridges/CartMBC5.s"
 	@echo "... Source/Cartridges/CartRomOnly.o"
 	@echo "... Source/Cartridges/CartRomOnly.i"
 	@echo "... Source/Cartridges/CartRomOnly.s"
@@ -500,6 +557,9 @@ help:
 	@echo "... Source/Components/Gpu.o"
 	@echo "... Source/Components/Gpu.i"
 	@echo "... Source/Components/Gpu.s"
+	@echo "... Source/Components/Input.o"
+	@echo "... Source/Components/Input.i"
+	@echo "... Source/Components/Input.s"
 	@echo "... Source/Components/Memory.o"
 	@echo "... Source/Components/Memory.i"
 	@echo "... Source/Components/Memory.s"

@@ -177,9 +177,33 @@ CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.provides: CMakeFiles/GBEmu
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.provides.build: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o
 
 
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o: CMakeFiles/GBEmu.dir/flags.make
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o: ../Source/Cartridges/CartMBC5.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC5.cpp
+
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC5.cpp > CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.i
+
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC5.cpp -o CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.s
+
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o.requires:
+
+.PHONY : CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o.requires
+
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o.provides: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o.requires
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o.provides.build
+.PHONY : CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o.provides
+
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o.provides.build: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o
+
+
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: CMakeFiles/GBEmu.dir/flags.make
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Gameboy.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Gameboy.cpp
 
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o.provides.build: CMakeFiles/GBEmu.dir/S
 
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: CMakeFiles/GBEmu.dir/flags.make
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/Memory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Components/Memory.cpp
 
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o.provides.build: CMakeFiles/G
 
 CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: CMakeFiles/GBEmu.dir/flags.make
 CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o: ../Source/Components/Cpu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Components/Cpu.cpp
 
 CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.i: cmake_force
@@ -251,7 +275,7 @@ CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o.provides.build: CMakeFiles/GBEm
 
 CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: CMakeFiles/GBEmu.dir/flags.make
 CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Components/CpuOpcodeTable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Components/CpuOpcodeTable.cpp
 
 CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.i: cmake_force
@@ -275,7 +299,7 @@ CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o.provides.build: CMak
 
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: CMakeFiles/GBEmu.dir/flags.make
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Components/Gpu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.cpp
 
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.i: cmake_force
@@ -299,7 +323,7 @@ CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o.provides.build: CMakeFiles/GBEm
 
 CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o: CMakeFiles/GBEmu.dir/flags.make
 CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o: ../Source/Components/Timer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Components/Timer.cpp
 
 CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.i: cmake_force
@@ -321,6 +345,30 @@ CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o.provides: CMakeFiles/GBEmu.di
 CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o.provides.build: CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o
 
 
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o: CMakeFiles/GBEmu.dir/flags.make
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o: ../Source/Components/Input.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o -c /home/derdro/CLionProjects/GBEmu/Source/Components/Input.cpp
+
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/derdro/CLionProjects/GBEmu/Source/Components/Input.cpp > CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.i
+
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/derdro/CLionProjects/GBEmu/Source/Components/Input.cpp -o CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.s
+
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o.requires:
+
+.PHONY : CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o.requires
+
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o.provides: CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o.requires
+	$(MAKE) -f CMakeFiles/GBEmu.dir/build.make CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o.provides.build
+.PHONY : CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o.provides
+
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o.provides.build: CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o
+
+
 # Object files for target GBEmu
 GBEmu_OBJECTS = \
 "CMakeFiles/GBEmu.dir/Source/Main.cpp.o" \
@@ -328,12 +376,14 @@ GBEmu_OBJECTS = \
 "CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o" \
 "CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o" \
 "CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o" \
+"CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o" \
 "CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o" \
 "CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o" \
 "CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o" \
 "CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o" \
 "CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o" \
-"CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o"
+"CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o" \
+"CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o"
 
 # External object files for target GBEmu
 GBEmu_EXTERNAL_OBJECTS =
@@ -343,12 +393,14 @@ GBEmu: CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o
+GBEmu: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o
+GBEmu: CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o
 GBEmu: CMakeFiles/GBEmu.dir/build.make
 GBEmu: /usr/lib/x86_64-linux-gnu/libsfml-network.so
 GBEmu: /usr/lib/x86_64-linux-gnu/libsfml-audio.so
@@ -356,7 +408,7 @@ GBEmu: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so
 GBEmu: /usr/lib/x86_64-linux-gnu/libsfml-window.so
 GBEmu: /usr/lib/x86_64-linux-gnu/libsfml-system.so
 GBEmu: CMakeFiles/GBEmu.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable GBEmu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/derdro/CLionProjects/GBEmu/cmake-build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable GBEmu"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GBEmu.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -369,12 +421,14 @@ CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnl
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Cartridges/Cartridge.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC1.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o.requires
+CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Components/Cpu.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o.requires
 CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o.requires
+CMakeFiles/GBEmu.dir/requires: CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o.requires
 
 .PHONY : CMakeFiles/GBEmu.dir/requires
 
