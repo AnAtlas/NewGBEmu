@@ -15,7 +15,7 @@ bool Cartridge::loadRomBank0(){
   loadRomBankX(0);
 }
 
-bool Cartridge::loadRomBankX(byte romBankIndex){
+bool Cartridge::loadRomBankX(word romBankIndex){
   bool retVal = false;
 
   std::ifstream romFile;

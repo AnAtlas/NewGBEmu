@@ -136,6 +136,12 @@
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC3.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC5.cpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC5.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartRomOnly.cpp">
 			<Option target="GBEmu"/>
 		</Unit>
@@ -178,6 +184,15 @@
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Input.cpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Input.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/InputMemoryInterface.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Components/Memory.cpp">
 			<Option target="GBEmu"/>
 		</Unit>
@@ -212,6 +227,9 @@
 			<Option target="GBEmu"/>
 		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/Bios.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/InterruptFlags.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp">

@@ -16,6 +16,13 @@ CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o: ../Source/Cartridges/RamM
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o: ../Source/Utilities/AddressRange.hpp
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC3.cpp.o: ../Source/Utilities/Types.hpp
 
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o: ../Source/Cartridges/CartMBC5.cpp
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o: ../Source/Cartridges/CartMBC5.hpp
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o: ../Source/Cartridges/Cartridge.hpp
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o: ../Source/Cartridges/RamModule.hpp
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o: ../Source/Utilities/AddressRange.hpp
+CMakeFiles/GBEmu.dir/Source/Cartridges/CartMBC5.cpp.o: ../Source/Utilities/Types.hpp
+
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o: ../Source/Cartridges/CartRomOnly.cpp
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o: ../Source/Cartridges/CartRomOnly.hpp
 CMakeFiles/GBEmu.dir/Source/Cartridges/CartRomOnly.cpp.o: ../Source/Cartridges/Cartridge.hpp
@@ -40,11 +47,18 @@ CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Utilities
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Components/Gpu.cpp
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Components/Gpu.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Components/GpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Utilities/InterruptFlags.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Utilities/Types.hpp
+
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o: ../Source/Components/Input.cpp
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o: ../Source/Components/Input.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o: ../Source/Components/InputMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o: ../Source/Utilities/Types.hpp
 
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Cartridges/Cartridge.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/CpuMemoryInterface.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/GpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/InputMemoryInterface.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/Memory.cpp
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/Memory.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Memory.cpp.o: ../Source/Components/TimerMemoryInterface.hpp
@@ -59,6 +73,7 @@ CMakeFiles/GBEmu.dir/Source/Components/Timer.cpp.o: ../Source/Utilities/Types.hp
 
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/CartMBC1.hpp
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/CartMBC3.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/CartMBC5.hpp
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/CartRomOnly.hpp
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/Cartridge.hpp
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Cartridges/CartridgeFactory.hpp
@@ -68,6 +83,8 @@ CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/Cpu.hpp
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/CpuMemoryInterface.hpp
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/Gpu.hpp
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/GpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/Input.hpp
+CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/InputMemoryInterface.hpp
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/Memory.hpp
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/Timer.hpp
 CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Components/TimerMemoryInterface.hpp
@@ -78,6 +95,7 @@ CMakeFiles/GBEmu.dir/Source/Gameboy.cpp.o: ../Source/Utilities/Types.hpp
 
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/CartMBC1.hpp
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/CartMBC3.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/CartMBC5.hpp
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/CartRomOnly.hpp
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/Cartridge.hpp
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Cartridges/CartridgeFactory.hpp
@@ -87,6 +105,8 @@ CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/Cpu.hpp
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/CpuMemoryInterface.hpp
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/Gpu.hpp
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/GpuMemoryInterface.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/Input.hpp
+CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/InputMemoryInterface.hpp
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/Memory.hpp
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/Timer.hpp
 CMakeFiles/GBEmu.dir/Source/Main.cpp.o: ../Source/Components/TimerMemoryInterface.hpp

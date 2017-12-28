@@ -28,7 +28,29 @@ protected:
     MBC3_TIMER_RAM_BATTERY = 0x10,
     MBC3 = 0x11,
     MBC3_RAM = 0x12,
-    MBC3_RAM_BATTERY = 0x13
+    MBC3_RAM_BATTERY = 0x13,
+    MBC5 = 0x19,
+    MBC5_RAM = 0x1A,
+    MBC5_RAM_BATTERY = 0x1B,
+    MBC5_RUMBLE = 0x1C,
+    MBC5_RUMBLE_RAM = 0x1D,
+    MBC5_RUMBLE_RAM_BATTERY = 0x1E
+  };
+
+  //Each ROM Bank is 16 KB between Bank0 and BankX
+  enum RomSize{
+    KB_32 = 0, // 2 Bank
+    KB_64 = 1, // 4 Banks
+    KB_128 = 2,// 8 Bank
+    KB_256 = 3,// 16 Banks
+    KB_512 = 4,// 32 Banks
+    MB_1 = 5,  // 64 Banks
+    MB_2 = 6,  //128 Banks
+    MB_4 = 7,  //256 Banks
+    MB_8 = 8,  //512 Banks
+    MB_1_1 = 0x52, // 72 Banks
+    MB_1_2 = 0x53, // 80 Banks
+    MB_1_5 = 0x54 //  96 Banks
   };
 
   enum BankingMode{
@@ -46,11 +68,13 @@ protected:
 
   std::string m_romPath;
   AddressRange m_romRange;
+  word m_maxRamBank;
+  word m_maxRomBank;
   //Load the first 0x4000 bytes of the rom into romBank0
   bool loadRomBank0();
 
   //Load the Xth 0x4000 bytes of the rom  into romBankX
-  bool loadRomBankX(byte romBankIndex);
+  bool loadRomBankX(word romBankIndex);
 
 public:
   Cartridge(std::string& romPath);

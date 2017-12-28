@@ -32,6 +32,18 @@ RamModule.hpp
 RTCModule.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Cartridges/RTCModule.hpp
 
+/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC5.cpp
+CartMBC5.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC5.hpp
+
+/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC5.hpp
+Cartridge.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Cartridges/Cartridge.hpp
+../Utilities/AddressRange.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/AddressRange.hpp
+RamModule.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Cartridges/RamModule.hpp
+
 /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartRomOnly.cpp
 CartRomOnly.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartRomOnly.hpp
@@ -67,6 +79,8 @@ CartMBC1.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC1.hpp
 CartMBC3.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC3.hpp
+CartMBC5.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartMBC5.hpp
 CartRomOnly.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartRomOnly.hpp
 
@@ -111,6 +125,8 @@ cstring
 -
 Gpu.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp
+../Utilities/InterruptFlags.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/InterruptFlags.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp
 SFML/Graphics/RenderWindow.hpp
@@ -123,6 +139,26 @@ GpuMemoryInterface.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
+../Utilities/Types.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
+
+/home/derdro/CLionProjects/GBEmu/Source/Components/Input.cpp
+SFML/Window/Keyboard.hpp
+-
+iostream
+-
+bitset
+-
+Input.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Components/Input.hpp
+
+/home/derdro/CLionProjects/GBEmu/Source/Components/Input.hpp
+SFML/Window/Keyboard.hpp
+-
+InputMemoryInterface.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Components/InputMemoryInterface.hpp
+
+/home/derdro/CLionProjects/GBEmu/Source/Components/InputMemoryInterface.hpp
 ../Utilities/Types.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
 
@@ -147,6 +183,8 @@ GpuMemoryInterface.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/GpuMemoryInterface.hpp
 TimerMemoryInterface.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/TimerMemoryInterface.hpp
+InputMemoryInterface.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Components/InputMemoryInterface.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Timer.cpp
 Timer.hpp
@@ -193,6 +231,8 @@ Cartridges/Cartridge.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Cartridges/Cartridge.hpp
 Cartridges/CartridgeFactory.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Cartridges/CartridgeFactory.hpp
+Components/Input.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Components/Input.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Main.cpp
 Gameboy.hpp
@@ -211,6 +251,8 @@ Types.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/Bios.hpp
 Types.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
+
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/InterruptFlags.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
 

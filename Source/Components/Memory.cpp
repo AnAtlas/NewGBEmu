@@ -5,7 +5,7 @@
 #include "Memory.hpp"
 #include "../Utilities/Bios.hpp"
 
-Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios),
+Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios), m_divRegister(0),
   m_romRange(Cartridge::CartAddress::ROM_BANK0, Cartridge::CartAddress::ROM_BANKX_END),
   m_ramRange(Cartridge::CartAddress::RAM_BANK, Cartridge::CartAddress::RAM_BANK_END),
   m_wRamRange(Address::Wram, Address::Wram + 0x1FFF),
@@ -13,7 +13,7 @@ Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios),
 {
   memcpy(m_memory, bios, sizeof(bios));
   if (runBios) {
-    m_memory[0xFF00] = 0xFF;
+    m_memory[0xFF00] = 0xFF; //P1
     m_memory[0xFF05] = 0x00;
     m_memory[0xFF06] = 0x00;
     m_memory[0xFF07] = 0x00;
@@ -79,6 +79,7 @@ Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios),
     m_memory[0xFF4A] = 0x00; //WY
     m_memory[0xFF4B] = 0x00; //WX
     m_memory[0xFFFF] = 0x00; //IE
+    m_divRegister = 0xABCC;
   }
 }
 
@@ -99,8 +100,10 @@ void Memory::writeByte(word address, byte value) {
     m_memory[address - 0x2000] = value;
   else if (address == Address::LineY)
     value = 0;
-  else if (address == Address::DivReg)
-    value = 0;
+  else if (address == Address::DivReg){
+    m_divRegister = 0;
+    return;
+  }
   else if (address == Address::DMA) {
     word newAddress = (word) value << 8;
     for (word i = 0; i < 0xA0; ++i)
@@ -118,10 +121,8 @@ void Memory::writeByte(word address, byte value) {
     m_memory[address] |= value;
     return;
   }
-  if (address == 0xFF80){
-    value--;
-    value++;
-  }
+  if (address == Address::IeRegister)
+    return;
 
   m_memory[address] = value;
 }
@@ -131,6 +132,10 @@ byte Memory::readByte(word address) const {
     if (!m_inBios || address >= 0x100)
       return m_cartridge->readByte(address);
   }
+  if (address == Address::DivReg){
+    return (byte)((m_divRegister >> 8) & (word)0x00FF);
+  }
+  //TODO Get rid of this when input is done
   if (address == Address::P1){
     byte ret = 0b11000000;
     byte keyReq = m_memory[Address::P1];
@@ -242,8 +247,12 @@ void Memory::writeLineY(byte value){
 }
 
 //Timer functions
-void Memory::incDivRegister() {
-  m_memory[Address::DivReg] = m_memory[Address::DivReg] + (byte)1;
+void Memory::incDivRegister(byte ticks) {
+  m_divRegister += ticks;
+}
+
+byte Memory::incTimerCounter() {
+  return m_memory[Address::TimerCounter]++;
 }
 
 void Memory::writeTimerCounter(byte value) {
@@ -260,5 +269,17 @@ byte Memory::readTimerModulo() {
 
 byte Memory::readTimerControl() {
   return m_memory[Address::TimerControl];
+}
+
+//Input functions
+byte Memory::readP1(){
+  return m_memory[Address::P1];
+}
+
+void Memory::writeP1Inputs(byte value) {
+  value &= 0x0F;
+  byte p1 = readP1();
+  p1 &= 0xF0;
+  m_memory[Address::P1] = p1 | value;
 }
 

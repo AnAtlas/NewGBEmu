@@ -13,8 +13,7 @@ int opsRan = 0;
 std::ofstream logFile;
 
 Cpu::Cpu(CpuMemoryInterface& memory, bool runBios)
-  : m_memory(memory), m_pendingMasterInterruptDisable(false),
-    m_pendingMasterInterruptEnable(false)
+  : m_memory(memory), m_pendingMasterInterruptEnable(false)
 {
   initializeRegisters();
   if (runBios)
@@ -54,14 +53,6 @@ byte Cpu::step() {
   else
     m_clock.ticks = 4;
 
-  //Disabling interrupts happens after the next opcode is finished
-  if (m_pendingMasterInterruptDisable){
-    if (m_memory.readByte(m_registers.pc - (byte)1) != 0xF3){
-      m_pendingMasterInterruptDisable = false;
-      m_masterInterruptEnabled = false;
-    }
-  }
-
   //Enabling interrupts happens after the next opcode is finished
   if (m_pendingMasterInterruptEnable){
     if (m_memory.readByte(m_registers.pc -(byte)1) != 0xFB){
@@ -93,14 +84,6 @@ byte Cpu::runOpcode(byte opCode) {
   }
   else
     m_clock.ticks = 4;
-
-  //Disabling interrupts happens after the next opcode is finished
-  if (m_pendingMasterInterruptDisable){
-    if (m_memory.readByte(m_registers.pc - (byte)1) != 0xF3){
-      m_pendingMasterInterruptDisable = false;
-      m_masterInterruptEnabled = false;
-    }
-  }
 
   //Enabling interrupts happens after the next opcode is finished
   if (m_pendingMasterInterruptEnable){
@@ -165,6 +148,8 @@ void Cpu::serviceInterrupt(byte bit) {
   }
   m_masterInterruptEnabled = false;
   m_memory.resetIntFlag(bit);
+  //Add twenty ticks to the current clock to account for the interrupt
+  m_clock.ticks += 20;
 }
 
 
@@ -218,7 +203,7 @@ void Cpu::halt() {
 
 //Disable interrupts after the next opcode
 void Cpu::di() {
-  m_pendingMasterInterruptDisable = true;
+  m_masterInterruptEnabled = false;
   m_clock.ticks = 4;
 }
 

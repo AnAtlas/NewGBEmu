@@ -10,16 +10,9 @@
 #include "CpuMemoryInterface.hpp"
 #include "GpuMemoryInterface.hpp"
 #include "TimerMemoryInterface.hpp"
+#include "InputMemoryInterface.hpp"
 
-enum IntFlags{
-  VBLANK = 1,
-  LCD_STAT = 1 << 1,
-  TIMER = 1 << 2,
-  SERIAL = 1 << 3,
-  JOYPAD = 1 << 4
-};
-
-class Memory : public CpuMemoryInterface, GpuMemoryInterface, TimerMemoryInterface
+class Memory : public CpuMemoryInterface, GpuMemoryInterface, TimerMemoryInterface, InputMemoryInterface
 {
 private:
   union{
@@ -46,6 +39,7 @@ private:
   AddressRange m_wRamRange;
   AddressRange m_echoRange;
 
+  word m_divRegister;
   bool m_inBios;
   byte m_inputRow1;
   byte m_inputRow2;
@@ -120,10 +114,14 @@ public:
   void writeLcdStatus(byte value) override;
   void writeLineY(byte value) override;
   //Timer functions
-  void incDivRegister() override;
+  void incDivRegister(byte ticks) override;
+  byte incTimerCounter() override;
   void writeTimerCounter(byte value) override;
   byte readTimerCounter() override;
   byte readTimerModulo() override;
   byte readTimerControl() override;
+  //Input functions
+  byte readP1() override;
+  void writeP1Inputs(byte value) override;
 };
 #endif //GBEMU_MEMORY_HPP

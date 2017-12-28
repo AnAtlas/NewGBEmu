@@ -85,7 +85,6 @@ private:
     bool m_halted;
     bool m_stopped;
     bool m_cbMode;
-    bool m_pendingMasterInterruptDisable;
     bool m_pendingMasterInterruptEnable;
     bool m_masterInterruptEnabled;
     CpuMemoryInterface& m_memory;

@@ -11,8 +11,8 @@ class TimerMemoryInterface{
 private:
 
 public:
-  virtual void incDivRegister() = 0;
-
+  virtual void incDivRegister(byte ticks) = 0;
+  virtual byte incTimerCounter() = 0;
   virtual void writeTimerCounter(byte value) = 0;
   virtual byte readTimerCounter() = 0;
   virtual byte readTimerModulo() = 0;

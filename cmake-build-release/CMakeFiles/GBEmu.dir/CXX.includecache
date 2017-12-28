@@ -111,6 +111,8 @@ cstring
 -
 Gpu.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp
+../Utilities/InterruptFlags.hpp
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/InterruptFlags.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp
 SFML/Graphics/RenderWindow.hpp
@@ -211,6 +213,8 @@ Types.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/Bios.hpp
 Types.hpp
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
+
+/home/derdro/CLionProjects/GBEmu/Source/Utilities/InterruptFlags.hpp
 
 /home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp
 

@@ -3,7 +3,7 @@
 //
 #include <cstring>
 #include "Gpu.hpp"
-
+#include "../Utilities/InterruptFlags.hpp"
 
 
 const RGB palette[4] = {
@@ -11,6 +11,14 @@ const RGB palette[4] = {
   { 192,192,192, 255 },
   {  96, 96,96, 255  },
   {  0 , 0 , 0, 255  }
+};
+
+enum LcdStat{
+  LYC_EQUALS_LY = 1 << 2,
+  H_BLANK_INT = 1 << 3,
+  V_BLANK_INT = 1 << 4,
+  OAM_INT = 1 << 5,
+  LYC_LY_INT = 1 << 6
 };
 
 Gpu::Gpu(sf::RenderWindow& window, GpuMemoryInterface& memory)
@@ -50,7 +58,9 @@ void Gpu::step(byte ticks){
         if (m_memory.readLineY() == 143){
           //Enter VBlank
           setLcdMode(GPUMode::V_BLANK);
-          reqInt = (lcdStatus & ((byte)1 << 4));
+          m_memory.requestInterrupt(IntFlags::VBLANK);
+
+          reqInt = (lcdStatus & LcdStat::V_BLANK_INT);
 
           //Push framebuffer to screen
           m_texture.update((const sf::Uint8*)m_frameBuffer, SCREEN_WIDTH, SCREEN_HEIGHT,0,0);
@@ -60,7 +70,7 @@ void Gpu::step(byte ticks){
         }
         else{
           setLcdMode(GPUMode::OAM);
-          reqInt = lcdStatus & ((byte)1 << 5);
+          reqInt = (lcdStatus & LcdStat::OAM_INT);
         }
       }
       break;
@@ -71,7 +81,7 @@ void Gpu::step(byte ticks){
         m_memory.writeLineY(m_memory.readLineY() + (byte)1);
         if (m_memory.readLineY() > 153){
           setLcdMode(GPUMode::OAM);
-          reqInt = lcdStatus & ((byte)1 << 5);
+          reqInt = (lcdStatus & LcdStat::OAM_INT);
           m_memory.writeLineY(0);
           m_frameDone = true;
         }
@@ -89,7 +99,7 @@ void Gpu::step(byte ticks){
       if (m_gpuClock >= GPUTimings::ACCESS_VRAM){
         m_gpuClock = 0;
         setLcdMode(GPUMode::H_BLANK);
-        reqInt = lcdStatus & ((byte)1 << 3);
+        reqInt = (lcdStatus & LcdStat::H_BLANK_INT);
 
         renderScanLine();
       }
@@ -98,16 +108,16 @@ void Gpu::step(byte ticks){
 
   //Check for coincidence flag
   if (lineY == m_memory.readLYC()){
-    lcdStatus = m_memory.readLcdStatus() | ((byte)1 << 2);
+    lcdStatus = m_memory.readLcdStatus() | LcdStat::LYC_EQUALS_LY;
 
-    if (lcdStatus & ((byte)1 << 6))
+    if (lcdStatus & LcdStat::LYC_LY_INT)
       reqInt = true;
   }
   else
-    lcdStatus = m_memory.readLcdStatus() & (byte)0b11111011;
+    lcdStatus = m_memory.readLcdStatus() & ~LcdStat::LYC_EQUALS_LY;
 
   if (reqInt)
-    m_memory.requestInterrupt(1);
+    m_memory.requestInterrupt(IntFlags::LCD_STAT);
 
   m_memory.writeLcdStatus(lcdStatus);
 }
@@ -121,6 +131,7 @@ void Gpu::setLcdMode(GPUMode mode) {
 
 void Gpu::renderScanLine() {
   renderBackground();
+  renderSprites();
 }
 
 void Gpu::renderBackground() {
@@ -144,8 +155,6 @@ void Gpu::renderBackground() {
     if (windowY <= lineY)
       usingWindow = true;
   }
-  else
-    usingWindow = false;
 
   //Which tile data are we using
   if (lcdControl & LCDControlFlags::BACKGROUND_WINDOW_TILE_DATA_SELECT)
@@ -215,6 +224,14 @@ void Gpu::renderBackground() {
   }
 }
 
+void Gpu::renderSprites() {
+  byte lcdControl = m_memory.readLcdControl();
+  byte lineY = m_memory.readLineY();
+
+  //Check if sprites are enabled
+  if (!(lcdControl & LCDControlFlags::SPRITE_DISPLAY_ENABLE))
+    return;
+}
 Color Gpu::getBackgroundPaletteShade(Color color) {
   byte bgPaletteData = m_memory.readBackgroundPalette();
   if (color == Color::WHITE)

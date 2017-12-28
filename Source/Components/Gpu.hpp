@@ -66,6 +66,7 @@ private:
   void setLcdMode(GPUMode mode);
   void renderScanLine();
   void renderBackground();
+  void renderSprites();
   Color getBackgroundPaletteShade(Color color);
 public:
   Gpu(sf::RenderWindow& window, GpuMemoryInterface& memory);
