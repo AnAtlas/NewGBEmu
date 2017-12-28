@@ -3,8 +3,6 @@
 //
 #include <cstring>
 #include "Gpu.hpp"
-#include "../Utilities/InterruptFlags.hpp"
-
 
 const RGB palette[4] = {
   { 255,255,255, 255 },
@@ -58,7 +56,7 @@ void Gpu::step(byte ticks){
         if (m_memory.readLineY() == 143){
           //Enter VBlank
           setLcdMode(GPUMode::V_BLANK);
-          m_memory.requestInterrupt(IntFlags::VBLANK);
+          m_memory.requestVBlankInterrupt();
 
           reqInt = (lcdStatus & LcdStat::V_BLANK_INT);
 
@@ -117,7 +115,7 @@ void Gpu::step(byte ticks){
     lcdStatus = m_memory.readLcdStatus() & ~LcdStat::LYC_EQUALS_LY;
 
   if (reqInt)
-    m_memory.requestInterrupt(IntFlags::LCD_STAT);
+    m_memory.requestLcdStatInterrupt();
 
   m_memory.writeLcdStatus(lcdStatus);
 }

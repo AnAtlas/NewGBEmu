@@ -12,5 +12,6 @@ class InputMemoryInterface
 public:
   virtual byte readP1() = 0;
   virtual void writeP1Inputs(byte value) = 0;
+  virtual void requestInputInterrupt() = 0;
 };
 #endif //GBEMU_INPUTMEMORYINTERFACE_HPP

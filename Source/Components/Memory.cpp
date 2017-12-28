@@ -5,6 +5,14 @@
 #include "Memory.hpp"
 #include "../Utilities/Bios.hpp"
 
+enum InterruptFlags{
+  VBLANK = 1,
+  LCD_STAT = 1 << 1,
+  TIMER = 1 << 2,
+  SERIAL = 1 << 3,
+  JOYPAD = 1 << 4
+};
+
 Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios), m_divRegister(0),
   m_romRange(Cartridge::CartAddress::ROM_BANK0, Cartridge::CartAddress::ROM_BANKX_END),
   m_ramRange(Cartridge::CartAddress::RAM_BANK, Cartridge::CartAddress::RAM_BANK_END),
@@ -246,6 +254,14 @@ void Memory::writeLineY(byte value){
   m_memory[Address::LineY] = value;
 }
 
+void Memory::requestVBlankInterrupt() {
+  writeByte(Address::IntFlags, readByte(Address::IntFlags) | InterruptFlags::VBLANK);
+}
+
+void Memory::requestLcdStatInterrupt() {
+  writeByte(Address::IntFlags, readByte(Address::IntFlags) | InterruptFlags::LCD_STAT);
+}
+
 //Timer functions
 void Memory::incDivRegister(byte ticks) {
   m_divRegister += ticks;
@@ -271,6 +287,10 @@ byte Memory::readTimerControl() {
   return m_memory[Address::TimerControl];
 }
 
+void Memory::requestTimerInterrupt() {
+  writeByte(Address::IntFlags, readByte(Address::IntFlags) | InterruptFlags::TIMER);
+}
+
 //Input functions
 byte Memory::readP1(){
   return m_memory[Address::P1];
@@ -281,5 +301,9 @@ void Memory::writeP1Inputs(byte value) {
   byte p1 = readP1();
   p1 &= 0xF0;
   m_memory[Address::P1] = p1 | value;
+}
+
+void Memory::requestInputInterrupt() {
+  writeByte(Address::IntFlags, readByte(Address::IntFlags) | InterruptFlags::JOYPAD);
 }
 

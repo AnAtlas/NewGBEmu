@@ -47,7 +47,6 @@ CMakeFiles/GBEmu.dir/Source/Components/CpuOpcodeTable.cpp.o: ../Source/Utilities
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Components/Gpu.cpp
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Components/Gpu.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Components/GpuMemoryInterface.hpp
-CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Utilities/InterruptFlags.hpp
 CMakeFiles/GBEmu.dir/Source/Components/Gpu.cpp.o: ../Source/Utilities/Types.hpp
 
 CMakeFiles/GBEmu.dir/Source/Components/Input.cpp.o: ../Source/Components/Input.cpp
