@@ -27,6 +27,13 @@ enum Color {
   BLACK
 };
 
+enum SpriteAttribute{
+  PRIORITY = 1 << 7,
+  Y_FLIP = 1 << 6,
+  X_FLIP = 1 << 5,
+  PALETTE = 1 << 4
+};
+
 struct GPUTimings{
   enum{
     ACCESS_OAM = 0x50,
@@ -38,6 +45,9 @@ struct GPUTimings{
 
 struct RGB {
   byte r, g, b, a;
+  bool operator==(RGB rgb1){
+    return (r == rgb1.r && g == rgb1.g && b == rgb1.b && a == rgb1.a);
+  }
 };
 
 enum LCDControlFlags {
@@ -62,12 +72,17 @@ private:
   word m_gpuClock;
   bool m_frameDone;
   RGB m_frameBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
+  const byte m_spriteLimit;
+  const byte m_spriteWidth;
+  byte m_spriteHeight;
 
   void setLcdMode(GPUMode mode);
   void renderScanLine();
   void renderBackground();
   void renderSprites();
   Color getBackgroundPaletteShade(Color color);
+  Color getObjectPaletteShade(bool palette1, Color color);
+  RGB getPixelAt(byte x, byte y);
 public:
   Gpu(sf::RenderWindow& window, GpuMemoryInterface& memory);
   void step(byte ticks);

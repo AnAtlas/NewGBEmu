@@ -4,7 +4,7 @@
 #include <cstring>
 #include "Gpu.hpp"
 
-const RGB palette[4] = {
+const RGB Palette[4] = {
   { 255,255,255, 255 },
   { 192,192,192, 255 },
   {  96, 96,96, 255  },
@@ -20,9 +20,11 @@ enum LcdStat{
 };
 
 Gpu::Gpu(sf::RenderWindow& window, GpuMemoryInterface& memory)
-  : m_window(window),m_memory(memory), m_gpuMode(GPUMode::H_BLANK), m_sprite() {
+  : m_window(window),m_memory(memory), m_gpuMode(GPUMode::H_BLANK), m_sprite(),
+    m_spriteWidth(8), m_spriteHeight(8), m_spriteLimit(40)
+{
   for (int i = 0; i < SCREEN_HEIGHT * SCREEN_WIDTH; i++)
-    m_frameBuffer[i] = palette[Color::WHITE];
+    m_frameBuffer[i] = Palette[Color::WHITE];
 
   m_texture.create(SCREEN_WIDTH, SCREEN_HEIGHT);
   m_texture.setSmooth(false);
@@ -218,7 +220,7 @@ void Gpu::renderBackground() {
 
     auto color = (Color)(colorNum);
 
-    m_frameBuffer[lineY * SCREEN_WIDTH + pixel] = palette[getBackgroundPaletteShade(color)];
+    m_frameBuffer[lineY * SCREEN_WIDTH + pixel] = Palette[getBackgroundPaletteShade(color)];
   }
 }
 
@@ -230,9 +232,87 @@ void Gpu::renderSprites() {
   if (!(lcdControl & LCDControlFlags::SPRITE_DISPLAY_ENABLE))
     return;
 
-  bool use8x16 = false;
-  if (lcdControl & LCDControlFlags::SPRITE_SIZE)
-    use8x16 = true;
+  m_spriteHeight = (lcdControl & LCDControlFlags::SPRITE_SIZE) ? (byte)16 : (byte)8;
+
+  byte index = 0;
+  byte yPos = 0;
+  byte xPos = 0;
+  byte charCode = 0;
+  byte attrData = 0;
+
+  bool priority = false;
+  bool yFlip = false;
+  bool xFlip = false;
+  bool palette = false; //Can be object palette 0 or 1 depending on the palette sprite attribute
+
+  //Gameboy only has space for 40 sprites at a time
+  for (int i = 0; i < m_spriteLimit; i++){
+    //Each sprite has 4 bytes of data
+    index = (byte)(i*4);
+    yPos = m_memory.readOam(index) - (byte)16; //the - 16 just is
+    xPos = m_memory.readOam(index + (byte)1) - (byte)8; //the -8 just is
+    charCode = m_memory.readOam(index + (byte)2); //Specifies tile number 0x00-0xFF from tile memory at 0x8000 - 0x8FFF
+    attrData = m_memory.readOam(index + (byte)3); //Flags according to the sprite
+
+    //If sprites are 16 pixels tall, sprites take up twice the amount of ram, so drop the last bit so only even number
+    //Of tiles are left
+    if (m_spriteHeight == 16)
+      charCode &= (~1);
+
+    priority = (attrData & SpriteAttribute::PRIORITY);
+    yFlip = (attrData & SpriteAttribute::Y_FLIP);
+    xFlip = (attrData & SpriteAttribute::X_FLIP);
+    palette = (attrData & SpriteAttribute::PALETTE);// ? (word)0xFF49 :(word)0xFF48;
+
+    //Line is the line in the sprite, each sprite is 16 bytes, for 8 lines, so this will always be even
+    byte line = (yFlip) ? ((((lineY - yPos - m_spriteHeight) + (byte)1) * (char)-1) * (byte)2) : ((lineY - yPos) * (byte)2);
+    byte pixelData1 = m_memory.readVram((word)0x8000 + ((word)charCode * (word)16) + line);
+    byte pixelData2 = m_memory.readVram((word)0x8000 + ((word)charCode * (word)16) + line + (word)1);
+
+    //Sprites at position (0,0) are not drawn
+    if (xPos == 0 && yPos == 0)
+      continue;
+
+    //Check if sprite is over scanline
+    if (lineY >= yPos && lineY < (yPos + m_spriteHeight)){
+      for (byte pixel = 0; pixel < 8; pixel++){
+        byte x = xPos + pixel;
+
+        if (x >= 160)
+          continue;
+        byte spritePixel = (xFlip) ? (pixel - (byte)7) * (char)-1 : pixel;
+        bool backgroundPixelIsWhite = getPixelAt(x, lineY) == Palette[Color::WHITE];
+        //Color num is the corresponding pair of bits from pixelData1 and pixelData2
+        byte colorNum = (pixelData1 &= ((byte)1 << (7 - spritePixel)) << 1) | (pixelData2 &= ((byte)1 << (7 - spritePixel)));
+
+        //ColorNum of 0 means pixel is transparent
+        if (colorNum == 0x00)
+          continue;
+        //with priority 0x01 if the background pixel isn't white, the sprite isn't drawn
+        if (priority == 0x01 && !backgroundPixelIsWhite)
+          continue;
+        m_frameBuffer[lineY * SCREEN_WIDTH + pixel] = Palette[getObjectPaletteShade(palette, (Color)colorNum)];
+      }
+    }
+  }
+}
+
+RGB Gpu::getPixelAt(byte x, byte y) {
+  return m_frameBuffer[(y * SCREEN_WIDTH + x) * 4];
+}
+
+Color Gpu::getObjectPaletteShade(bool palette1, Color color){
+  byte objPaletteData = (palette1) ? m_memory.readObjectPalette1() : m_memory.readObjectPalette0();
+  if (color == Color::WHITE)
+    return (Color)((objPaletteData) & 0x3);
+  if (color == Color::LIGHT_GRAY)
+    return (Color)((objPaletteData) & 0xC) >> 2;
+  if (color == Color::DARK_GRAY)
+    return (Color)((objPaletteData) & 0x30) >> 4;
+  if (color == Color::BLACK)
+    return (Color)((objPaletteData) & 0xC0) >> 6;
+
+  return Color::WHITE;
 }
 
 Color Gpu::getBackgroundPaletteShade(Color color) {

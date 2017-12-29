@@ -205,8 +205,8 @@ byte Memory::readObjectPalette1() const{
   return m_memory[Address::ObjectPalette1];
 }
 
-byte Memory::readOam(word address) const{
-  return m_memory[address];
+byte Memory::readOam(word offset) const{
+  return m_oam[offset];
 }
 
 byte Memory::readVram(word address) const{
