@@ -8,9 +8,9 @@ int main() {
   sf::RenderWindow window(sf::VideoMode(320, 288), "NewGBEmu!");
   window.setActive(false);
 
-  Gameboy gameboy(window, true);
+  Gameboy gameboy(window, false);
 
-  gameboy.insertRom("../TestRoms/MoonEye Tests/acceptance/rst_timing.gb");
+  gameboy.insertRom("../TestRom/T.gb");
 
   std::thread gb(&Gameboy::play, &gameboy);
 
