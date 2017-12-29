@@ -9,8 +9,8 @@ int main() {
   window.setActive(false);
 
   Gameboy gameboy(window, false);
-
-  gameboy.insertRom("../Roms/T.gb");
+  gameboy.setFrameLimit(true);
+  gameboy.insertRom("../Roms/P-Red.gb");
 
   std::thread gb(&Gameboy::play, &gameboy);
 

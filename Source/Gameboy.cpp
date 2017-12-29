@@ -12,7 +12,7 @@
 Gameboy::Gameboy(sf::RenderWindow &window, bool runBios)
  : m_memory(runBios), m_cpu((CpuMemoryInterface&)m_memory, runBios), m_gpu(window,(GpuMemoryInterface&)m_memory),
    m_timer((TimerMemoryInterface&)m_memory), m_input((InputMemoryInterface&)m_memory),
-   m_window(window), m_cartridge(), m_cartFact(), m_running(false), m_paused(false)
+   m_window(window), m_cartridge(), m_cartFact(), m_running(false), m_paused(false), m_frameLimited(true)
 {
 
 }
@@ -41,9 +41,14 @@ void Gameboy::play() {
     m_gpu.step(ticks);
     if (m_gpu.frameDone()){
       m_input.checkInputs();
-      sf::sleep(sf::seconds((float)0.01667) - m_frameTimer.restart());
+      if (m_frameLimited)
+        sf::sleep(sf::seconds((float)0.01667) - m_frameTimer.restart());
     }
   }
+}
+
+void Gameboy::setFrameLimit(bool on){
+  m_frameLimited = on;
 }
 
 void Gameboy::shutDown() {

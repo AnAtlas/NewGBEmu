@@ -28,6 +28,7 @@ private:
 
   bool m_running;
   bool m_paused;
+  bool m_frameLimited;
   sf::RenderWindow& m_window;
   sf::Clock m_frameTimer;
 
@@ -37,6 +38,7 @@ public:
   bool insertRom(const std::string& romPath);
   void play();
   void shutDown();
+  void setFrameLimit(bool on);
   void buttonDown(sf::Keyboard::Key);
   void buttonUp(sf::Keyboard::Key);
 };

@@ -115,7 +115,7 @@ void Memory::writeByte(word address, byte value) {
   else if (address == Address::DMA) {
     word newAddress = (word) value << 8;
     for (word i = 0; i < 0xA0; ++i)
-      m_memory[Address::Oam + i] = m_cartridge->readByte(newAddress + i);
+      m_memory[Address::Oam + i] = readByte(newAddress + i);
     return;
   }
   else if (address == Address::ExitBios){

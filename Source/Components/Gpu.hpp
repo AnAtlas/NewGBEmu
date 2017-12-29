@@ -82,6 +82,7 @@ private:
   void renderSprites();
   Color getBackgroundPaletteShade(Color color);
   Color getObjectPaletteShade(bool palette1, Color color);
+  byte getBit(byte value, byte bitIndex);
   RGB getPixelAt(byte x, byte y);
 public:
   Gpu(sf::RenderWindow& window, GpuMemoryInterface& memory);

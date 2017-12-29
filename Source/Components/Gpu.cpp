@@ -259,6 +259,10 @@ void Gpu::renderSprites() {
     if (m_spriteHeight == 16)
       charCode &= (~1);
 
+    //Check if this scanline will even touch this sprite
+    //if (lineY < yPos || lineY > (yPos + m_spriteHeight))
+    //  return;
+
     priority = (attrData & SpriteAttribute::PRIORITY);
     yFlip = (attrData & SpriteAttribute::Y_FLIP);
     xFlip = (attrData & SpriteAttribute::X_FLIP);
@@ -273,32 +277,30 @@ void Gpu::renderSprites() {
     if (xPos == 0 && yPos == 0)
       continue;
 
-    //Check if sprite is over scanline
-    if (lineY >= yPos && lineY < (yPos + m_spriteHeight)){
-      for (byte pixel = 0; pixel < 8; pixel++){
-        byte x = xPos + pixel;
+    for (byte pixel = 0; pixel < 8; pixel++){
+      byte x = xPos + pixel;
 
-        if (x >= 160)
-          continue;
-        byte spritePixel = (xFlip) ? (pixel - (byte)7) * (char)-1 : pixel;
-        bool backgroundPixelIsWhite = getPixelAt(x, lineY) == Palette[Color::WHITE];
-        //Color num is the corresponding pair of bits from pixelData1 and pixelData2
-        byte colorNum = (pixelData1 &= ((byte)1 << (7 - spritePixel)) << 1) | (pixelData2 &= ((byte)1 << (7 - spritePixel)));
+      if (x >= 160)
+        continue;
+      byte spritePixel = (xFlip) ? (pixel - (byte)7) * (char)-1 : pixel;
+      bool backgroundPixelIsWhite = getPixelAt(x, lineY) == Palette[Color::WHITE];
+      //Color num is the corresponding pair of bits from pixelData1 and pixelData2
+      byte colorNum = (getBit(pixelData1, (byte)7-spritePixel) << 1) | (getBit(pixelData2, (byte)7-spritePixel));
 
-        //ColorNum of 0 means pixel is transparent
-        if (colorNum == 0x00)
-          continue;
-        //with priority 0x01 if the background pixel isn't white, the sprite isn't drawn
-        if (priority == 0x01 && !backgroundPixelIsWhite)
-          continue;
-        m_frameBuffer[lineY * SCREEN_WIDTH + pixel] = Palette[getObjectPaletteShade(palette, (Color)colorNum)];
-      }
+      //ColorNum of 0 means pixel is transparent
+      if (colorNum == 0x00)
+        continue;
+      //with priority 0x01 if the background pixel isn't white, the sprite isn't drawn
+      if (priority == 0x01 && !backgroundPixelIsWhite)
+        continue;
+      RGB pixelColor = Palette[getObjectPaletteShade(palette, (Color)colorNum)];
+      m_frameBuffer[lineY * SCREEN_WIDTH + x] = pixelColor;
     }
   }
 }
 
 RGB Gpu::getPixelAt(byte x, byte y) {
-  return m_frameBuffer[(y * SCREEN_WIDTH + x) * 4];
+  return m_frameBuffer[(y * SCREEN_WIDTH + x)];
 }
 
 Color Gpu::getObjectPaletteShade(bool palette1, Color color){
@@ -306,11 +308,11 @@ Color Gpu::getObjectPaletteShade(bool palette1, Color color){
   if (color == Color::WHITE)
     return (Color)((objPaletteData) & 0x3);
   if (color == Color::LIGHT_GRAY)
-    return (Color)((objPaletteData) & 0xC) >> 2;
+    return (Color)(((objPaletteData) & 0xC) >> 2);
   if (color == Color::DARK_GRAY)
-    return (Color)((objPaletteData) & 0x30) >> 4;
+    return (Color)(((objPaletteData) & 0x30) >> 4);
   if (color == Color::BLACK)
-    return (Color)((objPaletteData) & 0xC0) >> 6;
+    return (Color)(((objPaletteData) & 0xC0) >> 6);
 
   return Color::WHITE;
 }
@@ -331,4 +333,10 @@ Color Gpu::getBackgroundPaletteShade(Color color) {
 
 bool Gpu::frameDone() {
   return m_frameDone;
+}
+
+byte Gpu::getBit(byte value, byte bitIndex) {
+  if (value & (1 << bitIndex))
+    return 1;
+  return 0;
 }
