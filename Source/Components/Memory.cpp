@@ -129,8 +129,6 @@ void Memory::writeByte(word address, byte value) {
     m_memory[address] |= value;
     return;
   }
-  if (address == Address::IeRegister)
-    return;
 
   m_memory[address] = value;
 }
@@ -142,24 +140,6 @@ byte Memory::readByte(word address) const {
   }
   if (address == Address::DivReg){
     return (byte)((m_divRegister >> 8) & (word)0x00FF);
-<<<<<<< HEAD
-=======
-  }
-  //TODO Get rid of this when input is done
-  if (address == Address::P1){
-    byte ret = 0b11000000;
-    byte keyReq = m_memory[Address::P1];
-    ret |= (keyReq & 0b00110000);
-    if (!(keyReq & (1 << 5))){
-      //Directionals selected, row 2
-      ret |= (m_inputRow2 & 0xF);
-    }
-    else if (!(keyReq & (1 << 5))){
-      ret |= (m_inputRow1 & 0xF);
-    }
-    return ret;
->>>>>>> 3d2a4bba56067117f12a9d88fc009ec1881708e8
-  }
   return m_memory[address];
 }
 

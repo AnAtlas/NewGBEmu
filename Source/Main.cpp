@@ -10,11 +10,7 @@ int main() {
 
   Gameboy gameboy(window, false);
 
-<<<<<<< HEAD
   gameboy.insertRom("../TestRom/T.gb");
-=======
-  gameboy.insertRom("../TestRoms/MoonEye Tests/acceptance/rst_timing.gb");
->>>>>>> 3d2a4bba56067117f12a9d88fc009ec1881708e8
 
   std::thread gb(&Gameboy::play, &gameboy);
 
