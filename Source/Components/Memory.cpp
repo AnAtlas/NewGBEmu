@@ -138,7 +138,7 @@ byte Memory::readByte(word address) const {
     if (!m_inBios || address >= 0x100)
       return m_cartridge->readByte(address);
   }
-  if (address == Address::DivReg){
+  if (address == Address::DivReg)
     return (byte)((m_divRegister >> 8) & (word)0x00FF);
   return m_memory[address];
 }
