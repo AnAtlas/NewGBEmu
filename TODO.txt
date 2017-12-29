@@ -1,0 +1,4 @@
+﻿1. Limit VRam access from cpu depending on which mode the GPU is in
+	-If Gpu is in mode 2 (OAM) cpu reads from OAM will result in 0xFF
+ 	-Etc.
+

@@ -1,7 +1,0 @@
-/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles/install/strip.dir
-/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles/install/local.dir
-/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles/install.dir
-/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles/list_install_components.dir
-/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/derdro/CLionProjects/GBEmu/cmake-build-debug/CMakeFiles/GBEmu.dir

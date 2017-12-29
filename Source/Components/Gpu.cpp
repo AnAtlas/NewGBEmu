@@ -51,9 +51,9 @@ void Gpu::step(byte ticks){
   switch (mode){
     case GPUMode::H_BLANK:
       if (m_gpuClock >= GPUTimings::H_BLANK){
-        m_gpuClock = 0;
+        m_gpuClock -= GPUTimings::H_BLANK;
         m_memory.writeLineY(m_memory.readLineY() + (byte)1);
-        if (m_memory.readLineY() == 143){
+        if (m_memory.readLineY() == 144){
           //Enter VBlank
           setLcdMode(GPUMode::V_BLANK);
           m_memory.requestVBlankInterrupt();
@@ -75,7 +75,7 @@ void Gpu::step(byte ticks){
 
     case GPUMode::V_BLANK:
       if (m_gpuClock >= GPUTimings::V_BLANK){
-        m_gpuClock = 0;
+        m_gpuClock -= GPUTimings::V_BLANK;
         m_memory.writeLineY(m_memory.readLineY() + (byte)1);
         if (m_memory.readLineY() > 153){
           setLcdMode(GPUMode::OAM);
@@ -88,14 +88,14 @@ void Gpu::step(byte ticks){
 
     case GPUMode::OAM:
       if (m_gpuClock >= GPUTimings::ACCESS_OAM){
-        m_gpuClock = 0;
+        m_gpuClock -= GPUTimings::ACCESS_OAM;
         setLcdMode(GPUMode::VRAM);
       }
       break;
 
     case GPUMode::VRAM:
       if (m_gpuClock >= GPUTimings::ACCESS_VRAM){
-        m_gpuClock = 0;
+        m_gpuClock -= GPUTimings::ACCESS_VRAM;
         setLcdMode(GPUMode::H_BLANK);
         reqInt = (lcdStatus & LcdStat::H_BLANK_INT);
 
@@ -229,7 +229,12 @@ void Gpu::renderSprites() {
   //Check if sprites are enabled
   if (!(lcdControl & LCDControlFlags::SPRITE_DISPLAY_ENABLE))
     return;
+
+  bool use8x16 = false;
+  if (lcdControl & LCDControlFlags::SPRITE_SIZE)
+    use8x16 = true;
 }
+
 Color Gpu::getBackgroundPaletteShade(Color color) {
   byte bgPaletteData = m_memory.readBackgroundPalette();
   if (color == Color::WHITE)

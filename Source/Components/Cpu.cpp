@@ -43,7 +43,6 @@ byte Cpu::step() {
 #endif
     nextOp = readByteFromPC();
 #ifdef DEBUG
-<<<<<<< HEAD
     logFile << std::hex <<std::setfill('0') <<  " OP = " << std::setw(4) << (int)nextOp << " AF = " << std::setw(4) << (int)m_registers.af << " BC = " << std::setw(4) << (int)m_registers.bc << " DE = " << std::setw(4) << (int)m_registers.de << " HL = " << std::setw(4) << (int)m_registers.hl << " SP = " << std::setw(4) << (int)m_registers.sp;
     //logFile << std::hex <<  " OP = " << (int)nextOp << " AF = " << (int)m_registers.af << " BC = " << (int)m_registers.bc << " DE = " << (int)m_registers.de << " HL = " << (int)m_registers.hl;
 
