@@ -229,6 +229,12 @@
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/Bios.hpp">
 			<Option target="GBEmu"/>
 		</Unit>
+<<<<<<< HEAD
+=======
+		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/InterruptFlags.hpp">
+			<Option target="GBEmu"/>
+		</Unit>
+>>>>>>> 3d2a4bba56067117f12a9d88fc009ec1881708e8
 		<Unit filename="/home/derdro/CLionProjects/GBEmu/Source/Utilities/Types.hpp">
 			<Option target="GBEmu"/>
 		</Unit>

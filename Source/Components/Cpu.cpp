@@ -6,7 +6,7 @@
 #include <iomanip>
 #include "Cpu.hpp"
 
-#define DEBUG 1
+//#define DEBUG 1
 
 //Debug
 int opsRan = 0;
@@ -28,6 +28,7 @@ Cpu::~Cpu(){
 byte nextOp = 0;
 byte Cpu::step() {
   m_clock.ticks = 0;
+<<<<<<< HEAD
   opsRan++;
   if (m_registers.pc == Address::INT_JOYPAD){
     word op = opsRan;
@@ -39,15 +40,30 @@ byte Cpu::step() {
 #ifdef DEBUG
     logFile << std::hex << std::setfill('0') << std::setw(10) << opsRan << "  ";
     logFile << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc;
+=======
+
+  if (!m_halted){
+#ifdef DEBUG
+    //std::cout << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc;
+    std::cout << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc;
+>>>>>>> 3d2a4bba56067117f12a9d88fc009ec1881708e8
     //logFile << std::hex << (int) m_registers.pc;
  #endif
     nextOp = readByteFromPC();
 #ifdef DEBUG
+<<<<<<< HEAD
     logFile << std::hex <<std::setfill('0') <<  " OP = " << std::setw(4) << (int)nextOp << " AF = " << std::setw(4) << (int)m_registers.af << " BC = " << std::setw(4) << (int)m_registers.bc << " DE = " << std::setw(4) << (int)m_registers.de << " HL = " << std::setw(4) << (int)m_registers.hl << " SP = " << std::setw(4) << (int)m_registers.sp;
     //logFile << std::hex <<  " OP = " << (int)nextOp << " AF = " << (int)m_registers.af << " BC = " << (int)m_registers.bc << " DE = " << (int)m_registers.de << " HL = " << (int)m_registers.hl;
 
     logFile << "    Z:" << checkFlag(Flags::Z) << "   S:" << checkFlag(Flags::S) << "   C:" << checkFlag(Flags::C) << "   H:" << checkFlag(Flags::H) << std::endl;
     //std::cout << std::endl;
+=======
+    std::cout << std::hex <<std::setfill('0') <<  " OP = " << std::setw(4) << (int)nextOp << " AF = " << std::setw(4) << (int)m_registers.af << " BC = " << std::setw(4) << (int)m_registers.bc << " DE = " << std::setw(4) << (int)m_registers.de << " HL = " << std::setw(4) << (int)m_registers.hl;
+    //logFile << std::hex <<  " OP = " << (int)nextOp << " AF = " << (int)m_registers.af << " BC = " << (int)m_registers.bc << " DE = " << (int)m_registers.de << " HL = " << (int)m_registers.hl;
+
+    //logFile << "    Z:" << checkFlag(Flags::Z) << " S:" << checkFlag(Flags::S) << " C:" << checkFlag(Flags::C) << " H:" << checkFlag(Flags::H) << std::endl;
+    std::cout << std::endl;
+>>>>>>> 3d2a4bba56067117f12a9d88fc009ec1881708e8
 #endif
     if (m_cbMode)
       executeExtOpcode(nextOp);
@@ -68,9 +84,46 @@ byte Cpu::step() {
   }
 
   checkInterrupts();
+<<<<<<< HEAD
   return m_clock.ticks;
 }
 
+=======
+  opsRan++;
+  return m_clock.ticks;
+}
+
+byte Cpu::runOpcode(byte opCode) {
+  m_clock.ticks = 0;
+  if (!m_halted){
+    byte nextOp = opCode;
+#ifdef DEBUG
+      logFile << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc - 1;
+#endif
+    if (m_cbMode)
+      executeExtOpcode(nextOp);
+    else
+      executeOpcode(nextOp);
+#ifdef DEBUG
+      logFile << std::hex <<std::setfill('0') <<  "  OP:" << std::setw(4) << (int)nextOp << "  AF:" << std::setw(4) << (int)m_registers.af << "  BC:" << std::setw(4) << (int)m_registers.bc << "  DE:" << std::setw(4) << (int)m_registers.de << "  HL:" << std::setw(4) << (int)m_registers.hl << std::endl;
+      //logFile << "    Z:" << checkFlag(Flags::Z) << " S:" << checkFlag(Flags::S) << " C:" << checkFlag(Flags::C) << " H:" << checkFlag(Flags::H) << std::endl;
+#endif
+  }
+  else
+    m_clock.ticks = 4;
+
+  //Enabling interrupts happens after the next opcode is finished
+  if (m_pendingMasterInterruptEnable){
+    if (m_memory.readByte(m_registers.pc -(byte)1) != 0xFB){
+      m_pendingMasterInterruptEnable = false;
+      m_masterInterruptEnabled = true;
+    }
+  }
+  checkInterrupts();
+  return m_clock.ticks;
+}
+
+>>>>>>> 3d2a4bba56067117f12a9d88fc009ec1881708e8
 byte Cpu::readByteFromPC() {
   m_registers.pc++;
   return m_memory.readByte(m_registers.pc-(word)1);
