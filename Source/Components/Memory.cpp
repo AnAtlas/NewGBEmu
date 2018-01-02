@@ -13,7 +13,7 @@ enum InterruptFlags{
   JOYPAD = 1 << 4
 };
 
-Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios), m_divRegister(0),
+Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios), m_divRegister(0), m_input((InputMemoryInterface&) *this),
   m_romRange(Cartridge::CartAddress::ROM_BANK0, Cartridge::CartAddress::ROM_BANKX_END),
   m_ramRange(Cartridge::CartAddress::RAM_BANK, Cartridge::CartAddress::RAM_BANK_END),
   m_wRamRange(Address::Wram, Address::Wram + 0x1FFF),
@@ -127,6 +127,10 @@ void Memory::writeByte(word address, byte value) {
     value |= 0xC0;
     m_memory[address] &= 0b00001111;
     m_memory[address] |= value;
+    if (~m_memory[address] & Input::P1Bits::P14)
+      m_input.checkP14Inputs();
+    if (~m_memory[address] & Input::P1Bits::P15)
+      m_input.checkP15Inputs();
     return;
   }
 

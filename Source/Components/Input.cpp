@@ -18,32 +18,31 @@ Input::Input(InputMemoryInterface& memory): m_memory(memory)
   m_keyRight = sf::Keyboard::Right;
 }
 
-void Input::checkInputs() {
+void Input::checkP14Inputs() {
   byte output = 0x0F;
   byte currentP1 = m_memory.readP1();
-  if (~currentP1 & (byte)0b00010000){
-    for (int i = 0; i < 4; i++){
-      if (sf::Keyboard::isKeyPressed(*m_rowP14[i]))
-        checkForInterrupt(currentP1, (byte)i);
-        resetBit(output, (byte)i);
+  for (byte i = 3; i < 255; --i){
+    if (sf::Keyboard::isKeyPressed(*m_rowP14[i])){
+      checkForInterrupt(currentP1, i);
+      output &= ~(1 << i);
     }
   }
-  if (~currentP1 & (byte)0b00100000){
-    for (int i = 0; i < 4; i++){
-      if (sf::Keyboard::isKeyPressed(*m_rowP15[i]))
-        checkForInterrupt(currentP1, (byte)i);
-        resetBit(output, (byte)i);
+  m_memory.writeP1Inputs(output);
+}
+
+void Input::checkP15Inputs() {
+  byte output = 0x0F;
+  byte currentP1 = m_memory.readP1();
+  for (byte i = 3; i < 255; --i){
+    if (sf::Keyboard::isKeyPressed(*m_rowP15[i])){
+      checkForInterrupt(currentP1, i);
+      output &= ~(1 << i);
     }
   }
   m_memory.writeP1Inputs(output);
 }
 
 void Input::checkForInterrupt(byte currentP1, byte bit){
-  if (!(~currentP1 & (byte)1 << (3 - bit)))
+  if (currentP1 & (1 << bit))
     m_memory.requestInputInterrupt();
-}
-
-void Input::resetBit(byte& val, byte bit) {
-  byte tmp = (byte)1 << (3 - bit);
-  val &= ~tmp;
 }

@@ -20,13 +20,18 @@ private:
   sf::Keyboard::Key m_keyLeft;
   sf::Keyboard::Key m_keyRight;
 
-  sf::Keyboard::Key* m_rowP14 [4]{&m_keyStart, &m_keySelect, &m_keyB, &m_keyA};
-  sf::Keyboard::Key* m_rowP15 [4]{&m_keyDown, &m_keyUp, &m_keyLeft, &m_keyRight};
+  sf::Keyboard::Key* m_rowP14 [4]{&m_keyA, &m_keyB, &m_keySelect, &m_keyStart};
+  sf::Keyboard::Key* m_rowP15 [4]{&m_keyRight, &m_keyLeft, &m_keyUp, &m_keyDown};
 
-  void resetBit(byte& val, byte bit);
   void checkForInterrupt(byte currentP1, byte bit);
 public:
   Input(InputMemoryInterface& memory);
-  void checkInputs();
+  void checkP14Inputs();
+  void checkP15Inputs();
+
+  enum P1Bits{
+    P14 = 1 << 5,
+    P15 = 1 << 4
+  };
 };
 #endif //GBEMU_INPUT_HPP

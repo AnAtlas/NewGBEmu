@@ -13,7 +13,6 @@
 #include "Components/Timer.hpp"
 #include "Cartridges/Cartridge.hpp"
 #include "Cartridges/CartridgeFactory.hpp"
-#include "Components/Input.hpp"
 
 class Gameboy
 {
@@ -22,7 +21,6 @@ private:
   Cpu m_cpu;
   Gpu m_gpu;
   Timer m_timer;
-  Input m_input;
   CartridgeFactory m_cartFact;
   std::shared_ptr<Cartridge> m_cartridge;
 
@@ -39,7 +37,5 @@ public:
   void play();
   void shutDown();
   void setFrameLimit(bool on);
-  void buttonDown(sf::Keyboard::Key);
-  void buttonUp(sf::Keyboard::Key);
 };
 #endif //NEWGBEMU_GAMEBOY_HPP

@@ -11,6 +11,7 @@
 #include "GpuMemoryInterface.hpp"
 #include "TimerMemoryInterface.hpp"
 #include "InputMemoryInterface.hpp"
+#include "Input.hpp"
 
 class Memory : public CpuMemoryInterface, GpuMemoryInterface, TimerMemoryInterface, InputMemoryInterface
 {
@@ -33,6 +34,7 @@ private:
     byte m_memory[0xFFFF];
   };
   std::shared_ptr<Cartridge> m_cartridge;
+  Input m_input;
 
   AddressRange m_romRange;
   AddressRange m_ramRange;
@@ -41,8 +43,6 @@ private:
 
   word m_divRegister;
   bool m_inBios;
-  byte m_inputRow1;
-  byte m_inputRow2;
 
   bool addressOnCartridge(word address) const;
 

@@ -260,8 +260,8 @@ void Gpu::renderSprites() {
       charCode &= (~1);
 
     //Check if this scanline will even touch this sprite
-    //if (lineY < yPos || lineY > (yPos + m_spriteHeight))
-    //  return;
+    if (lineY < yPos || lineY > (yPos + m_spriteHeight))
+      continue;
 
     priority = (attrData & SpriteAttribute::PRIORITY);
     yFlip = (attrData & SpriteAttribute::Y_FLIP);
