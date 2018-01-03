@@ -40,7 +40,7 @@ void Gameboy::play() {
     m_gpu.step(ticks);
     if (m_gpu.frameDone()){
       if (m_frameLimited)
-        sf::sleep(sf::seconds((float)0.01667) - m_frameTimer.restart());
+        sf::sleep(sf::seconds((float)0.022) - m_frameTimer.restart());
     }
   }
 }

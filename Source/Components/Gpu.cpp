@@ -2,6 +2,7 @@
 // Created by derdro on 12/19/17.
 //
 #include <cstring>
+#include <cassert>
 #include "Gpu.hpp"
 
 const RGB Palette[4] = {
@@ -30,7 +31,7 @@ Gpu::Gpu(sf::RenderWindow& window, GpuMemoryInterface& memory)
   m_texture.setSmooth(false);
   m_texture.update((const sf::Uint8*)m_frameBuffer, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0);
   m_sprite.setTexture(m_texture);
-  m_sprite.setScale(2.0,2.0);
+  m_sprite.setScale(window.getSize().x / SCREEN_WIDTH, window.getSize().y / SCREEN_HEIGHT);
 }
 
 
@@ -39,7 +40,6 @@ void Gpu::step(byte ticks){
   byte lcdStatus = m_memory.readLcdStatus();
   byte lineY = m_memory.readLineY();
 
-  m_frameDone = false;
   if (!(lcdControlReg & LCDControlFlags::DISPLAY_ENABLE)){
     m_memory.writeLineY(0);
     setLcdMode(GPUMode::V_BLANK);
@@ -89,6 +89,7 @@ void Gpu::step(byte ticks){
       break;
 
     case GPUMode::OAM:
+      m_frameDone = false;
       if (m_gpuClock >= GPUTimings::ACCESS_OAM){
         m_gpuClock -= GPUTimings::ACCESS_OAM;
         setLcdMode(GPUMode::VRAM);
@@ -250,7 +251,7 @@ void Gpu::renderSprites() {
     //Each sprite has 4 bytes of data
     index = (byte)(i*4);
     yPos = m_memory.readOam(index) - (byte)16; //the - 16 just is
-    xPos = m_memory.readOam(index + (byte)1) - (byte)8; //the -8 just is
+    xPos = m_memory.readOam(index + (byte)1) - (byte)8; //the - 8 just is
     charCode = m_memory.readOam(index + (byte)2); //Specifies tile number 0x00-0xFF from tile memory at 0x8000 - 0x8FFF
     attrData = m_memory.readOam(index + (byte)3); //Flags according to the sprite
 
@@ -260,7 +261,7 @@ void Gpu::renderSprites() {
       charCode &= (~1);
 
     //Check if this scanline will even touch this sprite
-    if (lineY < yPos || lineY > (yPos + m_spriteHeight))
+    if (lineY < yPos || lineY >= (yPos + m_spriteHeight))
       continue;
 
     priority = (attrData & SpriteAttribute::PRIORITY);
@@ -288,10 +289,10 @@ void Gpu::renderSprites() {
       byte colorNum = (getBit(pixelData1, (byte)7-spritePixel) << 1) | (getBit(pixelData2, (byte)7-spritePixel));
 
       //ColorNum of 0 means pixel is transparent
-      if (colorNum == 0x00)
+      if (!colorNum)
         continue;
       //with priority 0x01 if the background pixel isn't white, the sprite isn't drawn
-      if (priority == 0x01 && !backgroundPixelIsWhite)
+      if (priority && !backgroundPixelIsWhite)
         continue;
       RGB pixelColor = Palette[getObjectPaletteShade(palette, (Color)colorNum)];
       m_frameBuffer[lineY * SCREEN_WIDTH + x] = pixelColor;
@@ -305,30 +306,24 @@ RGB Gpu::getPixelAt(byte x, byte y) {
 
 Color Gpu::getObjectPaletteShade(bool palette1, Color color){
   byte objPaletteData = (palette1) ? m_memory.readObjectPalette1() : m_memory.readObjectPalette0();
-  if (color == Color::WHITE)
-    return (Color)((objPaletteData) & 0x3);
-  if (color == Color::LIGHT_GRAY)
-    return (Color)(((objPaletteData) & 0xC) >> 2);
-  if (color == Color::DARK_GRAY)
-    return (Color)(((objPaletteData) & 0x30) >> 4);
-  if (color == Color::BLACK)
-    return (Color)(((objPaletteData) & 0xC0) >> 6);
-
-  return Color::WHITE;
+  switch (color){
+    case Color::WHITE: return (Color)((objPaletteData) & 0x3);
+    case Color::LIGHT_GRAY: return (Color)(((objPaletteData) & 0xC) >> 2);
+    case Color::DARK_GRAY: return (Color)(((objPaletteData) & 0x30) >> 4);
+    case Color::BLACK: return (Color)(((objPaletteData) & 0xC0) >> 6);
+    default: assert(false);
+  }
 }
 
 Color Gpu::getBackgroundPaletteShade(Color color) {
   byte bgPaletteData = m_memory.readBackgroundPalette();
-  if (color == Color::WHITE)
-    return (Color)((bgPaletteData) & 0x3);
-  if (color == Color::LIGHT_GRAY)
-    return (Color)(((bgPaletteData) & 0xC) >> 2);
-  if (color == Color::DARK_GRAY)
-    return (Color)(((bgPaletteData) & 0x30) >> 4);
-  if (color == Color::BLACK)
-    return (Color)(((bgPaletteData) & 0xC0) >> 6);
-
-  return Color::WHITE;
+  switch (color){
+    case Color::WHITE: return (Color)((bgPaletteData) & 0x3);
+    case Color::LIGHT_GRAY: return (Color)(((bgPaletteData) & 0xC) >> 2);
+    case Color::DARK_GRAY: return (Color)(((bgPaletteData) & 0x30) >> 4);
+    case Color::BLACK: return (Color)(((bgPaletteData) & 0xC0) >> 6);
+    default: assert(false);
+  }
 }
 
 bool Gpu::frameDone() {
