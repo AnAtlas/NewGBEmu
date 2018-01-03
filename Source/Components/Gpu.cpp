@@ -251,6 +251,11 @@ void Gpu::renderSprites() {
     //Each sprite has 4 bytes of data
     index = (byte)(i*4);
     yPos = m_memory.readOam(index) - (byte)16; //the - 16 just is
+
+    //Check if this scanline will even touch this sprite
+    if (lineY < yPos || lineY >= (yPos + m_spriteHeight))
+      continue;
+
     xPos = m_memory.readOam(index + (byte)1) - (byte)8; //the - 8 just is
     charCode = m_memory.readOam(index + (byte)2); //Specifies tile number 0x00-0xFF from tile memory at 0x8000 - 0x8FFF
     attrData = m_memory.readOam(index + (byte)3); //Flags according to the sprite
@@ -259,10 +264,6 @@ void Gpu::renderSprites() {
     //Of tiles are left
     if (m_spriteHeight == 16)
       charCode &= (~1);
-
-    //Check if this scanline will even touch this sprite
-    if (lineY < yPos || lineY >= (yPos + m_spriteHeight))
-      continue;
 
     priority = (attrData & SpriteAttribute::PRIORITY);
     yFlip = (attrData & SpriteAttribute::Y_FLIP);

@@ -5,12 +5,12 @@
 
 int main() {
   XInitThreads();
-  sf::RenderWindow window(sf::VideoMode(320, 288), "NewGBEmu!");
+  sf::RenderWindow window(sf::VideoMode(640, 576), "NewGBEmu!");
   window.setActive(false);
 
   Gameboy gameboy(window, false);
   gameboy.setFrameLimit(true);
-  gameboy.insertRom("../Roms/T.gb");
+  gameboy.insertRom("../Roms/P-Red.gb");
 
   std::thread gb(&Gameboy::play, &gameboy);
 
