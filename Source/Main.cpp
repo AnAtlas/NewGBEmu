@@ -5,7 +5,7 @@
 
 int main() {
   XInitThreads();
-  sf::RenderWindow window(sf::VideoMode(640, 576), "NewGBEmu!");
+  sf::RenderWindow window(sf::VideoMode(160, 144), "NewGBEmu!");
   window.setActive(false);
 
   Gameboy gameboy(window, false);

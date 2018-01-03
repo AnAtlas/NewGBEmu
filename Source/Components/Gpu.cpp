@@ -287,7 +287,7 @@ void Gpu::renderSprites() {
       byte spritePixel = (xFlip) ? (pixel - (byte)7) * (char)-1 : pixel;
       bool backgroundPixelIsWhite = getPixelAt(x, lineY) == Palette[Color::WHITE];
       //Color num is the corresponding pair of bits from pixelData1 and pixelData2
-      byte colorNum = (getBit(pixelData1, (byte)7-spritePixel) << 1) | (getBit(pixelData2, (byte)7-spritePixel));
+      byte colorNum = (getBit(pixelData1, (byte)7-spritePixel)) | (getBit(pixelData2, (byte)7-spritePixel) << 1);
 
       //ColorNum of 0 means pixel is transparent
       if (!colorNum)
