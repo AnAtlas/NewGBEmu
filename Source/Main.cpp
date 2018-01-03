@@ -1,10 +1,10 @@
-#include "Gameboy.hpp"
-#include "Utilities/Settings.hpp"
 #include <SFML/Graphics.hpp>
 #include <thread>
 #include <X11/Xlib.h>
 
-void loadSettings();
+#include "Gameboy.hpp"
+
+
 int main() {
   XInitThreads();
   Settings& settings = Settings::getInstance();
@@ -46,8 +46,4 @@ int main() {
   sf::sleep(sf::milliseconds(100));
 
   return 0;
-}
-
-void loadSettings(){
-
 }

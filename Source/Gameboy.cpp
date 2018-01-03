@@ -17,18 +17,17 @@ Gameboy::Gameboy(sf::RenderWindow &window, bool runBios)
 
 bool Gameboy::insertRom(const std::string &romPath) {
   m_cartridge = m_cartFact.generateCartridge(romPath);
-  if (!m_cartridge){
-    std::cout << "ERROR: Cannot find rom at " << romPath << std::endl;
-  }
-  assert(m_cartridge);
+  assert(m_cartridge && "ERROR LOADING CARTRIDGE AT SPECIFIED ROM PATH");
   m_cartridge->loadCartridge();
   m_memory.linkCartridge(m_cartridge);
 }
 
 void Gameboy::play() {
-  auto begin = std::chrono::high_resolution_clock::now();
   m_running = true;
   byte ticks;
+
+  auto begin = std::chrono::high_resolution_clock::now();
+
   while(m_running){
     if (m_paused){
       std::this_thread::sleep_for(std::chrono::milliseconds(25));

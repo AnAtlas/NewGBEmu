@@ -59,9 +59,8 @@ public:
   }
 
   void writeByte(word address, byte value) {
-    if (m_enabled){
+    if (m_enabled)
       m_ramBank[address - 0xA000] = value;
-    }
   }
 
   byte readByte(word address) const {
