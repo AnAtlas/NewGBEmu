@@ -1,12 +1,11 @@
 //
 // Created by Derek on 12/17/2017.
 //
-#include <SFML/System.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include <cassert>
+#include <chrono>
+#include <thread>
 #include "Gameboy.hpp"
-#include "Components/GpuMemoryInterface.hpp"
-#include "Components/CpuMemoryInterface.hpp"
 
 
 Gameboy::Gameboy(sf::RenderWindow &window, bool runBios)
@@ -27,20 +26,24 @@ bool Gameboy::insertRom(const std::string &romPath) {
 }
 
 void Gameboy::play() {
+  auto begin = std::chrono::high_resolution_clock::now();
   m_running = true;
-  m_frameTimer.restart();
   byte ticks;
   while(m_running){
     if (m_paused){
-      sf::sleep(sf::milliseconds(25));
+      std::this_thread::sleep_for(std::chrono::milliseconds(25));
       continue;
     }
     ticks = m_cpu.step();
     m_timer.step(ticks);
     m_gpu.step(ticks);
     if (m_gpu.frameDone()){
-      if (m_frameLimited)
-        sf::sleep(sf::seconds((float)0.022) - m_frameTimer.restart());
+      if (m_frameLimited) {
+        auto end = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
+        std::this_thread::sleep_for(std::chrono::milliseconds(16) - duration);
+        begin = std::chrono::high_resolution_clock::now();
+      }
     }
   }
 }

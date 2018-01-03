@@ -5,7 +5,6 @@
 #ifndef NEWGBEMU_GAMEBOY_HPP
 #define NEWGBEMU_GAMEBOY_HPP
 
-#include <SFML/Window/Keyboard.hpp>
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "Components/Memory.hpp"
 #include "Components/Cpu.hpp"
@@ -28,7 +27,6 @@ private:
   bool m_paused;
   bool m_frameLimited;
   sf::RenderWindow& m_window;
-  sf::Clock m_frameTimer;
 
 public:
   Gameboy(sf::RenderWindow& window, bool runBios);
