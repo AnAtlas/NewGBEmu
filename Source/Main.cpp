@@ -1,16 +1,32 @@
 #include "Gameboy.hpp"
+#include "Utilities/Settings.hpp"
 #include <SFML/Graphics.hpp>
 #include <thread>
 #include <X11/Xlib.h>
 
+void loadSettings();
 int main() {
   XInitThreads();
-  sf::RenderWindow window(sf::VideoMode(160, 144), "NewGBEmu!");
+  Settings& settings = Settings::getInstance();
+
+  unsigned int windowWidth, windowHeight;
+  settings.getSetting("WindowWidth", windowWidth);
+  settings.getSetting("WindowHeight", windowHeight);
+  sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewGBEmu!");
   window.setActive(false);
 
-  Gameboy gameboy(window, true);
-  gameboy.setFrameLimit(false);
-  gameboy.insertRom("../Roms/P-Red.gb");
+  bool runBios;
+  settings.getSetting("RunBios", runBios);
+  Gameboy gameboy(window, runBios);
+
+  bool frameLimit;
+  settings.getSetting("FrameLimit", frameLimit);
+  gameboy.setFrameLimit(frameLimit);
+  std::string curRom, romDir, saveDir;
+  settings.getSetting("CurrentRom", curRom);
+  settings.getSetting("RomDir", romDir);
+  settings.getSetting("SaveDir", saveDir);
+  gameboy.insertRom(romDir + curRom);
 
   std::thread gb(&Gameboy::play, &gameboy);
 
@@ -30,4 +46,8 @@ int main() {
   sf::sleep(sf::milliseconds(100));
 
   return 0;
+}
+
+void loadSettings(){
+
 }

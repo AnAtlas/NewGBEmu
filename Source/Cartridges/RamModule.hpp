@@ -7,7 +7,7 @@
 
 
 #include "../Utilities/Types.hpp"
-#include "../Utilities/Paths.hpp"
+#include "../Utilities/Settings.hpp"
 
 class RamModule{
 public:
@@ -38,7 +38,10 @@ public:
     if (m_ramSize == KB_0)
       return;
     std::ifstream inFile;
-    inFile.open(SAVE_PATH + romName + ".sav", std::ios::in | std::ios::binary);
+    Settings& settings = Settings::getInstance();
+    std::string savePath;
+    settings.getSetting("SaveDir", savePath);
+    inFile.open(savePath + romName + ".sav", std::ios::in | std::ios::binary);
     inFile.read((char*)m_ramTotal, RamSizeKB[m_ramSize]);
     inFile.close();
   }
@@ -47,7 +50,10 @@ public:
     if (m_ramSize == KB_0)
       return;
     std::ofstream outFile;
-    outFile.open(SAVE_PATH + romName + ".sav", std::ios::out | std::ios::binary);
+    Settings& settings = Settings::getInstance();
+    std::string savePath;
+    settings.getSetting("SaveDir", savePath);
+    outFile.open(savePath + romName + ".sav", std::ios::out | std::ios::binary);
     outFile.write((const char*)m_ramTotal, RamSizeKB[m_ramSize]);
     outFile.close();
   }
