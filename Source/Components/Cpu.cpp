@@ -29,24 +29,18 @@ byte nextOp = 0;
 byte Cpu::step() {
   m_clock.ticks = 0;
   opsRan++;
-  if (m_registers.pc == Address::INT_JOYPAD){
-    word op = opsRan;
-    opsRan = 0;
-    opsRan = op;
-  }
-
   if (!m_halted){
 #ifdef DEBUG
-    logFile << std::hex << std::setfill('0') << std::setw(10) << opsRan << "  ";
-    logFile << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc;
+    std::cout << std::hex << std::setfill('0') << std::setw(10) << opsRan << "  ";
+    std::cout << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc;
     //logFile << std::hex << (int) m_registers.pc;
 #endif
     nextOp = readByteFromPC();
 #ifdef DEBUG
-    logFile << std::hex <<std::setfill('0') <<  " OP = " << std::setw(4) << (int)nextOp << " AF = " << std::setw(4) << (int)m_registers.af << " BC = " << std::setw(4) << (int)m_registers.bc << " DE = " << std::setw(4) << (int)m_registers.de << " HL = " << std::setw(4) << (int)m_registers.hl << " SP = " << std::setw(4) << (int)m_registers.sp;
+    std::cout << std::hex <<std::setfill('0') <<  " OP = " << std::setw(4) << (int)nextOp << " AF = " << std::setw(4) << (int)m_registers.af << " BC = " << std::setw(4) << (int)m_registers.bc << " DE = " << std::setw(4) << (int)m_registers.de << " HL = " << std::setw(4) << (int)m_registers.hl << " SP = " << std::setw(4) << (int)m_registers.sp;
     //logFile << std::hex <<  " OP = " << (int)nextOp << " AF = " << (int)m_registers.af << " BC = " << (int)m_registers.bc << " DE = " << (int)m_registers.de << " HL = " << (int)m_registers.hl;
 
-    logFile << "    Z:" << checkFlag(Flags::Z) << "   S:" << checkFlag(Flags::S) << "   C:" << checkFlag(Flags::C) << "   H:" << checkFlag(Flags::H) << std::endl;
+    std::cout << "    Z:" << checkFlag(Flags::Z) << "   S:" << checkFlag(Flags::S) << "   C:" << checkFlag(Flags::C) << "   H:" << checkFlag(Flags::H) << std::endl;
     //std::cout << std::endl;
 #endif
     if (m_cbMode)
@@ -112,6 +106,10 @@ void Cpu::serviceInterrupt(byte bit) {
   m_halted = false;
   if (!m_masterInterruptEnabled)
     return;
+  if (m_cbMode){
+    m_registers.pc--;
+    m_cbMode = false;
+  }
   pushWordToStack(m_registers.pc);
 
   switch(bit){

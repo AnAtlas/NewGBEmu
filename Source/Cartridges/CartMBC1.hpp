@@ -42,6 +42,7 @@ public:
   explicit CartMBC1(CartType cartType, std::string romPath, RamModule::RamSize ramSize);
 
   bool loadCartridge() override;
+  void shutDown() override;
   byte readByte(word address) const override;
   void writeByte(word address, byte value) override;
 };

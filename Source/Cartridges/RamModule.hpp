@@ -7,6 +7,7 @@
 
 
 #include "../Utilities/Types.hpp"
+#include "../Utilities/Paths.hpp"
 
 class RamModule{
 public:
@@ -19,6 +20,8 @@ public:
     KB_64 = 5 // 8 Banks
   };
 
+  const int RamSizeKB [6] = {0, 2048, 8192, 32768, 131072, 65536};
+
 private:
   byte* m_ramBank;
   byte m_ramTotal[0x2C000];
@@ -29,6 +32,24 @@ public:
   explicit RamModule(RamSize ramSize)
     :m_enabled(false), m_ramSize(ramSize), m_ramBank(m_ramTotal), m_ramTotal{0} {
 
+  }
+
+  void load(std::string romName){
+    if (m_ramSize == KB_0)
+      return;
+    std::ifstream inFile;
+    inFile.open(SAVE_PATH + romName + ".sav", std::ios::in | std::ios::binary);
+    inFile.read((char*)m_ramTotal, RamSizeKB[m_ramSize]);
+    inFile.close();
+  }
+
+  void save(std::string romName){
+    if (m_ramSize == KB_0)
+      return;
+    std::ofstream outFile;
+    outFile.open(SAVE_PATH + romName + ".sav", std::ios::out | std::ios::binary);
+    outFile.write((const char*)m_ramTotal, RamSizeKB[m_ramSize]);
+    outFile.close();
   }
 
   void writeByte(word address, byte value) {

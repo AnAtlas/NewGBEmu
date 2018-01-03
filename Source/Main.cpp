@@ -8,8 +8,8 @@ int main() {
   sf::RenderWindow window(sf::VideoMode(160, 144), "NewGBEmu!");
   window.setActive(false);
 
-  Gameboy gameboy(window, false);
-  gameboy.setFrameLimit(true);
+  Gameboy gameboy(window, true);
+  gameboy.setFrameLimit(false);
   gameboy.insertRom("../Roms/P-Red.gb");
 
   std::thread gb(&Gameboy::play, &gameboy);

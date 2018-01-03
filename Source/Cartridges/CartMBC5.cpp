@@ -19,8 +19,15 @@ CartMBC5::CartMBC5(CartType cartType, std::string romPath, RamModule::RamSize ra
 
 bool CartMBC5::loadCartridge() {
   bool retVal = loadRomBank0() && loadRomBankX(1);
-
+  if (m_hasBattery)
+    m_ramModule.load(getRomName());
   return retVal;
+}
+
+void CartMBC5::shutDown() {
+  if (m_hasBattery){
+    m_ramModule.save(getRomName());
+  }
 }
 
 void CartMBC5::writeByte(word address, byte value) {

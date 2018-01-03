@@ -15,6 +15,7 @@ public:
   explicit CartRomOnly(std::string romPath);
 
   bool loadCartridge() override;
+  void shutDown() override{};
   byte readByte(word address) const override;
   void writeByte(word address, byte value) override;
 };

@@ -83,6 +83,7 @@ public:
 
   //These functions are overloaded by the appropriate cart representation
   virtual bool loadCartridge() = 0;
+  virtual void shutDown() = 0;
   virtual byte readByte(word address) const = 0;
   virtual void writeByte(word address, byte value) = 0;
 

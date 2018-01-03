@@ -50,5 +50,6 @@ void Gameboy::setFrameLimit(bool on){
 }
 
 void Gameboy::shutDown() {
+  m_cartridge->shutDown();
   m_running = false;
 }
