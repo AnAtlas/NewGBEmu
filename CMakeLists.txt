@@ -3,7 +3,9 @@ project(GBEmu)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(GCC_COVERAGE_LINK_FLAGS "-lX11")
+if (UNIX)
+  set(GCC_COVERAGE_LINK_FLAGS "-lX11")
+endif(UNIX)
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
 set(SOURCE_FILES Source/Main.cpp Source/Cartridges/CartRomOnly.cpp Source/Cartridges/Cartridge.cpp Source/Cartridges/CartMBC1.cpp  Source/Cartridges/CartMBC3.cpp Source/Cartridges/CartMBC5.cpp Source/Gameboy.cpp Source/Components/Memory.cpp Source/Components/Cpu.cpp Source/Components/CpuOpcodeTable.cpp Source/Components/Gpu.cpp Source/Components/Timer.cpp Source/Components/Input.cpp)
@@ -16,16 +18,25 @@ add_executable(GBEmu ${SOURCE_FILES} ${HEADER_FILES})
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 #Find any version 2.X of SFML
 #See the FindSFML.cmake file for additional details and instructions
+set(SFML_STATIC_LIBRARIES TRUE)
+set(SFML_ROOT ${PROJECT_SOURCE_DIR}/SFML-2.4.2)
 find_package(SFML 2 REQUIRED network audio graphics window system)
-find_package(X11 REQUIRED)
+if (UNIX)
+    find_package(X11 REQUIRED)
+endif(UNIX)
 
 #Add thread libraries
-find_package(Threads)
-target_link_libraries(GBEmu ${CMAKE_THREAD_LIBS_INIT})
+#if (UNIX)
+    find_package(Threads)
+    target_link_libraries(GBEmu ${CMAKE_THREAD_LIBS_INIT})
+#endif(UNIX)
 
 if(SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
-    target_link_libraries(GBEmu ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} X11)
+    target_link_libraries(GBEmu ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+    if (UNIX)
+        target_link_libraries(GBEmu X11)
+    endif(UNIX)
 endif()
 
 # Install target

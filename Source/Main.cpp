@@ -1,12 +1,15 @@
 #include <SFML/Graphics.hpp>
 #include <thread>
+#ifdef __linux__
 #include <X11/Xlib.h>
-
+#endif
 #include "Gameboy.hpp"
 
 
 int main() {
+#ifdef __linux__
   XInitThreads();
+#endif
   Settings& settings = Settings::getInstance();
 
   unsigned int windowWidth, windowHeight;
