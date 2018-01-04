@@ -31,7 +31,6 @@ private:
 public:
   explicit RamModule(RamSize ramSize)
     :m_enabled(false), m_ramSize(ramSize), m_ramBank(m_ramTotal), m_ramTotal{0} {
-
   }
 
   void load(std::string romName){

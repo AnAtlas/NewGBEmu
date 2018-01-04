@@ -18,8 +18,8 @@ add_executable(GBEmu ${SOURCE_FILES} ${HEADER_FILES})
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 #Find any version 2.X of SFML
 #See the FindSFML.cmake file for additional details and instructions
-set(SFML_STATIC_LIBRARIES TRUE)
-set(SFML_ROOT ${PROJECT_SOURCE_DIR}/SFML-2.4.2)
+#set(SFML_STATIC_LIBRARIES TRUE)
+#set(SFML_ROOT ${PROJECT_SOURCE_DIR}/SFML-2.4.2)
 find_package(SFML 2 REQUIRED network audio graphics window system)
 if (UNIX)
     find_package(X11 REQUIRED)

@@ -5,6 +5,7 @@
 #include <cassert>
 #include <chrono>
 #include <thread>
+#include <iomanip>
 #include "Gameboy.hpp"
 
 
@@ -54,4 +55,16 @@ void Gameboy::setFrameLimit(bool on){
 void Gameboy::shutDown() {
   m_cartridge->shutDown();
   m_running = false;
+}
+
+//Debug
+void Gameboy::printOam() {
+  std::cout << "Sprite YPos XPos CharCode Attr" << std::endl;
+  for (int i = 0; i < 40; i++){
+    std::cout << std::setw(4) <<  i;
+    for (int j = 0; j < 4; j++){
+      std::cout << std::setw(6) << (int)m_memory.readByte((word)0xFE00 + (word)i * (word)4 + (word)j) ;
+    }
+    std::cout << std::endl;
+  }
 }

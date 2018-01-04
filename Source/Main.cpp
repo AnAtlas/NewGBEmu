@@ -5,30 +5,23 @@
 #endif
 #include "Gameboy.hpp"
 
+unsigned int windowWidth, windowHeight;
+bool runBios, frameLimit;
+std::string curRom, romDir, saveDir;
+void loadSettings();
 
 int main() {
 #ifdef __linux__
   XInitThreads();
 #endif
-  Settings& settings = Settings::getInstance();
+  loadSettings();
 
-  unsigned int windowWidth, windowHeight;
-  settings.getSetting("WindowWidth", windowWidth);
-  settings.getSetting("WindowHeight", windowHeight);
   sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewGBEmu!");
   window.setActive(false);
 
-  bool runBios;
-  settings.getSetting("RunBios", runBios);
   Gameboy gameboy(window, runBios);
-
-  bool frameLimit;
-  settings.getSetting("FrameLimit", frameLimit);
   gameboy.setFrameLimit(frameLimit);
-  std::string curRom, romDir, saveDir;
-  settings.getSetting("CurrentRom", curRom);
-  settings.getSetting("RomDir", romDir);
-  settings.getSetting("SaveDir", saveDir);
+
   gameboy.insertRom(romDir + curRom);
 
   std::thread gb(&Gameboy::play, &gameboy);
@@ -41,12 +34,32 @@ int main() {
       else if (event.type == sf::Event::Resized){
         window.setSize(sf::Vector2u(event.size.width, event.size.height));
       }
+      else if (event.type == sf::Event::KeyPressed){
+        switch (event.key.code){
+          case sf::Keyboard::P: gameboy.printOam(); break;
+          case sf::Keyboard::R: gameboy.unpause(); break;
+          case sf::Keyboard::S: gameboy.pause(); break;
+        }
+      }
     }
+    std::this_thread::sleep_for(std::chrono::milliseconds(2));
   }
-
   gameboy.shutDown();
   gb.join();
-  sf::sleep(sf::milliseconds(100));
-
+  std::this_thread::sleep_for(std::chrono::milliseconds(100));
   return 0;
+}
+
+void loadSettings(){
+  Settings& settings = Settings::getInstance();
+
+  settings.getSetting("WindowWidth", windowWidth);
+  settings.getSetting("WindowHeight", windowHeight);
+
+  settings.getSetting("RunBios", runBios);
+  settings.getSetting("FrameLimit", frameLimit);
+
+  settings.getSetting("CurrentRom", curRom);
+  settings.getSetting("RomDir", romDir);
+  settings.getSetting("SaveDir", saveDir);
 }

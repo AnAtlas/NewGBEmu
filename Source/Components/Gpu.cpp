@@ -236,8 +236,8 @@ void Gpu::renderSprites() {
   m_spriteHeight = (lcdControl & LCDControlFlags::SPRITE_SIZE) ? (byte)16 : (byte)8;
 
   byte index = 0;
-  byte yPos = 0;
-  byte xPos = 0;
+  int yPos = 0;
+  int xPos = 0;
   byte charCode = 0;
   byte attrData = 0;
 
@@ -257,6 +257,10 @@ void Gpu::renderSprites() {
       continue;
 
     xPos = m_memory.readOam(index + (byte)1) - (byte)8; //the - 8 just is
+    //Check if Sprite is on screen
+    if (xPos < -7 || xPos >= SCREEN_WIDTH)
+      continue;
+
     charCode = m_memory.readOam(index + (byte)2); //Specifies tile number 0x00-0xFF from tile memory at 0x8000 - 0x8FFF
     attrData = m_memory.readOam(index + (byte)3); //Flags according to the sprite
 

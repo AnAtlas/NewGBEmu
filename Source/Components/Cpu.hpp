@@ -15,85 +15,87 @@ class Memory;
 class Cpu
 {
 private:
-    enum Flags{
-        Z = (1 << 7), //Zero
-        S = (1 << 6), //Subtract
-        H = (1 << 5), //HalfCarry
-        C = (1 << 4) //Carry
+  enum Flags{
+    Z = (1 << 7), //Zero
+    S = (1 << 6), //Subtract
+    H = (1 << 5), //HalfCarry
+    C = (1 << 4) //Carry
+  };
+
+  enum Address{
+    INT_VBLANK = 0x40,
+    INT_LCD_STATE = 0x48,
+    INT_TIMER = 0x50,
+    INT_JOYPAD = 0x60
+  };
+
+  struct Registers{
+    //Registers a and f
+    struct {
+        union {
+            struct {
+                byte f;
+                byte a;
+            };
+            word af;
+        };
     };
 
-    enum Address{
-      INT_VBLANK = 0x40,
-      INT_LCD_STATE = 0x48,
-      INT_TIMER = 0x50,
-      INT_JOYPAD = 0x60
+    //Registers b and c
+    struct {
+        union {
+            struct {
+                byte c;
+                byte b;
+            };
+            word bc;
+        };
     };
 
-    struct Registers{
-        //Registers a and f
-        struct {
-            union {
-                struct {
-                    byte f;
-                    byte a;
-                };
-                word af;
+    //Registers d and e
+    struct {
+        union {
+            struct {
+                byte e;
+                byte d;
             };
+            word de;
         };
-
-        //Registers b and c
-        struct {
-            union {
-                struct {
-                    byte c;
-                    byte b;
-                };
-                word bc;
-            };
-        };
-
-        //Registers d and e
-        struct {
-            union {
-                struct {
-                    byte e;
-                    byte d;
-                };
-                word de;
-            };
-        };
-
-        //Registers h and l
-        struct {
-            union {
-                struct {
-                    byte l;
-                    byte h;
-                };
-                word hl;
-            };
-        };
-        word sp;
-        word pc;
-    };
-    struct Clock{
-      byte ticks = 0;
     };
 
-    Registers m_registers;
-    Clock m_clock;
-    bool m_halted;
-    bool m_stopped;
-    bool m_cbMode;
-    bool m_pendingMasterInterruptEnable;
-    bool m_masterInterruptEnabled;
-    CpuMemoryInterface& m_memory;
+    //Registers h and l
+    struct {
+        union {
+            struct {
+                byte l;
+                byte h;
+            };
+            word hl;
+        };
+    };
+    word sp;
+    word pc;
+  };
+  struct Clock{
+    byte ticks = 0;
+  };
 
+  Registers m_registers;
+  Clock m_clock;
+  bool m_halted;
+  bool m_stopped;
+  bool m_cbMode;
+  bool m_pendingMasterInterruptEnable;
+  bool m_masterInterruptEnabled;
+  CpuMemoryInterface& m_memory;
+
+  //Debug
+  int opsRan = 0;
+  std::ofstream logFile;
 public:
-    Cpu(CpuMemoryInterface& memory, bool runBios);
-    ~Cpu();
-    byte step();
-    byte runOpcode(byte opCode);
+  Cpu(CpuMemoryInterface& memory, bool runBios);
+  ~Cpu();
+  byte step();
 
 private:
   byte readByteFromPC();

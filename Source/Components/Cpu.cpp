@@ -8,12 +8,8 @@
 
 //#define DEBUG 1
 
-//Debug
-int opsRan = 0;
-std::ofstream logFile;
-
 Cpu::Cpu(CpuMemoryInterface& memory, bool runBios)
-  : m_memory(memory), m_pendingMasterInterruptEnable(false)
+  :m_memory(memory), m_pendingMasterInterruptEnable(false)
 {
   initializeRegisters();
   if (runBios)
@@ -25,7 +21,6 @@ Cpu::~Cpu(){
   logFile.close();
 }
 
-byte nextOp = 0;
 byte Cpu::step() {
   m_clock.ticks = 0;
   opsRan++;
@@ -35,7 +30,7 @@ byte Cpu::step() {
     std::cout << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc;
     //logFile << std::hex << (int) m_registers.pc;
 #endif
-    nextOp = readByteFromPC();
+    byte nextOp = readByteFromPC();
 #ifdef DEBUG
     std::cout << std::hex <<std::setfill('0') <<  " OP = " << std::setw(4) << (int)nextOp << " AF = " << std::setw(4) << (int)m_registers.af << " BC = " << std::setw(4) << (int)m_registers.bc << " DE = " << std::setw(4) << (int)m_registers.de << " HL = " << std::setw(4) << (int)m_registers.hl << " SP = " << std::setw(4) << (int)m_registers.sp;
     //logFile << std::hex <<  " OP = " << (int)nextOp << " AF = " << (int)m_registers.af << " BC = " << (int)m_registers.bc << " DE = " << (int)m_registers.de << " HL = " << (int)m_registers.hl;
@@ -43,23 +38,10 @@ byte Cpu::step() {
     std::cout << "    Z:" << checkFlag(Flags::Z) << "   S:" << checkFlag(Flags::S) << "   C:" << checkFlag(Flags::C) << "   H:" << checkFlag(Flags::H) << std::endl;
     //std::cout << std::endl;
 #endif
-    if (m_cbMode)
-      executeExtOpcode(nextOp);
-    else
-      executeOpcode(nextOp);
-    if (m_clock.ticks == 0xFF)
-      m_clock.ticks = 4;
+    (m_cbMode) ? executeExtOpcode(nextOp) : executeOpcode(nextOp);
   }
   else
     m_clock.ticks = 4;
-
-  //Enabling interrupts happens after the next opcode is finished
-  if (m_pendingMasterInterruptEnable){
-    if (m_memory.readByte(m_registers.pc -(byte)1) != 0xFB){
-      m_pendingMasterInterruptEnable = false;
-      m_masterInterruptEnabled = true;
-    }
-  }
 
   checkInterrupts();
   return m_clock.ticks;
@@ -85,6 +67,14 @@ void Cpu::initializeRegisters() {
 }
 
 void Cpu::checkInterrupts() {
+  //Enabling interrupts happens after the next opcode is finished
+  if (m_pendingMasterInterruptEnable){
+    if (m_memory.readByte(m_registers.pc -(byte)1) != 0xFB){
+      m_pendingMasterInterruptEnable = false;
+      m_masterInterruptEnabled = true;
+    }
+  }
+
   if (m_masterInterruptEnabled || m_halted){
     byte flags = m_memory.getIntFlags();
     if (flags){
