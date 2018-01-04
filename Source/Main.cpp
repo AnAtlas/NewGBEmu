@@ -6,7 +6,7 @@
 #include "Gameboy.hpp"
 
 unsigned int windowWidth, windowHeight;
-bool runBios, frameLimit;
+bool runBios, frameLimit, debugWindow;
 std::string curRom, romDir, saveDir;
 void loadSettings();
 
@@ -17,6 +17,9 @@ int main() {
   loadSettings();
 
   sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewGBEmu!");
+  window.setActive(false);
+
+  sf::RenderWindow debugWindow(sf::VideoMode(400,400), "Debug Window");
   window.setActive(false);
 
   Gameboy gameboy(window, runBios);
@@ -36,11 +39,14 @@ int main() {
       }
       else if (event.type == sf::Event::KeyPressed){
         switch (event.key.code){
-          case sf::Keyboard::P: gameboy.printOam(); break;
           case sf::Keyboard::R: gameboy.unpause(); break;
           case sf::Keyboard::S: gameboy.pause(); break;
         }
       }
+    }
+    while (debugWindow.pollEvent(event)){
+      if (event.type == sf::Event::Closed)
+        debugWindow.close();
     }
     std::this_thread::sleep_for(std::chrono::milliseconds(2));
   }
@@ -58,6 +64,7 @@ void loadSettings(){
 
   settings.getSetting("RunBios", runBios);
   settings.getSetting("FrameLimit", frameLimit);
+  settings.getSetting("Debug", debugWindow);
 
   settings.getSetting("CurrentRom", curRom);
   settings.getSetting("RomDir", romDir);

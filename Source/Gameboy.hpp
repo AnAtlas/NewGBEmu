@@ -35,7 +35,6 @@ public:
   void play();
   void pause(){ m_paused = true; }
   void unpause(){ m_paused = false; }
-  void printOam();
   void shutDown();
   void setFrameLimit(bool on);
 };
