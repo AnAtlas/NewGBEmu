@@ -11,9 +11,10 @@
 
 Gameboy::Gameboy(sf::RenderWindow &window, bool runBios)
  : m_memory(runBios), m_cpu((CpuMemoryInterface&)m_memory, runBios), m_gpu(window,(GpuMemoryInterface&)m_memory),
-   m_timer((TimerMemoryInterface&)m_memory),
+   m_timer((TimerMemoryInterface&)m_memory), m_input((InputMemoryInterface&)m_memory),
    m_window(window), m_cartridge(), m_cartFact(), m_running(false), m_paused(false), m_frameLimited(true)
 {
+  m_input.linkGameboy(this);
 }
 
 bool Gameboy::insertRom(const std::string &romPath) {
@@ -69,10 +70,15 @@ void Gameboy::startDebugger(sf::RenderWindow *debugWindow) {
   debugText.setColor(sf::Color::Green);
   debugText.setString("TEST");
 }
+
 void Gameboy::writeDebugInfo() {
   m_debugWindow->clear();
   byte scrollX = ((GpuMemoryInterface*)(&m_memory))->readScrollX();
   debugText.setString(std::to_string(scrollX));
   m_debugWindow->draw(debugText);
   m_debugWindow->display();
+}
+
+void Gameboy::keyPressed(sf::Keyboard::Key key) {
+  m_input.keyPressed(key);
 }

@@ -5,6 +5,7 @@
 #include <cassert>
 #include <iomanip>
 #include "Cpu.hpp"
+#include "Memory.hpp"
 
 //#define DEBUG 1
 
@@ -103,11 +104,11 @@ void Cpu::serviceInterrupt(byte bit) {
   pushWordToStack(m_registers.pc);
 
   switch(bit){
-    case 0: m_registers.pc = Address::INT_VBLANK;break;
-    case 1: m_registers.pc = Address::INT_LCD_STATE;break;
-    case 2: m_registers.pc = Address::INT_TIMER;break;
-    case 3: m_registers.pc = Address::INT_SERIAL;break;
-    case 4: m_registers.pc = Address::INT_JOYPAD;break;
+    case 0: m_registers.pc = Address::IntVBlank;break;
+    case 1: m_registers.pc = Address::IntLCDState;break;
+    case 2: m_registers.pc = Address::IntTimer;break;
+    case 3: m_registers.pc = Address::IntSerial;break;
+    case 4: m_registers.pc = Address::IntJoypad;break;
     default: assert(false);break;
   }
   m_masterInterruptEnabled = false;

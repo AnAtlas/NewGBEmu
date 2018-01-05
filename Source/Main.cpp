@@ -43,12 +43,7 @@ int main() {
         window.setSize(sf::Vector2u(event.size.height/144*160, event.size.height));
       }
       else if (event.type == sf::Event::KeyPressed){
-        switch (event.key.code){
-          case sf::Keyboard::R: gameboy.unpause(); break;
-          case sf::Keyboard::S: gameboy.pause(); break;
-          case sf::Keyboard::Equal: gameboy.setFrameLimit(false); break;
-          case sf::Keyboard::Dash: gameboy.setFrameLimit(true); break;
-        }
+        gameboy.keyPressed(event.key.code);
       }
     }
     while (debugWindow.pollEvent(event)){
