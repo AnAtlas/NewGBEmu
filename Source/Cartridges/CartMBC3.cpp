@@ -20,13 +20,13 @@ CartMBC3::CartMBC3(CartType cartType, std::string romPath, RamModule::RamSize ra
 bool CartMBC3::loadCartridge() {
   bool retVal = loadRomBank0() && loadRomBankX(1);
   if (m_hasBattery)
-    m_ramModule.load(getRomName());
+    m_ramModule.load();
   return retVal;
 }
 
 void CartMBC3::shutDown() {
   if (m_hasBattery){
-    m_ramModule.save(getRomName());
+    m_ramModule.save();
   }
 }
 

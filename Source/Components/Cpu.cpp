@@ -106,7 +106,8 @@ void Cpu::serviceInterrupt(byte bit) {
     case 0: m_registers.pc = Address::INT_VBLANK;break;
     case 1: m_registers.pc = Address::INT_LCD_STATE;break;
     case 2: m_registers.pc = Address::INT_TIMER;break;
-    case 3: m_registers.pc = Address::INT_JOYPAD;break;
+    case 3: m_registers.pc = Address::INT_SERIAL;break;
+    case 4: m_registers.pc = Address::INT_JOYPAD;break;
     default: assert(false);break;
   }
   m_masterInterruptEnabled = false;

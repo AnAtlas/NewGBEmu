@@ -26,6 +26,7 @@ private:
     INT_VBLANK = 0x40,
     INT_LCD_STATE = 0x48,
     INT_TIMER = 0x50,
+    INT_SERIAL = 0x58,
     INT_JOYPAD = 0x60
   };
 

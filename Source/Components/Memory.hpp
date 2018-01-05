@@ -50,6 +50,7 @@ private:
     IntVBlank = 0x40,
     IntLCDState = 0x48,
     IntTimer = 0x50,
+    IntSerial = 0x58,
     IntJoypad = 0x60,
     Cart1 = 0x0000,
     Cart2 = 0x4000,
