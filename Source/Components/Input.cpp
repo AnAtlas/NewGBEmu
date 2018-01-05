@@ -37,6 +37,7 @@ void Input::checkP15Inputs() {
     if (sf::Keyboard::isKeyPressed(*m_rowP15[i])){
       checkForInterrupt(currentP1, i);
       output &= ~(1 << i);
+      break;
     }
   }
   m_memory.writeP1Inputs(output);

@@ -6,8 +6,9 @@
 #include "Gameboy.hpp"
 
 unsigned int windowWidth, windowHeight;
-bool runBios, frameLimit, debugWindow;
+bool runBios, frameLimit, debugEnabled;
 std::string curRom, romDir, saveDir;
+
 void loadSettings();
 
 int main() {
@@ -20,9 +21,13 @@ int main() {
   window.setActive(false);
 
   sf::RenderWindow debugWindow(sf::VideoMode(400,400), "Debug Window");
-  window.setActive(false);
+  debugWindow.setPosition(sf::Vector2i(window.getPosition().x + windowWidth + 5, window.getPosition().y));
+  debugWindow.setActive(false);
 
   Gameboy gameboy(window, runBios);
+
+  gameboy.startDebugger(&debugWindow);
+
   gameboy.setFrameLimit(frameLimit);
 
   gameboy.insertRom(romDir + curRom);
@@ -35,12 +40,14 @@ int main() {
       if (event.type == sf::Event::Closed)
         window.close();
       else if (event.type == sf::Event::Resized){
-        window.setSize(sf::Vector2u(event.size.width, event.size.height));
+        window.setSize(sf::Vector2u(event.size.height/144*160, event.size.height));
       }
       else if (event.type == sf::Event::KeyPressed){
         switch (event.key.code){
           case sf::Keyboard::R: gameboy.unpause(); break;
           case sf::Keyboard::S: gameboy.pause(); break;
+          case sf::Keyboard::Equal: gameboy.setFrameLimit(false); break;
+          case sf::Keyboard::Dash: gameboy.setFrameLimit(true); break;
         }
       }
     }
@@ -64,7 +71,7 @@ void loadSettings(){
 
   settings.getSetting("RunBios", runBios);
   settings.getSetting("FrameLimit", frameLimit);
-  settings.getSetting("Debug", debugWindow);
+  settings.getSetting("Debug", debugEnabled);
 
   settings.getSetting("CurrentRom", curRom);
   settings.getSetting("RomDir", romDir);

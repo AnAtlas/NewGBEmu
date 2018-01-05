@@ -27,6 +27,11 @@ private:
   bool m_paused;
   bool m_frameLimited;
   sf::RenderWindow& m_window;
+  sf::RenderWindow* m_debugWindow;
+
+  void writeDebugInfo();
+  sf::Font debugFont;
+  sf::Text debugText;
 
 public:
   Gameboy(sf::RenderWindow& window, bool runBios);
@@ -37,5 +42,6 @@ public:
   void unpause(){ m_paused = false; }
   void shutDown();
   void setFrameLimit(bool on);
+  void startDebugger(sf::RenderWindow* debugWindow);
 };
 #endif //NEWGBEMU_GAMEBOY_HPP

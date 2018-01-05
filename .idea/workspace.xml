@@ -17,10 +17,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5890c2d0-623e-478c-9389-40a6a6751e2c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Saves/POKEMON RED.sav" afterPath="$PROJECT_DIR$/Saves/POKEMON RED.sav" />
+      <change beforePath="$PROJECT_DIR$/Saves/ZELDA.sav" afterPath="$PROJECT_DIR$/Saves/ZELDA.sav" />
       <change beforePath="$PROJECT_DIR$/Settings.ini" afterPath="$PROJECT_DIR$/Settings.ini" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/Gpu.cpp" afterPath="$PROJECT_DIR$/Source/Components/Gpu.cpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/Input.cpp" afterPath="$PROJECT_DIR$/Source/Components/Input.cpp" />
+      <change beforePath="$PROJECT_DIR$/Source/DebuggingTools/Debugger.hpp" afterPath="$PROJECT_DIR$/Source/DebuggingTools/Debugger.hpp" />
       <change beforePath="$PROJECT_DIR$/Source/Gameboy.cpp" afterPath="$PROJECT_DIR$/Source/Gameboy.cpp" />
       <change beforePath="$PROJECT_DIR$/Source/Gameboy.hpp" afterPath="$PROJECT_DIR$/Source/Gameboy.hpp" />
       <change beforePath="$PROJECT_DIR$/Source/Main.cpp" afterPath="$PROJECT_DIR$/Source/Main.cpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Utilities/Settings.hpp" afterPath="$PROJECT_DIR$/Source/Utilities/Settings.hpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/cmake-build-release/" />
@@ -35,11 +41,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="48" column="28" lean-forward="false" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
+            <state relative-caret-position="575">
+              <caret line="55" column="28" lean-forward="false" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -47,21 +53,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gameboy.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Gameboy.hpp">
+      <file leaf-file-name="Debugger.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/DebuggingTools/Debugger.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="36" column="37" lean-forward="false" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+            <state relative-caret-position="126">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <element signature="e#97#138#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Instructions.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/DebuggingTools/Instructions.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RamModule.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Cartridges/RamModule.hpp">
+      <file leaf-file-name="Types.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Utilities/Types.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="32" column="81" lean-forward="false" selection-start-line="32" selection-start-column="81" selection-end-line="32" selection-end-column="81" />
+            <state relative-caret-position="180">
+              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gameboy.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Gameboy.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -70,8 +98,8 @@
       <file leaf-file-name="Gameboy.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Gameboy.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="936">
-              <caret line="57" column="1" lean-forward="false" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+            <state relative-caret-position="725">
+              <caret line="74" column="45" lean-forward="false" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -80,28 +108,8 @@
       <file leaf-file-name="Cpu.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5">
+            <state relative-caret-position="-13968">
               <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cpu.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="82" column="24" lean-forward="false" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cartridge.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Cartridges/Cartridge.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -110,28 +118,18 @@
       <file leaf-file-name="Settings.ini" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Settings.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            <state relative-caret-position="72">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gpu.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Gpu.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Source/Components/Gpu.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="286" column="10" lean-forward="false" selection-start-line="286" selection-start-column="10" selection-end-line="286" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Input.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Components/Input.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="45" column="14" lean-forward="false" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
+            <state relative-caret-position="490">
+              <caret line="157" column="3" lean-forward="false" selection-start-line="157" selection-start-column="3" selection-end-line="157" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -191,7 +189,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Headers/Types.hpp" />
         <option value="$PROJECT_DIR$/Headers/Memory.hpp" />
         <option value="$PROJECT_DIR$/Headers/Bios.hpp" />
         <option value="$PROJECT_DIR$/Headers/MemoryManager.hpp" />
@@ -222,7 +219,6 @@
         <option value="$PROJECT_DIR$/Source/Components/Memory.hpp" />
         <option value="$PROJECT_DIR$/Source/Components/Memory.cpp" />
         <option value="$PROJECT_DIR$/Source/Components/Input.hpp" />
-        <option value="$PROJECT_DIR$/Source/Components/Input.cpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/CartRomOnly.hpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/Cartridge.hpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/CartMBC1.hpp" />
@@ -232,15 +228,17 @@
         <option value="$PROJECT_DIR$/Source/Cartridges/CartMBC1.cpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/CartMBC3.cpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/CartMBC5.cpp" />
-        <option value="$PROJECT_DIR$/Source/Utilities/Settings.hpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/Source/Cartridges/RamModule.hpp" />
         <option value="$PROJECT_DIR$/Source/Components/Cpu.hpp" />
         <option value="$PROJECT_DIR$/Source/Components/Cpu.cpp" />
-        <option value="$PROJECT_DIR$/Source/Components/Gpu.cpp" />
-        <option value="$PROJECT_DIR$/Settings.ini" />
+        <option value="$PROJECT_DIR$/Source/Utilities/Settings.hpp" />
+        <option value="$PROJECT_DIR$/Source/DebuggingTools/Debugger.hpp" />
         <option value="$PROJECT_DIR$/Source/Gameboy.hpp" />
         <option value="$PROJECT_DIR$/Source/Gameboy.cpp" />
+        <option value="$PROJECT_DIR$/Source/Components/Input.cpp" />
+        <option value="$PROJECT_DIR$/Settings.ini" />
+        <option value="$PROJECT_DIR$/Source/Components/Gpu.cpp" />
         <option value="$PROJECT_DIR$/Source/Main.cpp" />
       </list>
     </option>
@@ -252,9 +250,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds">
-    <option name="y" value="2" />
-    <option name="width" value="1920" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1" />
+    <option name="y" value="-2" />
+    <option name="width" value="960" />
     <option name="height" value="1032" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -303,6 +302,18 @@
               <item name="GBEmu" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="GBEmu" type="462c0819:PsiDirectoryNode" />
               <item name="Source" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GBEmu" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="GBEmu" type="462c0819:PsiDirectoryNode" />
+              <item name="Source" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GBEmu" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="GBEmu" type="462c0819:PsiDirectoryNode" />
+              <item name="Source" type="462c0819:PsiDirectoryNode" />
+              <item name="DebuggingTools" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -389,28 +400,31 @@
       <workItem from="1514957275486" duration="17788000" />
       <workItem from="1515015792568" duration="3358000" />
       <workItem from="1515042078100" duration="3443000" />
-      <workItem from="1515084520035" duration="5667000" />
+      <workItem from="1515084520035" duration="5739000" />
+      <workItem from="1515101997524" duration="1488000" />
+      <workItem from="1515115201631" duration="58000" />
+      <workItem from="1515118525907" duration="9141000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247398000" />
+    <option name="totallyTimeSpent" value="258157000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="2" width="1920" height="1032" extended-state="0" />
+    <frame x="-1" y="-2" width="1922" height="1035" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10740355" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34245077" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3402399" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32713348" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26258206" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.261723" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42231947" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42202836" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -430,7 +444,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="411" />
+      <option name="time" value="414" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
@@ -583,20 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/DebuggingTools/Instructions.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/DebuggingTools/Debugger.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/c++/5/bits/shared_ptr.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -633,13 +633,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Utilities/InterruptFlags.hpp" />
-    <entry file="file://$PROJECT_DIR$/Source/Components/GpuMemoryInterface.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Components/Timer.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -720,13 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Utilities/Types.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Utilities/Bios.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -784,14 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/CpuOpcodeTable.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="267" column="0" lean-forward="false" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake_modules/FindSFML.cmake">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5697">
@@ -803,17 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Utilities/Settings.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#93#110#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -821,7 +788,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -829,7 +795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -844,73 +809,122 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="32" column="81" lean-forward="false" selection-start-line="32" selection-start-column="81" selection-end-line="32" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1476">
+          <caret line="82" column="24" lean-forward="false" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/CpuOpcodeTable.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="267" column="0" lean-forward="false" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Utilities/Types.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/DebuggingTools/Instructions.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Utilities/Settings.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/DebuggingTools/Debugger.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#97#138#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Gameboy.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/GpuMemoryInterface.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Components/Input.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="45" column="14" lean-forward="false" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="82" column="24" lean-forward="false" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/Gpu.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="286" column="10" lean-forward="false" selection-start-line="286" selection-start-column="10" selection-end-line="286" selection-end-column="10" />
+        <state relative-caret-position="383">
+          <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Settings.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        <state relative-caret-position="72">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Gameboy.hpp">
+    <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="36" column="37" lean-forward="false" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+        <state relative-caret-position="-13968">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Gameboy.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="936">
-          <caret line="57" column="1" lean-forward="false" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+        <state relative-caret-position="725">
+          <caret line="74" column="45" lean-forward="false" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="48" column="28" lean-forward="false" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
+        <state relative-caret-position="575">
+          <caret line="55" column="28" lean-forward="false" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/Gpu.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="157" column="3" lean-forward="false" selection-start-line="157" selection-start-column="3" selection-end-line="157" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>

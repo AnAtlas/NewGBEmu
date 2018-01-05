@@ -148,7 +148,7 @@ void Gpu::renderBackground() {
   word backgroundMemory = 0;
   byte scrollX = m_memory.readScrollX();
   byte scrollY = m_memory.readScrollY();
-  byte windowX = m_memory.readWindowX() - (byte)7;
+  int windowX = m_memory.readWindowX() - (byte)7;
   byte windowY = m_memory.readWindowY();
   byte lineY = m_memory.readLineY();
 

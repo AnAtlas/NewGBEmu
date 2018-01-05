@@ -38,6 +38,9 @@ void Gameboy::play() {
     m_timer.step(ticks);
     m_gpu.step(ticks);
     if (m_gpu.frameDone()){
+      if (m_debugWindow != nullptr){
+        writeDebugInfo();
+      }
       if (m_frameLimited) {
         auto end = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
@@ -45,6 +48,7 @@ void Gameboy::play() {
         begin = std::chrono::high_resolution_clock::now();
       }
     }
+
   }
 }
 
@@ -55,4 +59,20 @@ void Gameboy::setFrameLimit(bool on){
 void Gameboy::shutDown() {
   m_cartridge->shutDown();
   m_running = false;
+}
+
+void Gameboy::startDebugger(sf::RenderWindow *debugWindow) {
+  m_debugWindow = debugWindow;
+  m_debugWindow->clear();
+  debugFont.loadFromFile("../BebasNeue.otf");
+  debugText.setFont(debugFont);
+  debugText.setColor(sf::Color::Green);
+  debugText.setString("TEST");
+}
+void Gameboy::writeDebugInfo() {
+  m_debugWindow->clear();
+  byte scrollX = ((GpuMemoryInterface*)(&m_memory))->readScrollX();
+  debugText.setString(std::to_string(scrollX));
+  m_debugWindow->draw(debugText);
+  m_debugWindow->display();
 }

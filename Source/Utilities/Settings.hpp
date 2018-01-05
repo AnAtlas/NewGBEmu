@@ -18,8 +18,8 @@ private:
   }
 
   bool getKeyLine(const std::string& key, std::string& retLine){
-    std::string line = "";
-    std::string lineKey = "";
+    std::string line;
+    std::string lineKey;
     m_settingsFile.clear();
     m_settingsFile.seekg(0, std::ios::beg);
     while (!m_settingsFile.eof()){
