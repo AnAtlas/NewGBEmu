@@ -33,25 +33,36 @@ public:
     :m_enabled(false), m_ramSize(ramSize), m_ramBank(m_ramTotal), m_ramTotal{0} {
   }
 
-  void load(std::string romName){
+  void load(){
     if (m_ramSize == KB_0)
       return;
     std::ifstream inFile;
     Settings& settings = Settings::getInstance();
     std::string savePath;
+    std::string romName;
     settings.getSetting("SaveDir", savePath);
+    settings.getSetting("CurrentRom", romName);
+    romName = romName.substr(0, romName.find('.'));
     inFile.open(savePath + romName + ".sav", std::ios::in | std::ios::binary);
-    inFile.read((char*)m_ramTotal, RamSizeKB[m_ramSize]);
-    inFile.close();
+    if (inFile.is_open()){
+      inFile.read((char*)m_ramTotal, RamSizeKB[m_ramSize]);
+      inFile.close();
+    }
+    else{
+      std::cout << romName << ".sav not found" << std::endl;
+    }
   }
 
-  void save(std::string romName){
+  void save(){
     if (m_ramSize == KB_0)
       return;
     std::ofstream outFile;
     Settings& settings = Settings::getInstance();
     std::string savePath;
+    std::string romName;
     settings.getSetting("SaveDir", savePath);
+    settings.getSetting("CurrentRom", romName);
+    romName = romName.substr(0, romName.find('.'));
     outFile.open(savePath + romName + ".sav", std::ios::out | std::ios::binary);
     outFile.write((const char*)m_ramTotal, RamSizeKB[m_ramSize]);
     outFile.close();

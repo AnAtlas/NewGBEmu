@@ -13,43 +13,12 @@
 #include "InputMemoryInterface.hpp"
 #include "Input.hpp"
 
-class Memory : public CpuMemoryInterface, GpuMemoryInterface, TimerMemoryInterface, InputMemoryInterface
-{
-private:
-  union{
-    struct {
-      byte m_cart1[0x4000];
-      byte m_cart2[0x4000];
-      byte m_vRam[0x2000]; //0x8000
-      byte m_sRam[0x2000]; //0xA000
-      byte m_wram[0x2000];
-      byte m_echo[0x1E00];
-      byte m_oam[0xA0];	//0xFE00
-      byte m_blank[0x60];
-      byte m_ioPorts[0x4C]; //0xFF00
-      byte m_blank2[0x34];
-      byte m_hRam[0x80];
-      byte m_ieRegister[0x01];
-    };
-    byte m_memory[0xFFFF];
-  };
-  std::shared_ptr<Cartridge> m_cartridge;
-  Input m_input;
-
-  AddressRange m_romRange;
-  AddressRange m_ramRange;
-  AddressRange m_wRamRange;
-  AddressRange m_echoRange;
-
-  word m_divRegister;
-  bool m_inBios;
-
-  bool addressOnCartridge(word address) const;
-
-  enum Address {
+namespace Address{
+  enum {
     IntVBlank = 0x40,
     IntLCDState = 0x48,
     IntTimer = 0x50,
+    IntSerial = 0x58,
     IntJoypad = 0x60,
     Cart1 = 0x0000,
     Cart2 = 0x4000,
@@ -83,6 +52,50 @@ private:
     Hram = 0xFF80,
     IeRegister = 0xFFFF
   };
+}
+
+namespace IntFlags{
+  enum{
+    VBLANK = 0b1,
+    LCD_STAT = 0b10,
+    TIMER = 0b100,
+    SERIAL = 0b1000,
+    JOYPAD = 0b10000
+  };
+}
+
+class Memory : public CpuMemoryInterface, GpuMemoryInterface, TimerMemoryInterface, InputMemoryInterface
+{
+private:
+  union{
+    struct {
+      byte m_cart1[0x4000];
+      byte m_cart2[0x4000];
+      byte m_vRam[0x2000]; //0x8000
+      byte m_sRam[0x2000]; //0xA000
+      byte m_wram[0x2000];
+      byte m_echo[0x1E00];
+      byte m_oam[0xA0];	//0xFE00
+      byte m_blank[0x60];
+      byte m_ioPorts[0x4C]; //0xFF00
+      byte m_blank2[0x34];
+      byte m_hRam[0x80];
+      byte m_ieRegister[0x01];
+    };
+    byte m_memory[0xFFFF];
+  };
+  std::shared_ptr<Cartridge> m_cartridge;
+  Input m_input;
+
+  AddressRange m_romRange;
+  AddressRange m_ramRange;
+  AddressRange m_wRamRange;
+  AddressRange m_echoRange;
+
+  word m_divRegister;
+  bool m_inBios;
+
+  bool addressOnCartridge(word address) const;
 
 public:
   explicit Memory(bool runBios);

@@ -5,14 +5,6 @@
 #include "Memory.hpp"
 #include "../Utilities/Bios.hpp"
 
-enum InterruptFlags{
-  VBLANK = 1,
-  LCD_STAT = 1 << 1,
-  TIMER = 1 << 2,
-  SERIAL = 1 << 3,
-  JOYPAD = 1 << 4
-};
-
 Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios), m_divRegister(0), m_input((InputMemoryInterface&) *this),
   m_romRange(Cartridge::CartAddress::ROM_BANK0, Cartridge::CartAddress::ROM_BANKX_END),
   m_ramRange(Cartridge::CartAddress::RAM_BANK, Cartridge::CartAddress::RAM_BANK_END),
@@ -242,11 +234,11 @@ void Memory::writeLineY(byte value){
 }
 
 void Memory::requestVBlankInterrupt() {
-  writeByte(Address::IntFlags, readByte(Address::IntFlags) | InterruptFlags::VBLANK);
+  writeByte(Address::IntFlags, readByte(Address::IntFlags) | IntFlags::VBLANK);
 }
 
 void Memory::requestLcdStatInterrupt() {
-  writeByte(Address::IntFlags, readByte(Address::IntFlags) | InterruptFlags::LCD_STAT);
+  writeByte(Address::IntFlags, readByte(Address::IntFlags) | IntFlags::LCD_STAT);
 }
 
 //Timer functions
@@ -275,7 +267,7 @@ byte Memory::readTimerControl() {
 }
 
 void Memory::requestTimerInterrupt() {
-  writeByte(Address::IntFlags, readByte(Address::IntFlags) | InterruptFlags::TIMER);
+  writeByte(Address::IntFlags, readByte(Address::IntFlags) | IntFlags::TIMER);
 }
 
 //Input functions
@@ -291,6 +283,6 @@ void Memory::writeP1Inputs(byte value) {
 }
 
 void Memory::requestInputInterrupt() {
-  writeByte(Address::IntFlags, readByte(Address::IntFlags) | InterruptFlags::JOYPAD);
+  writeByte(Address::IntFlags, readByte(Address::IntFlags) | IntFlags::JOYPAD);
 }
 

@@ -12,20 +12,24 @@
 class Settings{
 private:
   static Settings m_instance;
-  std::ifstream m_settingsFile;
+  std::fstream m_settingsFile;
   Settings(){
     m_settingsFile.open("../Settings.ini", std::ios::in);
   }
 
   bool getKeyLine(const std::string& key, std::string& retLine){
-    std::string line = "";
-    std::string lineKey = "";
+    std::string line;
+    std::string lineKey;
+    std::string keyUpper = key;
+    std::transform(keyUpper.begin(), keyUpper.end(), keyUpper.begin(), toupper);
+
     m_settingsFile.clear();
     m_settingsFile.seekg(0, std::ios::beg);
     while (!m_settingsFile.eof()){
       std::getline(m_settingsFile, line);
       lineKey = line.substr(0, line.find('='));
-      if (lineKey == key){
+      std::transform(lineKey.begin(), lineKey.end(), lineKey.begin(), toupper);
+      if (lineKey == keyUpper){
         retLine = line;
         return true;
       }
@@ -73,6 +77,10 @@ public:
       return false;
     getValueLine(line, value);
     return true;
+  }
+
+  bool clearSetting(const std::string& key){
+
   }
 };
 #endif //GBEMU_SETTINGS_HPP

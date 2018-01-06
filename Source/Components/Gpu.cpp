@@ -148,7 +148,7 @@ void Gpu::renderBackground() {
   word backgroundMemory = 0;
   byte scrollX = m_memory.readScrollX();
   byte scrollY = m_memory.readScrollY();
-  byte windowX = m_memory.readWindowX() - (byte)7;
+  int windowX = m_memory.readWindowX() - (byte)7;
   byte windowY = m_memory.readWindowY();
   byte lineY = m_memory.readLineY();
 
@@ -247,7 +247,7 @@ void Gpu::renderSprites() {
   bool palette = false; //Can be object palette 0 or 1 depending on the palette sprite attribute
 
   //Gameboy only has space for 40 sprites at a time
-  for (int i = 0; i < m_spriteLimit; i++){
+  for (int i = m_spriteLimit - 1; i >= 0; --i){
     //Each sprite has 4 bytes of data
     index = (byte)(i*4);
     yPos = m_memory.readOam(index) - (byte)16; //the - 16 just is

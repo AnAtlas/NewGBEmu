@@ -21,13 +21,13 @@ CartMBC1::CartMBC1(CartType cartType, std::string romPath, RamModule::RamSize ra
 bool CartMBC1::loadCartridge() {
   bool retVal = loadRomBank0() && loadRomBankX(1);
   if (m_hasBattery)
-    m_ramModule.load(getRomName());
+    m_ramModule.load();
   return retVal;
 }
 
 void CartMBC1::shutDown() {
   if (m_hasBattery)
-    m_ramModule.save(getRomName());
+    m_ramModule.save();
 }
 
 void CartMBC1::writeByte(word address, byte value) {
