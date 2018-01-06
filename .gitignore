@@ -1,2 +1,4 @@
 ﻿cmake-build-debug/*
 cmake-build-release/*
+.vs/*
+Debug/*
