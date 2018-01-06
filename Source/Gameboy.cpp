@@ -12,7 +12,7 @@
 Gameboy::Gameboy(sf::RenderWindow &window, bool runBios)
  : m_memory(runBios), m_cpu((CpuMemoryInterface&)m_memory, runBios), m_gpu(window,(GpuMemoryInterface&)m_memory),
    m_timer((TimerMemoryInterface&)m_memory), m_input((InputMemoryInterface&)m_memory),
-   m_window(window), m_cartridge(), m_cartFact(), m_running(false), m_paused(false), m_frameLimited(true)
+   m_window(window), m_debugWindow(nullptr), m_cartridge(), m_cartFact(), m_running(false), m_paused(false), m_frameLimited(true)
 {
   m_input.linkGameboy(this);
 }
@@ -22,6 +22,7 @@ bool Gameboy::insertRom(const std::string &romPath) {
   assert(m_cartridge && "ERROR LOADING CARTRIDGE AT SPECIFIED ROM PATH");
   m_cartridge->loadCartridge();
   m_memory.linkCartridge(m_cartridge);
+  return true;
 }
 
 void Gameboy::play() {

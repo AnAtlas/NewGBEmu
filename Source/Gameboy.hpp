@@ -49,6 +49,6 @@ public:
   void shutDown();
   void setFrameLimit(bool on);
   void startDebugger(sf::RenderWindow* debugWindow);
-  void keyPressed(sf::Keyboard::Key);
+  void keyPressed(sf::Keyboard::Key key);
 };
 #endif //NEWGBEMU_GAMEBOY_HPP

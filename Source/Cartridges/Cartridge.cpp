@@ -13,6 +13,7 @@ Cartridge::Cartridge(std::string &romPath)
 
 bool Cartridge::loadRomBank0(){
   loadRomBankX(0);
+  return true;
 }
 
 bool Cartridge::loadRomBankX(word romBankIndex){

@@ -14,7 +14,7 @@ private:
   static Settings m_instance;
   std::fstream m_settingsFile;
   Settings(){
-    m_settingsFile.open("../Settings.ini", std::ios::in);
+    m_settingsFile.open("Settings.ini", std::ios::in);
   }
 
   bool getKeyLine(const std::string& key, std::string& retLine){
@@ -80,7 +80,7 @@ public:
   }
 
   bool clearSetting(const std::string& key){
-
+    return true;
   }
 };
 #endif //GBEMU_SETTINGS_HPP

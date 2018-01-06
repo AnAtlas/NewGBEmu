@@ -131,5 +131,11 @@
     <ClInclude Include="source\utilities\Types.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Utilities\Settings.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Settings.ini" />
   </ItemGroup>
 </Project>

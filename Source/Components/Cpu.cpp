@@ -10,22 +10,28 @@
 //#define DEBUG 1
 
 Cpu::Cpu(CpuMemoryInterface& memory, bool runBios)
-  :m_memory(memory), m_pendingMasterInterruptEnable(false)
+  :m_memory(memory), m_pendingMasterInterruptEnable(false), m_halted(false), m_cbMode(false), m_stopped(false)
 {
   initializeRegisters();
   if (runBios)
     m_registers.pc = 0;
+#ifdef DEBUG
   logFile.open("MYLOGFILE", std::ios::out);
+#endif
 }
 
 Cpu::~Cpu(){
+#ifdef DEBUG
   logFile.close();
+#endif
 }
 
 byte Cpu::step() {
   m_clock.ticks = 0;
   opsRan++;
   if (!m_halted){
+    if (m_registers.pc == 0xfe)
+      opsRan = 0;
 #ifdef DEBUG
     std::cout << std::hex << std::setfill('0') << std::setw(10) << opsRan << "  ";
     std::cout << std::hex << std::setfill('0') << std::setw(4) << (int) m_registers.pc;

@@ -77,6 +77,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(SolutionDir)\SFML-2.4.2\include</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -144,7 +145,11 @@
     <ClInclude Include="source\Gameboy.hpp" />
     <ClInclude Include="source\utilities\AddressRange.hpp" />
     <ClInclude Include="source\utilities\Bios.hpp" />
+    <ClInclude Include="Source\Utilities\Settings.hpp" />
     <ClInclude Include="source\utilities\Types.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Settings.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

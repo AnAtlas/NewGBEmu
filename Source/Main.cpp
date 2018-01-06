@@ -11,22 +11,25 @@ std::string curRom, romDir, saveDir;
 
 void loadSettings();
 
+const std::string VERSION = "00.01.00";
+
 int main() {
 #ifdef __linux__
   XInitThreads();
 #endif
   loadSettings();
 
-  sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewGBEmu!");
+  sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewGBEmu - " + VERSION);
   window.setActive(false);
-
-  sf::RenderWindow debugWindow(sf::VideoMode(400,400), "Debug Window");
-  debugWindow.setPosition(sf::Vector2i(window.getPosition().x + windowWidth + 5, window.getPosition().y));
-  debugWindow.setActive(false);
 
   Gameboy gameboy(window, runBios);
 
+#ifdef DEBUG
+  sf::RenderWindow debugWindow(sf::VideoMode(400, 400), "Debug Window");
+  debugWindow.setPosition(sf::Vector2i(window.getPosition().x + windowWidth + 5, window.getPosition().y));
+  debugWindow.setActive(false);
   gameboy.startDebugger(&debugWindow);
+#endif
 
   gameboy.setFrameLimit(frameLimit);
 
@@ -46,10 +49,12 @@ int main() {
         gameboy.keyPressed(event.key.code);
       }
     }
+#ifdef DEBUG
     while (debugWindow.pollEvent(event)){
       if (event.type == sf::Event::Closed)
         debugWindow.close();
     }
+#endif
     std::this_thread::sleep_for(std::chrono::milliseconds(2));
   }
   gameboy.shutDown();
