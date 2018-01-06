@@ -11,7 +11,7 @@ std::string curRom, romDir, saveDir;
 
 void loadSettings();
 
-const std::string VERSION = "00.01.00";
+const std::string VERSION = "00.01.01";
 
 int main() {
 #ifdef __linux__
@@ -21,7 +21,6 @@ int main() {
 
   sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewGBEmu - " + VERSION);
   window.setActive(false);
-
   Gameboy gameboy(window, runBios);
 
 #ifdef DEBUG

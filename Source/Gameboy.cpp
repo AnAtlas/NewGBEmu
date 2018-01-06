@@ -29,7 +29,7 @@ void Gameboy::play() {
   m_running = true;
   byte ticks;
 
-  auto begin = std::chrono::high_resolution_clock::now();
+  auto begin = std::chrono::steady_clock::now();
 
   while(m_running){
     if (m_paused){
@@ -44,10 +44,12 @@ void Gameboy::play() {
         writeDebugInfo();
       }
       if (m_frameLimited) {
-        auto end = std::chrono::high_resolution_clock::now();
+        auto end = std::chrono::steady_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
         std::this_thread::sleep_for(std::chrono::milliseconds(16) - duration);
-        begin = std::chrono::high_resolution_clock::now();
+        duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin);
+        m_window.setTitle(std::to_string(duration.count()));
+        begin = std::chrono::steady_clock::now();
       }
     }
 
