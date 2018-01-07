@@ -44,12 +44,12 @@ void Gameboy::play() {
         writeDebugInfo();
       }
       if (m_frameLimited) {
-        auto end = std::chrono::steady_clock::now();
+        auto end = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
-        std::this_thread::sleep_for(std::chrono::milliseconds(16) - duration);
-        duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin);
-        m_window.setTitle(std::to_string(duration.count()));
-        begin = std::chrono::steady_clock::now();
+        std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + (std::chrono::milliseconds(16) - duration));
+        duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - begin);
+        m_window.setTitle(std::to_string(1000/duration.count()));
+        begin = std::chrono::high_resolution_clock::now();
       }
     }
 

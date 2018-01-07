@@ -11,7 +11,7 @@ std::string curRom, romDir, saveDir;
 
 void loadSettings();
 
-const std::string VERSION = "00.01.01";
+const std::string VERSION = "00.01.02";
 
 int main() {
 #ifdef __linux__
