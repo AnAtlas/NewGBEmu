@@ -23,8 +23,6 @@ private:
     std::string keyUpper = key;
     std::transform(keyUpper.begin(), keyUpper.end(), keyUpper.begin(), toupper);
 
-    m_settingsFile.clear();
-    m_settingsFile.seekg(0, std::ios::beg);
     while (!m_settingsFile.eof()){
       std::getline(m_settingsFile, line);
       lineKey = line.substr(0, line.find('='));
@@ -37,6 +35,20 @@ private:
     return false;
   }
 
+  void seekSection(std::string& section) {
+    m_settingsFile.clear();
+    m_settingsFile.seekg(0, std::ios::beg);
+    std::transform(section.begin(), section.end(), section.begin(), toupper);
+    section = "[" + section + "]";
+    std::string line;
+    while (!m_settingsFile.eof()) {
+      std::getline(m_settingsFile, line);
+      std::transform(line.begin(), line.end(), line.begin(), toupper);
+      if (line == section) {
+        return;
+      }
+    }
+  }
   void getValueLine(std::string& line, std::string& value){
     value = line.substr(line.find('=') + 1, std::string::npos);
   }
@@ -47,6 +59,8 @@ public:
     return m_instance;
   }
   bool getSetting(const std::string& key, bool& value){
+    m_settingsFile.clear();
+    m_settingsFile.seekg(0, std::ios::beg);
     std::string line;
     std::string valueStr;
     if (!getKeyLine(key, line))
@@ -61,6 +75,8 @@ public:
   }
 
   bool getSetting(const std::string& key, unsigned int& value){
+    m_settingsFile.clear();
+    m_settingsFile.seekg(0, std::ios::beg);
     std::string line;
     std::string valueStr;
     if (!getKeyLine(key, line))
@@ -70,7 +86,11 @@ public:
     return true;
   }
 
-  bool getSetting(const std::string& key, std::string& value){
+  bool getSetting(const std::string& key, std::string& value, std::string& section = std::string("")){
+    m_settingsFile.clear();
+    m_settingsFile.seekg(0, std::ios::beg);
+    if (section != "")
+      seekSection(section);
     std::string line;
     std::string valueStr;
     if (!getKeyLine(key, line))

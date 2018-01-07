@@ -50,5 +50,6 @@ public:
   void setFrameLimit(bool on);
   void startDebugger(sf::RenderWindow* debugWindow);
   void keyPressed(sf::Keyboard::Key key);
+  void joystickButtonPressed(int buttonCode);
 };
 #endif //NEWGBEMU_GAMEBOY_HPP

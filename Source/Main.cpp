@@ -47,6 +47,9 @@ int main() {
       else if (event.type == sf::Event::KeyPressed){
         gameboy.keyPressed(event.key.code);
       }
+      else if (event.type == sf::Event::JoystickButtonPressed) {
+        gameboy.joystickButtonPressed(event.joystickButton.button);
+      }
     }
 #ifdef DEBUG
     while (debugWindow.pollEvent(event)){

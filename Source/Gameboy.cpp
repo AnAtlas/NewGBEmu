@@ -29,7 +29,7 @@ void Gameboy::play() {
   m_running = true;
   byte ticks;
 
-  auto begin = std::chrono::steady_clock::now();
+  auto begin = std::chrono::high_resolution_clock::now();
 
   while(m_running){
     if (m_paused){
@@ -45,10 +45,11 @@ void Gameboy::play() {
       }
       if (m_frameLimited) {
         auto end = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
-        std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + (std::chrono::milliseconds(16) - duration));
-        duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - begin);
-        m_window.setTitle(std::to_string(1000/duration.count()));
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin);
+        while (duration.count() < 16660) {
+          duration = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - begin);
+        }
+        m_window.setTitle(std::to_string(1000000/duration.count()));
         begin = std::chrono::high_resolution_clock::now();
       }
     }
@@ -84,4 +85,8 @@ void Gameboy::writeDebugInfo() {
 
 void Gameboy::keyPressed(sf::Keyboard::Key key) {
   m_input.keyPressed(key);
+}
+
+void Gameboy::joystickButtonPressed(int buttonCode) {
+  m_input.joystickButtonPressed(buttonCode);
 }

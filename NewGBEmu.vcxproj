@@ -145,6 +145,7 @@
     <ClInclude Include="source\Gameboy.hpp" />
     <ClInclude Include="source\utilities\AddressRange.hpp" />
     <ClInclude Include="source\utilities\Bios.hpp" />
+    <ClInclude Include="Source\Utilities\InputInterface.hpp" />
     <ClInclude Include="Source\Utilities\Settings.hpp" />
     <ClInclude Include="source\utilities\Types.hpp" />
   </ItemGroup>
