@@ -86,7 +86,7 @@ public:
     return true;
   }
 
-  bool getSetting(const std::string& key, std::string& value, std::string& section = std::string("")){
+  bool getSetting(const std::string& key, std::string& value, std::string section = std::string("")){
     m_settingsFile.clear();
     m_settingsFile.seekg(0, std::ios::beg);
     if (section != "")
