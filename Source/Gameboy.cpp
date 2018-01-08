@@ -68,8 +68,9 @@ void Gameboy::shutDown() {
 
 void Gameboy::startDebugger(sf::RenderWindow *debugWindow) {
   m_debugWindow = debugWindow;
+  m_tilesetViewer = new TilesetViewer(debugWindow, m_memory);
   m_debugWindow->clear();
-  debugFont.loadFromFile("../BebasNeue.otf");
+  debugFont.loadFromFile("BebasNeue.otf");
   debugText.setFont(debugFont);
   debugText.setColor(sf::Color::Green);
   debugText.setString("TEST");
@@ -77,9 +78,7 @@ void Gameboy::startDebugger(sf::RenderWindow *debugWindow) {
 
 void Gameboy::writeDebugInfo() {
   m_debugWindow->clear();
-  byte scrollX = ((GpuMemoryInterface*)(&m_memory))->readScrollX();
-  debugText.setString(std::to_string(scrollX));
-  m_debugWindow->draw(debugText);
+  m_tilesetViewer->draw();
   m_debugWindow->display();
 }
 

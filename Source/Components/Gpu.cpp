@@ -5,13 +5,6 @@
 #include <cassert>
 #include "Gpu.hpp"
 
-const RGB Palette[4] = {
-  { 255,255,255, 255 },
-  { 192,192,192, 255 },
-  {  96, 96,96, 255  },
-  {  0 , 0 , 0, 255  }
-};
-
 enum LcdStat{
   LYC_EQUALS_LY = 1 << 2,
   H_BLANK_INT = 1 << 3,

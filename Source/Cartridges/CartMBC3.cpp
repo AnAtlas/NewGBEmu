@@ -45,7 +45,8 @@ void CartMBC3::writeByte(word address, byte value) {
     loadRomBankX(romBankNumber);
   }
   else if (m_ramBankNumberRange.contains(address)){
-    m_ramBankOrTimerNumber = (byte)(value & 0b1111);
+    if (value <= 0x03 || (value >= 0x08 && value <= 0x0C))
+      m_ramBankOrTimerNumber = value;
     if (m_ramBankOrTimerNumber < 4)
       m_ramModule.setRamBank(m_ramBankOrTimerNumber);
     else if (m_ramBankOrTimerNumber <= 0x0C)

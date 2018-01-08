@@ -5,13 +5,15 @@
 #endif
 #include "Gameboy.hpp"
 
+//#define DEBUG 1
+
 unsigned int windowWidth, windowHeight;
 bool runBios, frameLimit, debugEnabled;
 std::string curRom, romDir, saveDir;
 
 void loadSettings();
 
-const std::string VERSION = "00.01.03";
+const std::string VERSION = "00.01.04";
 
 int main() {
 #ifdef __linux__
@@ -25,7 +27,7 @@ int main() {
 
 #ifdef DEBUG
   sf::RenderWindow debugWindow(sf::VideoMode(400, 400), "Debug Window");
-  debugWindow.setPosition(sf::Vector2i(window.getPosition().x + windowWidth + 5, window.getPosition().y));
+  debugWindow.setPosition(sf::Vector2i(window.getPosition().x + 4, window.getPosition().y));
   debugWindow.setActive(false);
   gameboy.startDebugger(&debugWindow);
 #endif

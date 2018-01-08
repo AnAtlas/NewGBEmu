@@ -20,6 +20,20 @@ enum GPUMode{
     VRAM = 0x03
 };
 
+struct RGB {
+  byte r, g, b, a;
+  bool operator==(RGB rgb1){
+    return (r == rgb1.r && g == rgb1.g && b == rgb1.b && a == rgb1.a);
+  }
+};
+
+const RGB Palette[4] = {
+  { 255,255,255, 255 },
+  { 192,192,192, 255 },
+  {  96, 96,96, 255  },
+  {  0 , 0 , 0, 255  }
+};
+
 enum Color {
   WHITE,
   LIGHT_GRAY,
@@ -41,13 +55,6 @@ struct GPUTimings{
     H_BLANK = 0xCC,
     V_BLANK = 0x1C8
   };
-};
-
-struct RGB {
-  byte r, g, b, a;
-  bool operator==(RGB rgb1){
-    return (r == rgb1.r && g == rgb1.g && b == rgb1.b && a == rgb1.a);
-  }
 };
 
 enum LCDControlFlags {
