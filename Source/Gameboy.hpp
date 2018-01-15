@@ -32,6 +32,7 @@ private:
   bool m_running;
   bool m_paused;
   bool m_frameLimited;
+  float m_speedMultiplier;
   sf::RenderWindow& m_window;
   sf::RenderWindow* m_debugWindow;
 
@@ -50,6 +51,7 @@ public:
   void toggleFrameLimit() { m_frameLimited = !m_frameLimited; }
   void shutDown();
   void setFrameLimit(bool on);
+  void setSpeed(float multiplier);
   void startDebugger(sf::RenderWindow* debugWindow);
   void keyPressed(sf::Keyboard::Key key);
   void joystickButtonPressed(int buttonCode);

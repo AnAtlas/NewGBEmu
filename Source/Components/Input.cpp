@@ -18,64 +18,32 @@ Input::Input(InputMemoryInterface& memory): m_memory(memory)
   //Check Settings file for changed controls
   Settings& settings = Settings::getInstance();
   std::string temp;
-  for (int i = 0; i < 8; ++i){
-    m_gameboyInputs.insert(std::make_pair( (GameboyInput)i, std::vector<InputInterface*>()));
+  for (int i = 0; i < 13; ++i){
+    m_inputs.insert(std::make_pair((InputAction)i, InputManager((InputAction)i, m_buttonStrings[i])));
     if (settings.getSetting(m_buttonStrings[i], temp, std::string("keyboard"))){
       std::transform(temp.begin(), temp.end(), temp.begin(), toupper);
       auto it = m_stringKeyMap.find(temp);
       if (it != m_stringKeyMap.end()) {
-        m_gameboyInputs.find((GameboyInput)i)->second.push_back(new KeyboardInput(it->second));
+        m_inputs.find((InputAction)i)->second.addInput(std::make_shared<KeyboardInput>(it->second));
       }
       else
         settings.clearSetting(temp);
     }
-  }
-  if (settings.getSetting("ToggleFrameLimit", temp)){
-    std::transform(temp.begin(), temp.end(), temp.begin(), toupper);
-    auto it = m_stringKeyMap.find(temp);
-    if (it != m_stringKeyMap.end())
-      m_toggleFrameLimit = it->second;
-    else
-      settings.clearSetting(temp);
-  }
-  if (settings.getSetting("TogglePause", temp)){
-    std::transform(temp.begin(), temp.end(), temp.begin(), toupper);
-    auto it = m_stringKeyMap.find(temp);
-    if (it != m_stringKeyMap.end())
-      m_togglePause= it->second;
-    else
-      settings.clearSetting(temp);
-  }
-
-  //Check for Joystick
-  if (sf::Joystick::isConnected(0)) {
-    for (int i = 0; i < 8; ++i) {
+    if (sf::Joystick::isConnected(0)) {
       if (settings.getSetting(m_buttonStrings[i], temp, std::string("controller"))) {
         std::transform(temp.begin(), temp.end(), temp.begin(), toupper);
         try {
           int x = std::stoi(temp);
-          m_gameboyInputs.find((GameboyInput)i)->second.push_back(new JoystickButtonInput(x));
+          m_inputs.find((InputAction)i)->second.addInput(std::make_shared<JoystickButtonInput>(x));
         }
         catch (std::exception&) {
-          m_gameboyInputs.find((GameboyInput)i)->second.push_back(new JoystickAxisInput(temp));
+          m_inputs.find((InputAction)i)->second.addInput(std::make_shared<JoystickAxisInput>(temp));
         }
       }
       else
         settings.clearSetting(temp);
     }
   }
-}
-
-Input::~Input() {
-
-  //Delete all created inputs
-  for (auto a : m_gameboyInputs) {
-    for (auto b : a.second) {
-      delete b;
-    }
-    a.second.clear();
-  }
-  m_gameboyInputs.clear();
 }
 
 void Input::linkGameboy(Gameboy* gameboy){
@@ -86,11 +54,9 @@ void Input::checkP14Inputs() {
   byte output = 0x0F;
   byte currentP1 = m_memory.readP1();
   for (byte i = 3; i < 255; --i){
-    for (auto input : m_gameboyInputs.find((GameboyInput)i)->second) {
-      if (input->isPressed()) {
-        checkForInterrupt(currentP1, i);
-        output &= ~(1 << i);
-      }
+    if (m_inputs.find((InputAction)i)->second.isPressed()) {
+      checkForInterrupt(currentP1, i);
+      output &= ~(1 << i);
     }
   }
   m_memory.writeP1Inputs(output);
@@ -100,11 +66,9 @@ void Input::checkP15Inputs() {
   byte output = 0x0F;
   byte currentP1 = m_memory.readP1();
   for (byte i = 3; i < 255; --i){
-    for (auto input : m_gameboyInputs.find((GameboyInput)(i+4))->second) {
-      if (input->isPressed()) {
-        checkForInterrupt(currentP1, i);
-        output &= ~(1 << i);
-      }
+    if (m_inputs.find((InputAction)(i+4))->second.isPressed()) {
+      checkForInterrupt(currentP1, i);
+      output &= ~(1 << i);
     }
   }
   m_memory.writeP1Inputs(output);
@@ -116,14 +80,35 @@ void Input::checkForInterrupt(byte currentP1, byte bit){
 }
 
 void Input::keyPressed(sf::Keyboard::Key key) {
-  if (key == m_toggleFrameLimit)
-    m_gameboy->toggleFrameLimit();
-  else if (key == m_togglePause)
-    m_gameboy->togglePause();
+  InputAction match = InputAction::NONE;
+  for (auto inMan : m_inputs){
+    if (inMan.second.isKey(key)) {
+      match = inMan.first;
+      break;
+    }
+  }
+  delegateOtherInputPress(match);
 }
 
 void Input::joystickButtonPressed(int buttonCode) {
+  InputAction match = InputAction::NONE;
+  for (auto inMan : m_inputs){
+    if (inMan.second.isPressed(buttonCode)) {
+      match = inMan.first;
+      break;
+    }
+  }
+  delegateOtherInputPress(match);
+}
 
+void Input::delegateOtherInputPress(InputAction input) {
+  switch (input){
+    case InputAction::TOGGLE_FRAME_LIMIT: m_gameboy->toggleFrameLimit(); break;
+    case InputAction::TOGGLE_PAUSE: m_gameboy->togglePause(); break;
+    case InputAction::SET_SPEED_2X: m_gameboy->setSpeed(2.0); break;
+    case InputAction::SET_SPEED_1X: m_gameboy->setSpeed(1.0); break;
+    default: ;
+  }
 }
 
 void Input::generateStringToKeyMap(){
@@ -153,6 +138,18 @@ void Input::generateStringToKeyMap(){
   m_stringKeyMap.emplace(std::make_pair("X", sf::Keyboard::X));
   m_stringKeyMap.emplace(std::make_pair("Y", sf::Keyboard::Y));
   m_stringKeyMap.emplace(std::make_pair("Z", sf::Keyboard::Z));
+
+  m_stringKeyMap.emplace(std::make_pair("1", sf::Keyboard::Num1));
+  m_stringKeyMap.emplace(std::make_pair("2", sf::Keyboard::Num2));
+  m_stringKeyMap.emplace(std::make_pair("3", sf::Keyboard::Num3));
+  m_stringKeyMap.emplace(std::make_pair("4", sf::Keyboard::Num4));
+  m_stringKeyMap.emplace(std::make_pair("5", sf::Keyboard::Num5));
+  m_stringKeyMap.emplace(std::make_pair("6", sf::Keyboard::Num6));
+  m_stringKeyMap.emplace(std::make_pair("7", sf::Keyboard::Num7));
+  m_stringKeyMap.emplace(std::make_pair("8", sf::Keyboard::Num8));
+  m_stringKeyMap.emplace(std::make_pair("9", sf::Keyboard::Num9));
+  m_stringKeyMap.emplace(std::make_pair("0", sf::Keyboard::Num0));
+
 
   m_stringKeyMap.emplace(std::make_pair("RIGHT", sf::Keyboard::Right));
   m_stringKeyMap.emplace(std::make_pair("LEFT", sf::Keyboard::Left));

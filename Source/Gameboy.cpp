@@ -11,7 +11,7 @@
 
 Gameboy::Gameboy(sf::RenderWindow &window, bool runBios)
  : m_memory(runBios), m_cpu((CpuMemoryInterface&)m_memory, runBios), m_gpu(window,(GpuMemoryInterface&)m_memory),
-   m_timer((TimerMemoryInterface&)m_memory), m_input((InputMemoryInterface&)m_memory),
+   m_timer((TimerMemoryInterface&)m_memory), m_input((InputMemoryInterface&)m_memory), m_speedMultiplier(1.0),
    m_window(window), m_debugWindow(nullptr), m_cartridge(), m_cartFact(), m_running(false), m_paused(false), m_frameLimited(true)
 {
   m_input.linkGameboy(this);
@@ -46,8 +46,8 @@ void Gameboy::play() {
       auto end = std::chrono::high_resolution_clock::now();
       auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin);
       if (m_frameLimited) {
-        while (duration.count() < 16366) {
-          std::this_thread::sleep_for(std::chrono::microseconds(200));
+        while (duration.count() < 16366 / m_speedMultiplier) {
+          std::this_thread::sleep_for(std::chrono::microseconds(100));
           duration = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - begin);
         }
       }
@@ -66,6 +66,14 @@ void Gameboy::shutDown() {
   m_running = false;
 }
 
+void Gameboy::keyPressed(sf::Keyboard::Key key) {
+  m_input.keyPressed(key);
+}
+
+void Gameboy::joystickButtonPressed(int buttonCode) {
+  m_input.joystickButtonPressed(buttonCode);
+}
+
 void Gameboy::startDebugger(sf::RenderWindow *debugWindow) {
   m_debugWindow = debugWindow;
   m_tilesetViewer = new TilesetViewer(debugWindow, m_memory);
@@ -82,10 +90,6 @@ void Gameboy::writeDebugInfo() {
   m_debugWindow->display();
 }
 
-void Gameboy::keyPressed(sf::Keyboard::Key key) {
-  m_input.keyPressed(key);
-}
-
-void Gameboy::joystickButtonPressed(int buttonCode) {
-  m_input.joystickButtonPressed(buttonCode);
+void Gameboy::setSpeed(float multiplier) {
+  m_speedMultiplier = multiplier;
 }
