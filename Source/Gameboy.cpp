@@ -47,7 +47,7 @@ void Gameboy::play() {
       auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin);
       if (m_frameLimited) {
         while (duration.count() < 16366 / m_speedMultiplier) {
-          std::this_thread::sleep_for(std::chrono::microseconds(100));
+          std::this_thread::sleep_for(std::chrono::microseconds(50));
           duration = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - begin);
         }
       }
