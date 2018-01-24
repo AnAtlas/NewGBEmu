@@ -11,3 +11,23 @@ SquareSweepChannel::SquareSweepChannel(AudioMemoryInterface &memory) : SquareCha
   m_sweepShift = 0;
   m_sweepTimer = 0;
 }
+
+void SquareSweepChannel::step(){
+
+}
+
+void SquareSweepChannel::stepLength() {
+
+}
+
+void SquareSweepChannel::stepSweep() {
+
+}
+
+void SquareSweepChannel::stepEnvelope() {
+
+}
+
+void SquareSweepChannel::trigger() {
+
+}

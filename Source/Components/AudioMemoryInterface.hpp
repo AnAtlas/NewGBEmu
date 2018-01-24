@@ -4,6 +4,7 @@
 
 #ifndef GBEMU_AUDIOMEMORYINTERFACE_HPP
 #define GBEMU_AUDIOMEMORYINTERFACE_HPP
+#include "../Utilities/Types.hpp"
 
 class AudioMemoryInterface{
 private:

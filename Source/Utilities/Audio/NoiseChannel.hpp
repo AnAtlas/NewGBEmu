@@ -25,9 +25,12 @@ private:
 public:
   NoiseChannel(AudioMemoryInterface& memory);
 
-  void stepLength();
-  void stepEnvelope();
-  void stepSweep();
+  void step() override;
+  void stepLength() override;
+  void stepEnvelope() override;
+  void stepSweep() override;
+
+  void trigger() override;
 };
 
 #endif //GBEMU_NOISECHANNEL_HPP

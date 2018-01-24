@@ -7,11 +7,14 @@
 
 #include "Types.hpp"
 
-bool bitOn(byte num, int bit){
-  return (num & (1 << bit) != 0);
+namespace{
+  bool bitOn(byte num, int bit){
+    return (num & (1 << bit) != 0);
+  }
+
+  bool bitOff(byte num, int bit){
+    return (num & (1 << bit) == 0);
+  }
 }
 
-bool bitOff(byte num, int bit){
-  return (num & (1 << bit) == 0);
-}
 #endif //GBEMU_BITS_HPP

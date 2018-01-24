@@ -26,11 +26,14 @@ private:
   byte m_wavePatternRAM [16] = {0};
 
 public:
-  WaveChannel(AudioMemoryInterface& memory);
+  explicit WaveChannel(AudioMemoryInterface& memory);
 
-  void stepLength();
-  void stepEnvelope();
-  void stepSweep();
+  void step() override;
+  void stepLength() override;
+  void stepEnvelope() override;
+  void stepSweep() override;
+
+  void trigger() override;
 };
 
 #endif //GBEMU_WAVECHANNEL_HPP

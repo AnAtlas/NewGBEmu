@@ -13,10 +13,10 @@
 Apu::Apu(AudioMemoryInterface &memory) : m_memory(memory), m_sequenceTimer(TICKS_PER_SEQUENCE), m_sequenceStep(0),
     m_sampleTimer(TICKS_PER_SAMPLE), m_bufferIndex(0)
 {
-  m_channels[0] = std::make_shared<SquareChannel>(new SquareChannel(memory));
-  m_channels[1] = std::make_shared<SquareSweepChannel>(new SquareSweepChannel(memory));
-  m_channels[2] = std::make_shared<WaveChannel>(new WaveChannel(memory));
-  m_channels[3] = std::make_shared<NoiseChannel>(new NoiseChannel(memory));
+  m_channels[0] = std::make_shared<SquareChannel>(memory);
+  m_channels[1] = std::make_shared<SquareSweepChannel>(memory);
+  m_channels[2] = std::make_shared<WaveChannel>(memory);
+  m_channels[3] = std::make_shared<NoiseChannel>(memory);
 }
 
 void Apu::step(byte ticks) {
@@ -62,8 +62,8 @@ void Apu::step(byte ticks) {
     //Load sample into SFML
     m_sampleTimer--;
     if (m_sampleTimer == 0){
-      Sample sample(0,0);
-      Sample tSample(0,0);
+      SoundSample sample(0,0);
+      SoundSample tSample(0,0);
       for (auto& channel : m_channels) {
         sample += channel->generateSample();
       }
@@ -73,12 +73,12 @@ void Apu::step(byte ticks) {
       if (m_bufferIndex >= BUFFER_SIZE){
         m_bufferIndex = 0;
 
-        while(m_soundPlayer.getStatus() != sf::Sound::Status::Stopped){
-          std::this_thread::sleep_for(std::chrono::microseconds(5));
-        }
+        //while(m_soundPlayer.getStatus() != sf::Sound::Status::Stopped){
+        //  std::this_thread::sleep_for(std::chrono::microseconds(5));
+        //}
 
-        m_soundBuffer.loadFromSamples((sf::Int16*)m_sampleBuffer, BUFFER_SIZE, 2, SAMPLE_RATE);
-        m_soundPlayer.setBuffer(m_soundBuffer);
+        //m_soundBuffer.loadFromSamples((sf::Int16*)m_sampleBuffer, BUFFER_SIZE, 2, SAMPLE_RATE);
+        //m_soundPlayer.setBuffer(m_soundBuffer);
       }
       m_sampleTimer = TICKS_PER_SAMPLE;
     }

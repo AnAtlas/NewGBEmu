@@ -9,3 +9,23 @@ WaveChannel::WaveChannel(AudioMemoryInterface &memory) : SoundChannel(memory)
   m_DACEnabled = false;
   m_sampleBuffer = 0;
 }
+
+void WaveChannel::step(){
+
+}
+
+void WaveChannel::stepLength() {
+
+}
+
+void WaveChannel::stepSweep() {
+
+}
+
+void WaveChannel::stepEnvelope() {
+
+}
+
+void WaveChannel::trigger() {
+
+}

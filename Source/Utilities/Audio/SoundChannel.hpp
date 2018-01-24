@@ -8,7 +8,8 @@
 #include <iostream>
 #include "../Types.hpp"
 #include "../../Components/AudioMemoryInterface.hpp"
-#include "../../Components/Apu.hpp"
+#include "SoundSample.hpp"
+
 
 class SoundChannel{
 protected:
@@ -41,7 +42,7 @@ public:
   virtual void stepEnvelope();
   virtual void stepSweep();
 
-  virtual Sample generateSample();
+  virtual SoundSample generateSample();
 
   virtual void trigger() = 0;
 };

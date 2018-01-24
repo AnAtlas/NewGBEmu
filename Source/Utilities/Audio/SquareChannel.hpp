@@ -11,12 +11,12 @@ class SquareChannel : public SoundChannel
 {
 protected:
 
-  typedef enum EnvelopeDirection{
+  enum EnvelopeDirection{
     DECREASE = 0,
     INCREASE = 1
   };
 
-  const static byte m_dutyPatterns [4] = {0b00000001, 0b10000001, 0b10000111, 0b01111110};
+  const byte m_dutyPatterns [4] = {0b00000001, 0b10000001, 0b10000111, 0b01111110};
 
   //Initial volume on Trigger
   byte m_volumeInitial;

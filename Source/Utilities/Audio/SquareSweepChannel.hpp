@@ -10,7 +10,7 @@
 class SquareSweepChannel : public SquareChannel
 {
 private:
-  typedef enum SweepDirection{
+  enum SweepDirection{
     DECREASE = 0,
     INCREASE = 1
   };
@@ -28,10 +28,13 @@ private:
   byte m_sweepTimer;
 
 public:
-  SquareSweepChannel(AudioMemoryInterface& memory);
+  explicit SquareSweepChannel(AudioMemoryInterface& memory);
 
-  void stepLength();
-  void stepEnvelope();
-  void stepSweep();
+  void step() override;
+  void stepLength() override;
+  void stepEnvelope() override;
+  void stepSweep() override;
+
+  void trigger() override;
 };
 #endif //GBEMU_SQUARECHANNEL_HPP

@@ -9,25 +9,10 @@
 #include "AudioMemoryInterface.hpp"
 #include "../Utilities/Audio/SoundChannel.hpp"
 #include "MemoryAudioInterface.hpp"
-#include <SFML/Audio.hpp>
+#include "../Utilities/Audio/SoundSample.hpp"
+//#include <SFML/Audio/SoundBuffer.hpp>
+//#include <SFML/Audio/Sound.hpp>
 
-namespace{
-  struct Sample{
-    short left = 0;
-    short right = 0;
-
-    Sample(short l, short r){
-      left = l;
-      right = r;
-    }
-
-    Sample& operator+=(const Sample& rhs){
-      this->left += rhs.left;
-      this->right += rhs.right;
-      return *this;
-    }
-  };
-}
 class Apu : public MemoryAudioInterface{
 public:
 
@@ -37,10 +22,10 @@ private:
 
   std::shared_ptr<SoundChannel> m_channels[4];
 
-  sf::Sound m_soundPlayer;
-  sf::SoundBuffer m_soundBuffer;
+  //sf::Sound m_soundPlayer;
+  //sf::SoundBuffer m_soundBuffer;
   const static int BUFFER_SIZE = 1024;
-  Sample m_sampleBuffer [BUFFER_SIZE];
+  SoundSample m_sampleBuffer [BUFFER_SIZE];
   int m_bufferIndex;
   const int CPU_SPEED = 4194304;
   const unsigned int SAMPLE_RATE = 96000;
