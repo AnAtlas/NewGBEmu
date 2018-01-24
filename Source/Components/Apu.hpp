@@ -6,9 +6,9 @@
 #define GBEMU_APU_HPP
 
 #include "../Utilities/Types.hpp"
-#include "AudioMemoryInterface.hpp"
+#include "MemoryInterfaces/AudioMemoryInterface.hpp"
 #include "../Utilities/Audio/SoundChannel.hpp"
-#include "MemoryAudioInterface.hpp"
+#include "MemoryInterfaces/MemoryAudioInterface.hpp"
 #include "../Utilities/Audio/SoundSample.hpp"
 //#include <SFML/Audio/SoundBuffer.hpp>
 //#include <SFML/Audio/Sound.hpp>

@@ -5,7 +5,7 @@
 #ifndef GBEMU_INPUTMEMORYINTERFACE_HPP
 #define GBEMU_INPUTMEMORYINTERFACE_HPP
 
-#include "../Utilities/Types.hpp"
+#include "../../Utilities/Types.hpp"
 
 class InputMemoryInterface
 {

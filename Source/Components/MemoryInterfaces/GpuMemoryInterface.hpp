@@ -5,7 +5,7 @@
 #ifndef NEWGBEMU_GPUMEMORYINTERFACE_HPP
 #define NEWGBEMU_GPUMEMORYINTERFACE_HPP
 
-#include "../Utilities/Types.hpp"
+#include "../../Utilities/Types.hpp"
 
 class GpuMemoryInterface
 {

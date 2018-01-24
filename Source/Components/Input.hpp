@@ -9,7 +9,7 @@
 #include <vector>
 #include <memory>
 #include "../Utilities/InputInterface.hpp"
-#include "InputMemoryInterface.hpp"
+#include "MemoryInterfaces/InputMemoryInterface.hpp"
 
 class Gameboy;
 

@@ -16,22 +16,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5890c2d0-623e-478c-9389-40a6a6751e2c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Source/Utilities/Audio/SoundSample.hpp" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change beforePath="$PROJECT_DIR$/Source/Components/Apu.cpp" afterPath="$PROJECT_DIR$/Source/Components/Apu.cpp" />
       <change beforePath="$PROJECT_DIR$/Source/Components/Apu.hpp" afterPath="$PROJECT_DIR$/Source/Components/Apu.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Components/AudioMemoryInterface.hpp" afterPath="$PROJECT_DIR$/Source/Components/AudioMemoryInterface.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/Audio/NoiseChannel.cpp" afterPath="$PROJECT_DIR$/Source/Utilities/Audio/NoiseChannel.cpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/Audio/NoiseChannel.hpp" afterPath="$PROJECT_DIR$/Source/Utilities/Audio/NoiseChannel.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.cpp" afterPath="$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.cpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/AudioMemoryInterface.hpp" afterPath="$PROJECT_DIR$/Source/Components/MemoryInterfaces/AudioMemoryInterface.hpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/Cpu.hpp" afterPath="$PROJECT_DIR$/Source/Components/Cpu.hpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/CpuMemoryInterface.hpp" afterPath="$PROJECT_DIR$/Source/Components/MemoryInterfaces/CpuMemoryInterface.hpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/Gpu.hpp" afterPath="$PROJECT_DIR$/Source/Components/Gpu.hpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/GpuMemoryInterface.hpp" afterPath="$PROJECT_DIR$/Source/Components/MemoryInterfaces/GpuMemoryInterface.hpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/Input.hpp" afterPath="$PROJECT_DIR$/Source/Components/Input.hpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/InputMemoryInterface.hpp" afterPath="$PROJECT_DIR$/Source/Components/MemoryInterfaces/InputMemoryInterface.hpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/Memory.hpp" afterPath="$PROJECT_DIR$/Source/Components/Memory.hpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/MemoryAudioInterface.hpp" afterPath="$PROJECT_DIR$/Source/Components/MemoryInterfaces/MemoryAudioInterface.hpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/Timer.hpp" afterPath="$PROJECT_DIR$/Source/Components/Timer.hpp" />
+      <change beforePath="$PROJECT_DIR$/Source/Components/TimerMemoryInterface.hpp" afterPath="$PROJECT_DIR$/Source/Components/MemoryInterfaces/TimerMemoryInterface.hpp" />
       <change beforePath="$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.hpp" afterPath="$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/Audio/SquareChannel.hpp" afterPath="$PROJECT_DIR$/Source/Utilities/Audio/SquareChannel.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.cpp" afterPath="$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.cpp" />
       <change beforePath="$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.hpp" afterPath="$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/Audio/WaveChannel.cpp" afterPath="$PROJECT_DIR$/Source/Utilities/Audio/WaveChannel.cpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/Audio/WaveChannel.hpp" afterPath="$PROJECT_DIR$/Source/Utilities/Audio/WaveChannel.hpp" />
-      <change beforePath="$PROJECT_DIR$/Source/Utilities/Bits.hpp" afterPath="$PROJECT_DIR$/Source/Utilities/Bits.hpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/cmake-build-release/" />
@@ -49,98 +47,98 @@
       <file leaf-file-name="SoundChannel.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="38" column="22" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+            <state relative-caret-position="153">
+              <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SoundChannel.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.cpp">
+      <file leaf-file-name="Cpu.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="2" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+            <state relative-caret-position="170">
+              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NoiseChannel.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/NoiseChannel.hpp">
+      <file leaf-file-name="Gpu.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Components/Gpu.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="28" lean-forward="false" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+            <state relative-caret-position="170">
+              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SoundSample.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SoundSample.hpp">
+      <file leaf-file-name="Timer.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Components/Timer.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="3" lean-forward="false" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+            <state relative-caret-position="119">
+              <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WaveChannel.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/WaveChannel.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WaveChannel.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/WaveChannel.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="28" column="11" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SquareChannel.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SquareChannel.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="34" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NoiseChannel.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/NoiseChannel.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SquareSweepChannel.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="32" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SquareSweepChannel.hpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SquareSweepChannel.hpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="35" column="28" lean-forward="false" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+            <state relative-caret-position="102">
+              <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Memory.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Components/Memory.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GpuMemoryInterface.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Components/MemoryInterfaces/GpuMemoryInterface.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TimerMemoryInterface.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Components/MemoryInterfaces/TimerMemoryInterface.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Apu.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Components/Apu.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AudioMemoryInterface.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Components/MemoryInterfaces/AudioMemoryInterface.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -200,11 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Source/Components/Timer.hpp" />
-        <option value="$PROJECT_DIR$/Source/Components/InputMemoryInterface.hpp" />
-        <option value="$PROJECT_DIR$/Source/Components/TimerMemoryInterface.hpp" />
-        <option value="$PROJECT_DIR$/Source/Components/Timer.cpp" />
-        <option value="$PROJECT_DIR$/Source/Components/GpuMemoryInterface.hpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/InterruptFlags.hpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/CartRomOnly.hpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/Cartridge.hpp" />
@@ -214,13 +207,11 @@
         <option value="$PROJECT_DIR$/Source/Utilities/Paths.hpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/CartMBC5.cpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/RamModule.hpp" />
-        <option value="$PROJECT_DIR$/Source/Components/Cpu.hpp" />
         <option value="$PROJECT_DIR$/Source/Components/Cpu.cpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/CartMBC1.cpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/RTCModule.hpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Settings.hpp" />
         <option value="$PROJECT_DIR$/Source/Components/Gpu.cpp" />
-        <option value="$PROJECT_DIR$/Source/Components/Gpu.hpp" />
         <option value="$PROJECT_DIR$/Source/DebuggingTools/Debugger.hpp" />
         <option value="$PROJECT_DIR$/Source/DebuggingTools/TilesetViewer.hpp" />
         <option value="$PROJECT_DIR$/Source/Cartridges/CartMBC3.cpp" />
@@ -228,29 +219,36 @@
         <option value="$PROJECT_DIR$/Settings.ini" />
         <option value="$PROJECT_DIR$/Source/Utilities/InputInterface.hpp" />
         <option value="$PROJECT_DIR$/Source/Components/Input.cpp" />
-        <option value="$PROJECT_DIR$/Source/Components/Input.hpp" />
         <option value="$PROJECT_DIR$/Source/Gameboy.hpp" />
         <option value="$PROJECT_DIR$/Source/Gameboy.cpp" />
         <option value="$PROJECT_DIR$/Source/Components/MemoryAudioInterface.hpp" />
-        <option value="$PROJECT_DIR$/Source/Components/Memory.hpp" />
         <option value="$PROJECT_DIR$/Source/Components/Memory.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/Source/Utilities/Audio/TestChannel.hpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Audio/SquareChannel.cpp" />
-        <option value="$PROJECT_DIR$/Source/Components/Apu.hpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Audio/SquareChannel.hpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Audio/SoundSample.hpp" />
         <option value="$PROJECT_DIR$/Source/Components/AudioMemoryInterface.hpp" />
         <option value="$PROJECT_DIR$/Source/Components/Apu.cpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Bits.hpp" />
-        <option value="$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.hpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.cpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.cpp" />
-        <option value="$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.hpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Audio/WaveChannel.cpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Audio/WaveChannel.hpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Audio/NoiseChannel.hpp" />
         <option value="$PROJECT_DIR$/Source/Utilities/Audio/NoiseChannel.cpp" />
+        <option value="$PROJECT_DIR$/Source/Components/Input.hpp" />
+        <option value="$PROJECT_DIR$/Source/Components/MemoryInterfaces/InputMemoryInterface.hpp" />
+        <option value="$PROJECT_DIR$/Source/Components/Memory.hpp" />
+        <option value="$PROJECT_DIR$/Source/Components/MemoryInterfaces/GpuMemoryInterface.hpp" />
+        <option value="$PROJECT_DIR$/Source/Components/MemoryInterfaces/TimerMemoryInterface.hpp" />
+        <option value="$PROJECT_DIR$/Source/Components/Apu.hpp" />
+        <option value="$PROJECT_DIR$/Source/Components/MemoryInterfaces/AudioMemoryInterface.hpp" />
+        <option value="$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.hpp" />
+        <option value="$PROJECT_DIR$/Source/Components/Cpu.hpp" />
+        <option value="$PROJECT_DIR$/Source/Components/Gpu.hpp" />
+        <option value="$PROJECT_DIR$/Source/Components/Timer.hpp" />
+        <option value="$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.hpp" />
       </list>
     </option>
   </component>
@@ -316,14 +314,13 @@
               <item name="GBEmu" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="GBEmu" type="462c0819:PsiDirectoryNode" />
               <item name="Source" type="462c0819:PsiDirectoryNode" />
-              <item name="Utilities" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GBEmu" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="GBEmu" type="462c0819:PsiDirectoryNode" />
               <item name="Source" type="462c0819:PsiDirectoryNode" />
               <item name="Utilities" type="462c0819:PsiDirectoryNode" />
-              <item name="Audio" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -334,19 +331,19 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.C/C++" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cmake-build-debug" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Source/Components/MemoryInterfaces" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/derdro/CLionProjects/GBEmu/Source/Components/Gpu.hpp" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Source/Utilities/Audio" />
+      <recent name="$PROJECT_DIR$/Source/Cartridges" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Source/Components/MemoryInterfaces" />
       <recent name="D:\Projects\NewGBEmu\Source\Components" />
       <recent name="$PROJECT_DIR$/Source/Utilities" />
       <recent name="$PROJECT_DIR$/Source" />
-      <recent name="$PROJECT_DIR$/Source/Cartridges" />
-      <recent name="$PROJECT_DIR$/Headers/Cartridges" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Source/Utilities/Audio" />
       <recent name="$PROJECT_DIR$/Source/Cartridges" />
     </key>
   </component>
@@ -427,12 +424,12 @@
       <workItem from="1516657892067" duration="2052000" />
       <workItem from="1516720938385" duration="8273000" />
       <workItem from="1516814894609" duration="8566000" />
-      <workItem from="1516832247261" duration="2333000" />
+      <workItem from="1516832247261" duration="2657000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="340681000" />
+    <option name="totallyTimeSpent" value="341005000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -591,35 +588,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Source/DebuggingTools/Debugger.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Cartridges/Cartridge.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/5/thread">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="291" column="0" lean-forward="false" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/Gpu.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2121">
-          <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/c++/5/bits/shared_ptr_base.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -660,13 +628,6 @@
         <state relative-caret-position="0">
           <caret line="97" column="5" lean-forward="false" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -734,16 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/Input.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="108" column="47" lean-forward="false" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
-          <folding>
-            <element signature="e#90#104#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Utilities/InputInterface.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -761,17 +712,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/CpuMemoryInterface.hpp">
+    <entry file="file://$PROJECT_DIR$/Source/Components/MemoryInterfaces/CpuMemoryInterface.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/GpuMemoryInterface.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -812,7 +756,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SquareChannel1.hpp" />
-    <entry file="file://$PROJECT_DIR$/Source/Components/MemoryAudioInterface.hpp">
+    <entry file="file://$PROJECT_DIR$/Source/Components/MemoryInterfaces/MemoryAudioInterface.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
@@ -852,36 +796,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/Memory.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/Apu.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
-          <folding>
-            <element signature="e#85#118#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SquareChannel.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Components/AudioMemoryInterface.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -912,14 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="38" column="22" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -932,14 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="34" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="35" column="28" lean-forward="false" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -978,8 +880,104 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/NoiseChannel.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        <state relative-caret-position="176">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/Input.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/MemoryInterfaces/InputMemoryInterface.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/Memory.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/MemoryInterfaces/GpuMemoryInterface.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/MemoryInterfaces/TimerMemoryInterface.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/Apu.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/MemoryInterfaces/AudioMemoryInterface.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SoundChannel.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/Cpu.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/Gpu.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Components/Timer.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Utilities/Audio/SquareSweepChannel.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
           <folding />
         </state>
       </provider>

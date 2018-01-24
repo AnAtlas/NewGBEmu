@@ -5,7 +5,7 @@
 #ifndef NEWGBEMU_TIMER_HPP
 #define NEWGBEMU_TIMER_HPP
 #include "../Utilities/Types.hpp"
-#include "TimerMemoryInterface.hpp"
+#include "MemoryInterfaces/TimerMemoryInterface.hpp"
 
 class Timer{
 private:

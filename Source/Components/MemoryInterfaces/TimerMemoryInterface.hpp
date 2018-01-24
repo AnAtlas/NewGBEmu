@@ -5,7 +5,7 @@
 #ifndef GBEMU_TIMERMEMORYINTERFACE_HPP
 #define GBEMU_TIMERMEMORYINTERFACE_HPP
 
-#include "../Utilities/Types.hpp"
+#include "../../Utilities/Types.hpp"
 
 class TimerMemoryInterface{
 private:

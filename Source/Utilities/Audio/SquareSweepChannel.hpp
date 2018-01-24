@@ -4,7 +4,7 @@
 
 #ifndef GBEMU_SQUARECHANNEL_HPP
 #define GBEMU_SQUARECHANNEL_HPP
-#include "../../Components/AudioMemoryInterface.hpp"
+#include "../../Components/MemoryInterfaces/AudioMemoryInterface.hpp"
 #include "SquareChannel.hpp"
 
 class SquareSweepChannel : public SquareChannel

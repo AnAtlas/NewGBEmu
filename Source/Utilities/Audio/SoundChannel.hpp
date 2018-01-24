@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "../Types.hpp"
-#include "../../Components/AudioMemoryInterface.hpp"
+#include "../../Components/MemoryInterfaces/AudioMemoryInterface.hpp"
 #include "SoundSample.hpp"
 
 

@@ -8,7 +8,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
-#include "GpuMemoryInterface.hpp"
+#include "MemoryInterfaces/GpuMemoryInterface.hpp"
 
 const byte SCREEN_WIDTH = 160;
 const byte SCREEN_HEIGHT = 144;

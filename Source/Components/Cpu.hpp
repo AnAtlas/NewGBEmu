@@ -8,7 +8,7 @@
 #include <memory>
 #include <fstream>
 #include "../Utilities/Types.hpp"
-#include "CpuMemoryInterface.hpp"
+#include "MemoryInterfaces/CpuMemoryInterface.hpp"
 
 class Memory;
 
