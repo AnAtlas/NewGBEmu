@@ -5,11 +5,18 @@
 #include <thread>
 #include "Apu.hpp"
 #include "../Utilities/Bits.hpp"
+#include "../Utilities/Audio/SquareChannel.hpp"
+#include "../Utilities/Audio/SquareSweepChannel.hpp"
+#include "../Utilities/Audio/WaveChannel.hpp"
+#include "../Utilities/Audio/NoiseChannel.hpp"
 
 Apu::Apu(AudioMemoryInterface &memory) : m_memory(memory), m_sequenceTimer(TICKS_PER_SEQUENCE), m_sequenceStep(0),
     m_sampleTimer(TICKS_PER_SAMPLE), m_bufferIndex(0)
 {
-  m_channels[0] = SoundChannel(memory);
+  m_channels[0] = std::make_shared<SquareChannel>(new SquareChannel(memory));
+  m_channels[1] = std::make_shared<SquareSweepChannel>(new SquareSweepChannel(memory));
+  m_channels[2] = std::make_shared<WaveChannel>(new WaveChannel(memory));
+  m_channels[3] = std::make_shared<NoiseChannel>(new NoiseChannel(memory));
 }
 
 void Apu::step(byte ticks) {
@@ -20,7 +27,7 @@ void Apu::step(byte ticks) {
 
   for (int i = 0; i < 4; i++){
     for (auto& channel : m_channels)
-      channel.step();
+      channel->step();
 
     m_sequenceTimer--;
     if (m_sequenceTimer == 0){
@@ -29,19 +36,19 @@ void Apu::step(byte ticks) {
       //Length counter is updated every 2nd step
       if (m_sequenceStep % 2 == 0){
         for (auto& channel : m_channels)
-          channel.stepLength();
+          channel->stepLength();
       }
 
       //Volume envelope is adjusted every 7th step
       if (m_sequenceStep == 7){
         for (auto& channel : m_channels)
-          channel.stepEnvelope();
+          channel->stepEnvelope();
       }
 
       //Sweep is ajusted every 2nd and 6th step
       if (m_sequenceStep == 2 || m_sequenceStep == 6){
         for (auto& channel : m_channels)
-          channel.stepSweep();
+          channel->stepSweep();
       }
 
       //Step the Sequencer
@@ -58,7 +65,7 @@ void Apu::step(byte ticks) {
       Sample sample(0,0);
       Sample tSample(0,0);
       for (auto& channel : m_channels) {
-        sample += channel.generateSample();
+        sample += channel->generateSample();
       }
       m_sampleBuffer[m_bufferIndex] = sample;
       m_bufferIndex++;
@@ -76,4 +83,8 @@ void Apu::step(byte ticks) {
       m_sampleTimer = TICKS_PER_SAMPLE;
     }
   }
+}
+
+void Apu::initTriggered(int channelIndex) {
+  m_channels[channelIndex]->trigger();
 }

@@ -11,10 +11,12 @@
 
 Gameboy::Gameboy(sf::RenderWindow &window, bool runBios)
  : m_memory(runBios), m_cpu((CpuMemoryInterface&)m_memory, runBios), m_gpu(window,(GpuMemoryInterface&)m_memory),
-   m_timer((TimerMemoryInterface&)m_memory), m_input((InputMemoryInterface&)m_memory), m_speedMultiplier(1.0),
-   m_window(window), m_debugWindow(nullptr), m_cartridge(), m_cartFact(), m_running(false), m_paused(false), m_frameLimited(true)
+   m_timer((TimerMemoryInterface&)m_memory), m_input((InputMemoryInterface&)m_memory), m_apu((AudioMemoryInterface&)m_memory),
+   m_speedMultiplier(1.0), m_window(window), m_debugWindow(nullptr), m_cartridge(), m_cartFact(),
+   m_running(false), m_paused(false), m_frameLimited(true)
 {
   m_input.linkGameboy(this);
+  m_memory.linkApu(&m_apu);
 }
 
 bool Gameboy::insertRom(const std::string &romPath) {

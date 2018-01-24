@@ -11,7 +11,24 @@
 #include "../../Components/Apu.hpp"
 
 class SoundChannel{
-private:
+protected:
+  bool m_enabled;
+
+  //m_timer - set to (2048 - [frequency])*4, each cpu cycle is decremented, when 0 reset
+  word m_timer;
+
+  //m_frequency - 11 bit value loaded from NRx3 and NRx4
+  word m_frequency;
+
+  //m_length - writing to NRx1 loads this as 64 - [n]. every other step decrements, when 0 channel is silenced
+  byte m_length;
+
+  //m_lengthEnabled - when false a length = 0 does not silence the channel
+  bool m_lengthEnabled;
+
+  //m_volume - current volume of channel
+  byte m_volume;
+
   AudioMemoryInterface& m_memory;
 
 public:
@@ -25,6 +42,8 @@ public:
   virtual void stepSweep();
 
   virtual Sample generateSample();
+
+  virtual void trigger() = 0;
 };
 
 #endif //GBEMU_SOUNDCHANNEL_HPP

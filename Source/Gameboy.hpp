@@ -13,6 +13,7 @@
 #include "Components/Cpu.hpp"
 #include "Components/Gpu.hpp"
 #include "Components/Timer.hpp"
+#include "Components/Apu.hpp"
 #include "Cartridges/Cartridge.hpp"
 #include "Cartridges/CartridgeFactory.hpp"
 #include "DebuggingTools/TilesetViewer.hpp"
@@ -25,6 +26,7 @@ private:
   Gpu m_gpu;
   Timer m_timer;
   Input m_input;
+  Apu m_apu;
   CartridgeFactory m_cartFact;
   std::shared_ptr<Cartridge> m_cartridge;
   TilesetViewer* m_tilesetViewer;

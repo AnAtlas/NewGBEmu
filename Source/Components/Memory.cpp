@@ -4,6 +4,12 @@
 #include <cstring>
 #include "Memory.hpp"
 #include "../Utilities/Bios.hpp"
+#include "../Utilities/Bits.hpp"
+
+namespace{
+  const word ApuTriggers [4] = {Address::NR14, Address::NR24, Address::NR34, Address::NR44};
+  const int ApuTriggerChannelIndexes [4] = {0, 1, 2, 3};
+}
 
 Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios), m_divRegister(0), m_input((InputMemoryInterface&) *this),
   m_romRange(Cartridge::CartAddress::ROM_BANK0, Cartridge::CartAddress::ROM_BANKX_END),
@@ -12,75 +18,11 @@ Memory::Memory(bool runBios) : m_memory{0}, m_inBios(runBios), m_divRegister(0),
   m_echoRange(Address::Echo, Address::Echo + 0x1DFF)
 {
   memcpy(m_memory, bios, sizeof(bios));
-  if (runBios) {
-    m_memory[0xFF00] = 0xFF; //P1
-    m_memory[0xFF05] = 0x00;
-    m_memory[0xFF06] = 0x00;
-    m_memory[0xFF07] = 0x00;
-    m_memory[0xFF10] = 0x80;
-    m_memory[0xFF11] = 0x00;
-    m_memory[0xFF12] = 0x00;
-    m_memory[0xFF14] = 0x00;
-    m_memory[0xFF16] = 0x00;
-    m_memory[0xFF17] = 0x00;
-    m_memory[0xFF19] = 0x00;
-    m_memory[0xFF1A] = 0x00;
-    m_memory[0xFF1B] = 0x00;
-    m_memory[0xFF1C] = 0x00;
-    m_memory[0xFF1E] = 0x00;
-    m_memory[0xFF20] = 0x00;
-    m_memory[0xFF21] = 0x00;
-    m_memory[0xFF22] = 0x00;
-    m_memory[0xFF23] = 0x00;
-    m_memory[0xFF24] = 0x00;
-    m_memory[0xFF25] = 0x00;
-    m_memory[0xFF26] = 0x00;
-    m_memory[0xFF40] = 0x00; //LCDC
-    m_memory[0xFF42] = 0x00; //SCY
-    m_memory[0xFF43] = 0x00; //SCX
-    m_memory[0xFF45] = 0x00; //LYC
-    m_memory[0xFF47] = 0x00; //BGP
-    m_memory[0xFF48] = 0x00; //OBP0
-    m_memory[0xFF49] = 0x00; //OBP1
-    m_memory[0xFF4A] = 0x00; //WY
-    m_memory[0xFF4B] = 0x00; //WX
-    m_memory[0xFFFF] = 0x00; //IE
-  }
-  else {
-    m_memory[0xFF00] = 0xFF;
-    m_memory[0xFF05] = 0x00;
-    m_memory[0xFF06] = 0x00;
-    m_memory[0xFF07] = 0x00;
-    m_memory[0xFF10] = 0x80;
-    m_memory[0xFF11] = 0xBF;
-    m_memory[0xFF12] = 0xF3;
-    m_memory[0xFF14] = 0xBF;
-    m_memory[0xFF16] = 0x3F;
-    m_memory[0xFF17] = 0x00;
-    m_memory[0xFF19] = 0xBF;
-    m_memory[0xFF1A] = 0x7F;
-    m_memory[0xFF1B] = 0xFF;
-    m_memory[0xFF1C] = 0x9F;
-    m_memory[0xFF1E] = 0xBF;
-    m_memory[0xFF20] = 0xFF;
-    m_memory[0xFF21] = 0x00;
-    m_memory[0xFF22] = 0x00;
-    m_memory[0xFF23] = 0xBF;
-    m_memory[0xFF24] = 0x77;
-    m_memory[0xFF25] = 0xF3;
-    m_memory[0xFF26] = 0xF1;
-    m_memory[0xFF40] = 0x91; //LCDC
-    m_memory[0xFF42] = 0x00; //SCY
-    m_memory[0xFF43] = 0x00; //SCX
-    m_memory[0xFF45] = 0x00; //LYC
-    m_memory[0xFF47] = 0xFC; //BGP
-    m_memory[0xFF48] = 0xFF; //OBP0
-    m_memory[0xFF49] = 0xFF; //OBP1
-    m_memory[0xFF4A] = 0x00; //WY
-    m_memory[0xFF4B] = 0x00; //WX
-    m_memory[0xFFFF] = 0x00; //IE
-    m_divRegister = 0xABCC;
-  }
+  initializeRegisters(runBios);
+}
+
+void Memory::linkApu(Apu *apu) {
+  m_apu = apu;
 }
 
 void Memory::linkCartridge(std::shared_ptr<Cartridge>cartridge) {
@@ -124,6 +66,16 @@ void Memory::writeByte(word address, byte value) {
     if (~m_memory[address] & Input::P1Bits::P15)
       m_input.checkP15Inputs();
     return;
+  }
+  else if (address == ApuTriggers[0] || address == ApuTriggers[1] || address == ApuTriggers[2] || address == ApuTriggers[3]){
+    for (int i = 0; i < 4; ++i){
+      if (address == ApuTriggers[i]){
+        if (bitOn(value, 7)){
+          m_apu->initTriggered(ApuTriggerChannelIndexes[i]);
+        }
+        break;
+      }
+    }
   }
 
   m_memory[address] = value;
@@ -286,3 +238,75 @@ void Memory::requestInputInterrupt() {
   writeByte(Address::IntFlags, readByte(Address::IntFlags) | IntFlags::JOYPAD);
 }
 
+
+void Memory::initializeRegisters(bool runBios) {
+  if (runBios) {
+    m_memory[0xFF00] = 0xFF; //P1
+    m_memory[0xFF05] = 0x00;
+    m_memory[0xFF06] = 0x00;
+    m_memory[0xFF07] = 0x00;
+    m_memory[0xFF10] = 0x80;
+    m_memory[0xFF11] = 0x00;
+    m_memory[0xFF12] = 0x00;
+    m_memory[0xFF14] = 0x00;
+    m_memory[0xFF16] = 0x00;
+    m_memory[0xFF17] = 0x00;
+    m_memory[0xFF19] = 0x00;
+    m_memory[0xFF1A] = 0x00;
+    m_memory[0xFF1B] = 0x00;
+    m_memory[0xFF1C] = 0x00;
+    m_memory[0xFF1E] = 0x00;
+    m_memory[0xFF20] = 0x00;
+    m_memory[0xFF21] = 0x00;
+    m_memory[0xFF22] = 0x00;
+    m_memory[0xFF23] = 0x00;
+    m_memory[0xFF24] = 0x00;
+    m_memory[0xFF25] = 0x00;
+    m_memory[0xFF26] = 0x00;
+    m_memory[0xFF40] = 0x00; //LCDC
+    m_memory[0xFF42] = 0x00; //SCY
+    m_memory[0xFF43] = 0x00; //SCX
+    m_memory[0xFF45] = 0x00; //LYC
+    m_memory[0xFF47] = 0x00; //BGP
+    m_memory[0xFF48] = 0x00; //OBP0
+    m_memory[0xFF49] = 0x00; //OBP1
+    m_memory[0xFF4A] = 0x00; //WY
+    m_memory[0xFF4B] = 0x00; //WX
+    m_memory[0xFFFF] = 0x00; //IE
+  }
+  else {
+    m_memory[0xFF00] = 0xFF;
+    m_memory[0xFF05] = 0x00;
+    m_memory[0xFF06] = 0x00;
+    m_memory[0xFF07] = 0x00;
+    m_memory[0xFF10] = 0x80;
+    m_memory[0xFF11] = 0xBF;
+    m_memory[0xFF12] = 0xF3;
+    m_memory[0xFF14] = 0xBF;
+    m_memory[0xFF16] = 0x3F;
+    m_memory[0xFF17] = 0x00;
+    m_memory[0xFF19] = 0xBF;
+    m_memory[0xFF1A] = 0x7F;
+    m_memory[0xFF1B] = 0xFF;
+    m_memory[0xFF1C] = 0x9F;
+    m_memory[0xFF1E] = 0xBF;
+    m_memory[0xFF20] = 0xFF;
+    m_memory[0xFF21] = 0x00;
+    m_memory[0xFF22] = 0x00;
+    m_memory[0xFF23] = 0xBF;
+    m_memory[0xFF24] = 0x77;
+    m_memory[0xFF25] = 0xF3;
+    m_memory[0xFF26] = 0xF1;
+    m_memory[0xFF40] = 0x91; //LCDC
+    m_memory[0xFF42] = 0x00; //SCY
+    m_memory[0xFF43] = 0x00; //SCX
+    m_memory[0xFF45] = 0x00; //LYC
+    m_memory[0xFF47] = 0xFC; //BGP
+    m_memory[0xFF48] = 0xFF; //OBP0
+    m_memory[0xFF49] = 0xFF; //OBP1
+    m_memory[0xFF4A] = 0x00; //WY
+    m_memory[0xFF4B] = 0x00; //WX
+    m_memory[0xFFFF] = 0x00; //IE
+    m_divRegister = 0xABCC;
+  }
+}

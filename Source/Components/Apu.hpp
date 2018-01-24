@@ -8,33 +8,38 @@
 #include "../Utilities/Types.hpp"
 #include "AudioMemoryInterface.hpp"
 #include "../Utilities/Audio/SoundChannel.hpp"
+#include "MemoryAudioInterface.hpp"
 #include <SFML/Audio.hpp>
 
-struct Sample{
-  short left = 0;
-  short right = 0;
+namespace{
+  struct Sample{
+    short left = 0;
+    short right = 0;
 
-  Sample(short l, short r){
-    left = l;
-    right = r;
-  }
+    Sample(short l, short r){
+      left = l;
+      right = r;
+    }
 
-  Sample& operator+=(const Sample& rhs){
-    this->left += rhs.left;
-    this->right += rhs.right;
-    return *this;
-  }
-};
+    Sample& operator+=(const Sample& rhs){
+      this->left += rhs.left;
+      this->right += rhs.right;
+      return *this;
+    }
+  };
+}
+class Apu : public MemoryAudioInterface{
+public:
 
-class Apu{
+
 private:
   AudioMemoryInterface& m_memory;
 
-  SoundChannel m_channels[4];
+  std::shared_ptr<SoundChannel> m_channels[4];
 
   sf::Sound m_soundPlayer;
   sf::SoundBuffer m_soundBuffer;
-  const int BUFFER_SIZE = 1024;
+  const static int BUFFER_SIZE = 1024;
   Sample m_sampleBuffer [BUFFER_SIZE];
   int m_bufferIndex;
   const int CPU_SPEED = 4194304;
@@ -50,5 +55,7 @@ private:
 public:
   explicit Apu(AudioMemoryInterface& memory);
   void step(byte ticks);
+
+  void initTriggered(int channelIndex) override;
 };
 #endif //GBEMU_APU_HPP

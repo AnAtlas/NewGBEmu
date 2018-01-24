@@ -12,6 +12,7 @@
 #include "TimerMemoryInterface.hpp"
 #include "InputMemoryInterface.hpp"
 #include "Input.hpp"
+#include "Apu.hpp"
 
 namespace Address{
   enum {
@@ -111,6 +112,7 @@ private:
   };
   std::shared_ptr<Cartridge> m_cartridge;
   Input m_input;
+  MemoryAudioInterface* m_apu;
 
   AddressRange m_romRange;
   AddressRange m_ramRange;
@@ -121,7 +123,7 @@ private:
   bool m_inBios;
 
   bool addressOnCartridge(word address) const;
-
+  void initializeRegisters(bool runBios);
 public:
   explicit Memory(bool runBios);
   byte readByte(word address) const override;
@@ -129,6 +131,7 @@ public:
   void writeShort(word address, word value) override;
   word readShort(word address) const override;
   void linkCartridge(std::shared_ptr<Cartridge> cartridge);
+  void linkApu(Apu* apu);
   void requestInterrupt(byte bit) override;
 
   //Cpu Functions
