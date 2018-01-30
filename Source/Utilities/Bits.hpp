@@ -15,6 +15,14 @@ namespace{
   bool bitOff(byte num, int bit){
     return (num & (1 << bit) == 0);
   }
+
+  byte bitSetOff(byte num, int bit){
+    return (num & ~((byte)1 << bit));
+  }
+
+  byte bitSetOn(byte num, int bit){
+    return (num | ((byte)1 << bit));
+  }
 }
 
 #endif //GBEMU_BITS_HPP

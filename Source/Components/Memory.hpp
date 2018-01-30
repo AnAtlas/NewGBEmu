@@ -11,6 +11,7 @@
 #include "MemoryInterfaces/GpuMemoryInterface.hpp"
 #include "MemoryInterfaces/TimerMemoryInterface.hpp"
 #include "MemoryInterfaces/InputMemoryInterface.hpp"
+#include "MemoryInterfaces/AudioMemoryInterface.hpp"
 #include "Input.hpp"
 #include "Apu.hpp"
 
@@ -90,7 +91,8 @@ namespace IntFlags{
   };
 }
 
-class Memory : public CpuMemoryInterface, GpuMemoryInterface, TimerMemoryInterface, InputMemoryInterface
+class Memory : public CpuMemoryInterface, GpuMemoryInterface, TimerMemoryInterface, InputMemoryInterface,
+  AudioMemoryInterface
 {
 private:
   union{
@@ -168,5 +170,29 @@ public:
   byte readP1() override;
   void writeP1Inputs(byte value) override;
   void requestInputInterrupt() override;
+  //Audio functions
+  byte readNR10() const override;
+  byte readNR11() const override;
+  byte readNR12() const override;
+  byte readNR13() const override;
+  byte readNR14() const override;
+  byte readNR21() const override;
+  byte readNR22() const override;
+  byte readNR23() const override;
+  byte readNR24() const override;
+  byte readNR31() const override;
+  byte readNR32() const override;
+  byte readNR33() const override;
+  byte readNR34() const override;
+  byte readNR41() const override;
+  byte readNR42() const override;
+  byte readNR43() const override;
+  byte readNR44() const override;
+  byte readNR50() const override;
+  byte readNR51() const override;
+  byte readNR52() const override;
+
+  byte readWaveRAM(int index) const override;
+  void writeNR52(byte value) override;
 };
 #endif //GBEMU_MEMORY_HPP

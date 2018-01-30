@@ -15,22 +15,41 @@ private:
     BITS_7 = 1
   };
 
-  //Linear Feedback Shift Register 15-bit
+  //Linear Feedback Shift Register 15-bit, OR 7-bit depending on mode
   word m_LFSR;
 
   CounterStepWidth m_counterWidth;
 
   byte m_divisorIndex;
 
+  void fetchVolumeInitial() override;
+  void fetchVolumeEnvelopePeriod() override;
+  void fetchVolumeEnvelopeDirection() override;
+
+  void reloadTimer() override;
+
+  //Each Channel Gets attributes from different registers, delegate this to specified functions
+  void fetchEnabled() override;
+  void fetchLeftEnabled() override;
+  void fetchRightEnabled() override;
+  void fetchFrequency() override;
+  void fetchLength() override;
+  void fetchLengthEnabled() override;
+  void setStatus(bool on) override;
+
+  void fetchDivisorIndex();
+  void fetchCounterStepWidth();
+
+  byte getDivisor();
+
 public:
-  NoiseChannel(AudioMemoryInterface& memory);
+  explicit NoiseChannel(AudioMemoryInterface& memory);
 
   void step() override;
-  void stepLength() override;
-  void stepEnvelope() override;
-  void stepSweep() override;
 
   void trigger() override;
+
+  SoundSample generateSample() override;
 };
 
 #endif //GBEMU_NOISECHANNEL_HPP

@@ -37,14 +37,33 @@ protected:
   //Which duty is currently being used 0-3
   byte m_dutySelect;
 
+  virtual void fetchVolumeInitial();
+  virtual void fetchVolumeEnvelopePeriod();
+  virtual void fetchVolumeEnvelopeDirection();
+  virtual void fetchDutySelect();
+
+
+  void incDutyPosition();
+  void reloadTimer() override;
+private:
+  //Each Channel Gets attributes from different registers, delegate this to specified functions
+  void fetchEnabled() override;
+  void fetchFrequency() override;
+  void fetchLength() override;
+  void fetchLengthEnabled() override;
+  void fetchLeftEnabled() override;
+  void fetchRightEnabled() override;
+  void setStatus(bool on) override;
+
 public:
   explicit SquareChannel(AudioMemoryInterface& memory);
 
   void step() override;
-  void stepLength() override;
+  void stepSweep() override {};
   void stepEnvelope() override;
-  void stepSweep() override;
 
   void trigger() override;
+
+  SoundSample generateSample() override;
 };
 #endif //GBEMU_TESTCHANNEL_HPP

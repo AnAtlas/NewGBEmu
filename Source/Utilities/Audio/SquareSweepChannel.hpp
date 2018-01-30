@@ -21,18 +21,34 @@ private:
   //
   byte m_sweepPeriod;
 
+  word m_sweepFrequency;
+
   SweepDirection m_sweepDirection;
 
   byte m_sweepShift;
 
   byte m_sweepTimer;
 
+  //Each Channel Gets attributes from different registers, delegate this to specified functions
+  void fetchEnabled() override;
+  void fetchLeftEnabled() override;
+  void fetchRightEnabled() override;
+  void fetchFrequency() override;
+  void fetchLength() override;
+  void fetchLengthEnabled() override;
+  void fetchVolumeInitial() override;
+  void fetchVolumeEnvelopePeriod() override;
+  void fetchVolumeEnvelopeDirection() override;
+  void fetchDutySelect() override;
+  void setStatus(bool on) override;
+
+  void fetchSweepPeriod();
+  void fetchSweepShift();
+  void fetchSweepDirection();
+  word calculateSweep();
 public:
   explicit SquareSweepChannel(AudioMemoryInterface& memory);
 
-  void step() override;
-  void stepLength() override;
-  void stepEnvelope() override;
   void stepSweep() override;
 
   void trigger() override;

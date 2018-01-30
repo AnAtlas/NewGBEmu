@@ -1,9 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <thread>
 #ifdef __linux__
-#include <X11/Xlib.h>
+
 #endif
 #include "Gameboy.hpp"
+#include <X11/Xlib.h>
 
 //#define DEBUG 1
 

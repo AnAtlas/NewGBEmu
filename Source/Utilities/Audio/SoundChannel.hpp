@@ -27,22 +27,42 @@ protected:
   //m_lengthEnabled - when false a length = 0 does not silence the channel
   bool m_lengthEnabled;
 
-  //m_volume - current volume of channel
+  //m_volume - current volume of channel, depending on which channel is enabled (or both!)
   byte m_volume;
 
+  bool m_leftEnabled;
+  bool m_rightEnabled;
+
   AudioMemoryInterface& m_memory;
+
+  const byte DEFAULT_LENGTH = 64;
+  const byte DEFAULT_LENGTH_WAVE = 255;
+
+  //Each Channel Gets attributes from different registers, delegate this to specified functions
+  virtual void fetchEnabled() = 0;
+  virtual void fetchFrequency() = 0;
+  virtual void fetchLength() = 0;
+  virtual void fetchLengthEnabled() = 0;
+  virtual void fetchLeftEnabled() = 0;
+  virtual void fetchRightEnabled() = 0;
+  virtual void reloadTimer() = 0;
+
+  virtual void setStatus(bool on) = 0;
+
+  void setSampleVolumes(SoundSample& sample, byte volume);
 
 public:
   explicit SoundChannel(AudioMemoryInterface& memory);
 
   //SoundChannels step every cpu cycle
-  virtual void step();
+  virtual void step() = 0;
   //Various functions step at different intervals
-  virtual void stepLength();
-  virtual void stepEnvelope();
-  virtual void stepSweep();
+  void stepLength();
+  virtual void stepEnvelope() = 0;
+  virtual void stepSweep() = 0;
 
-  virtual SoundSample generateSample();
+
+  virtual SoundSample generateSample() = 0;
 
   virtual void trigger() = 0;
 };

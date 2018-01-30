@@ -238,6 +238,93 @@ void Memory::requestInputInterrupt() {
   writeByte(Address::IntFlags, readByte(Address::IntFlags) | IntFlags::JOYPAD);
 }
 
+//Audio functions
+byte Memory::readNR10() const{
+ return m_memory[Address::NR10];
+}
+
+byte Memory::readNR11() const{
+  return m_memory[Address::NR11];
+}
+
+byte Memory::readNR12() const{
+  return m_memory[Address::NR12];
+}
+
+byte Memory::readNR13() const{
+  return m_memory[Address::NR13];
+}
+
+byte Memory::readNR14() const{
+  return m_memory[Address::NR14];
+}
+
+byte Memory::readNR21() const{
+  return m_memory[Address::NR21];
+}
+
+byte Memory::readNR22() const{
+  return m_memory[Address::NR22];
+}
+
+byte Memory::readNR23() const{
+  return m_memory[Address::NR23];
+}
+
+byte Memory::readNR24() const{
+  return m_memory[Address::NR24];
+}
+
+byte Memory::readNR31() const{
+  return m_memory[Address::NR31];
+}
+
+byte Memory::readNR32() const{
+  return m_memory[Address::NR32];
+}
+
+byte Memory::readNR33() const{
+  return m_memory[Address::NR33];
+}
+
+byte Memory::readNR34() const{
+  return m_memory[Address::NR34];
+}
+
+byte Memory::readNR41() const{
+  return m_memory[Address::NR41];
+}
+
+byte Memory::readNR42() const{
+  return m_memory[Address::NR42];
+}
+
+byte Memory::readNR43() const{
+  return m_memory[Address::NR43];
+}
+
+byte Memory::readNR44() const{
+  return m_memory[Address::NR44];
+}
+
+byte Memory::readNR50() const{
+  return m_memory[Address::NR50];
+}
+byte Memory::readNR51() const{
+  return m_memory[Address::NR51];
+}
+
+byte Memory::readNR52() const{
+  return m_memory[Address::NR52];
+}
+
+byte Memory::readWaveRAM(int index) const{
+  return m_memory[Address::WavePattern + index];
+}
+
+void Memory::writeNR52(byte value){
+  m_memory[Address::NR52] = value;
+}
 
 void Memory::initializeRegisters(bool runBios) {
   if (runBios) {

@@ -10,8 +10,8 @@
 #include "../Utilities/Audio/SoundChannel.hpp"
 #include "MemoryInterfaces/MemoryAudioInterface.hpp"
 #include "../Utilities/Audio/SoundSample.hpp"
-//#include <SFML/Audio/SoundBuffer.hpp>
-//#include <SFML/Audio/Sound.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
+#include <SFML/Audio/Sound.hpp>
 
 class Apu : public MemoryAudioInterface{
 public:
@@ -22,9 +22,10 @@ private:
 
   std::shared_ptr<SoundChannel> m_channels[4];
 
-  //sf::Sound m_soundPlayer;
-  //sf::SoundBuffer m_soundBuffer;
+  sf::Sound m_soundPlayer;
+  sf::SoundBuffer m_soundBuffer;
   const static int BUFFER_SIZE = 1024;
+  sf::Int16 m_finalSampleBuffer[BUFFER_SIZE * 2];
   SoundSample m_sampleBuffer [BUFFER_SIZE];
   int m_bufferIndex;
   const int CPU_SPEED = 4194304;
@@ -32,6 +33,9 @@ private:
   const int TICKS_PER_SEQUENCE = 8192;
   const int STEPS_PER_SEQUENCE = 8;
   const int TICKS_PER_SAMPLE = CPU_SPEED / SAMPLE_RATE;
+
+  byte m_volumeLeft;
+  byte m_volumeRight;
 
   int m_sequenceTimer;
   int m_sequenceStep;
